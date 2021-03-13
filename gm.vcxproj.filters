@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sdk">
+      <UniqueIdentifier>{59f8c309-f1e2-43f5-bc50-9cb0ea30d8d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cheat">
+      <UniqueIdentifier>{fe899bd4-336d-4d18-9971-1244c1f499b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{29ca3fff-d8ee-4cab-8d76-406f0c6c108d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\maths">
+      <UniqueIdentifier>{b92d2b0e-5057-4584-b297-8decad59d003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua">
+      <UniqueIdentifier>{835abfef-33d1-4cd9-b4ef-d37ea96f10e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\utlbuf">
+      <UniqueIdentifier>{5b820788-b118-4249-8702-94f0496f37b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui\Fonts">
+      <UniqueIdentifier>{2959850a-248c-43cd-99ea-195afae017e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui\Text Editor">
+      <UniqueIdentifier>{dcc4a15d-0ba0-492c-9fb8-b48e8814add9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\netvars">
+      <UniqueIdentifier>{9013c5d8-3455-4454-9552-636be05d23ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\valve">
+      <UniqueIdentifier>{e7f99ede-b497-41a4-b7bf-a6555db1005d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\valve\Interfaces">
+      <UniqueIdentifier>{4b9d7c97-4470-432d-ad1d-948be93eff41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bass">
+      <UniqueIdentifier>{4adaa621-93f4-484a-8f8d-a429f44aa75d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cheat\radio">
+      <UniqueIdentifier>{bf48de47-b841-4aa5-9c5d-7ad4d5ca68f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cheat\lua">
+      <UniqueIdentifier>{e87e9191-4fe5-410d-a7ea-7b015413a0a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cheat\menu">
+      <UniqueIdentifier>{4a95381e-3b96-435f-bb7b-1524b66e1291}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\valve\sdk-2013">
+      <UniqueIdentifier>{b7aa4b1e-b2b9-4d76-bd60-05e3ec3566ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="security">
+      <UniqueIdentifier>{ae8c2dc1-ddeb-4e85-9a31-3600ddf375f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detours">
+      <UniqueIdentifier>{18577d1c-0856-4698-9e26-48f18bea5c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\fp">
+      <UniqueIdentifier>{bc8fb27d-7163-47a1-8514-1acce4cddce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="notes">
+      <UniqueIdentifier>{7b365127-51ea-4b91-adaa-184b6441b888}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cheat\menu\tabs">
+      <UniqueIdentifier>{1e381ff1-55f6-4596-8698-f3db7ab00155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cheat\utils">
+      <UniqueIdentifier>{d518218b-85a0-4ac6-af03-29b2b856fff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cheat\utils\md5">
+      <UniqueIdentifier>{82a96c9c-2ec1-41bd-8c09-941864151ad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\crc">
+      <UniqueIdentifier>{15e1adb1-9f53-4e1b-8fe7-1e26950aa8db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cheat\lua\features">
+      <UniqueIdentifier>{5d224da4-5387-4205-b877-94aecbc2fe03}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>cheat</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>cheat\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk.cpp">
+      <Filter>sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="vfunc_hook.cpp">
+      <Filter>sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="math.cpp">
+      <Filter>sdk\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="vmatrix.cpp">
+      <Filter>sdk\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lapi.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lauxlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lbaselib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lbitlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lcode.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lcorolib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lctype.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ldblib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ldebug.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ldo.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ldump.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lfunc.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lgc.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\linit.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\liolib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\llex.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lmathlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lmem.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\loadlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lobject.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lopcodes.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\loslib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lparser.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lstate.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lstring.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lstrlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ltable.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ltablib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ltm.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lua.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\luac.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lundump.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lutf8lib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lvm.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lzio.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="utlbuf\UtlBuffer.cpp">
+      <Filter>sdk\utlbuf</Filter>
+    </ClCompile>
+    <ClCompile Include="utlbuf\UtlString.cpp">
+      <Filter>sdk\utlbuf</Filter>
+    </ClCompile>
+    <ClCompile Include="vector2d.cpp">
+      <Filter>sdk\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="characterset.cpp">
+      <Filter>sdk\valve</Filter>
+    </ClCompile>
+    <ClCompile Include="Convar.cpp">
+      <Filter>sdk\valve</Filter>
+    </ClCompile>
+    <ClCompile Include="options.cpp">
+      <Filter>cheat</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>cheat\utils\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="NetVarManager.cpp">
+      <Filter>cheat</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_dx9.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_win32.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\text_edit\TextEditor.cpp">
+      <Filter>imgui\Text Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Netvars2.cpp">
+      <Filter>sdk\netvars</Filter>
+    </ClCompile>
+    <ClCompile Include="recoil.cpp">
+      <Filter>cheat\lua\features</Filter>
+    </ClCompile>
+    <ClCompile Include="NEWCRC.cpp">
+      <Filter>sdk\crc</Filter>
+    </ClCompile>
+    <ClCompile Include="beams.cpp">
+      <Filter>cheat\lua\features</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEvents.cpp">
+      <Filter>cheat</Filter>
+    </ClCompile>
+    <ClCompile Include="dll.cpp">
+      <Filter>bass</Filter>
+    </ClCompile>
+    <ClCompile Include="dll_image.cpp">
+      <Filter>bass</Filter>
+    </ClCompile>
+    <ClCompile Include="luaShared.cpp">
+      <Filter>sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="radiomanager.cpp">
+      <Filter>cheat\radio</Filter>
+    </ClCompile>
+    <ClCompile Include="luamanager.cpp">
+      <Filter>cheat\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="luabindings.cpp">
+      <Filter>cheat\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="imconfig.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="DXDraw.cpp">
+      <Filter>cheat\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_custom.cpp">
+      <Filter>cheat\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="IVEngineClient.cpp">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="extrasensoryperception.cpp">
+      <Filter>cheat\lua\features</Filter>
+    </ClCompile>
+    <ClCompile Include="aimbot.cpp">
+      <Filter>cheat\lua\features</Filter>
+    </ClCompile>
+    <ClCompile Include="hooks.cpp">
+      <Filter>cheat</Filter>
+    </ClCompile>
+    <ClCompile Include="CTab.cpp">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="CTabMain.cpp">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="CTabAimbot.cpp">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="CTabScripting.cpp">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="CTabSettings.cpp">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="CTabESP.cpp">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="C_BaseEntity.cpp">
+      <Filter>sdk\fp</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenuPopup.cpp">
+      <Filter>cheat\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="xmod.cpp">
+      <Filter>cheat\menu</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utils.h">
+      <Filter>cheat\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>cheat\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="vfunc_hook.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="luaShared.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h">
+      <Filter>sdk\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vmatrix.h">
+      <Filter>sdk\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vector.h">
+      <Filter>sdk\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="qangle.h">
+      <Filter>sdk\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineNetworking.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lapi.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lauxlib.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lcode.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lctype.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\ldebug.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\ldo.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lfunc.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lgc.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\llex.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\llimits.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lmem.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lobject.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lopcodes.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lparser.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lprefix.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lstate.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lstring.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\ltable.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\ltm.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lua.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lua.hpp">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\luaconf.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lualib.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lundump.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lvm.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lzio.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="glua_types.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlBuffer.hpp">
+      <Filter>sdk\utlbuf</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlMemory.hpp">
+      <Filter>sdk\utlbuf</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlString.hpp">
+      <Filter>sdk\utlbuf</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlVector.hpp">
+      <Filter>sdk\utlbuf</Filter>
+    </ClInclude>
+    <ClInclude Include="vector2d.h">
+      <Filter>sdk\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="platform.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="characterset.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="memalloc.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="mem.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="Convar.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="hooks.h">
+      <Filter>cheat</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="options.h">
+      <Filter>cheat</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>cheat\utils\md5</Filter>
+    </ClInclude>
+    <ClInclude Include="NetVarManager.h">
+      <Filter>cheat</Filter>
+    </ClInclude>
+    <ClInclude Include="Recv.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientClass.h">
+      <Filter>cheat</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientNetworkable.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="ProggyTiny.h">
+      <Filter>imgui\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Fonts2.h">
+      <Filter>imgui\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_dx9.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_win32.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\text_edit\TextEditor.h">
+      <Filter>imgui\Text Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Netvars2.h">
+      <Filter>sdk\netvars</Filter>
+    </ClInclude>
+    <ClInclude Include="recoil.h">
+      <Filter>cheat\lua\features</Filter>
+    </ClInclude>
+    <ClInclude Include="NEWCRC.h">
+      <Filter>sdk\crc</Filter>
+    </ClInclude>
+    <ClInclude Include="beams.h">
+      <Filter>cheat\lua\features</Filter>
+    </ClInclude>
+    <ClInclude Include="BetterInterface.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IAppSystem.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseClientDLL.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientMode.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IConVar.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ICvar.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IEntityList.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameEventManager.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ISurface.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IVEngineClient.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IViewRenderBeams.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEvents.h">
+      <Filter>cheat</Filter>
+    </ClInclude>
+    <ClInclude Include="IInputSystem.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>cheat</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_icons.h">
+      <Filter>imgui\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="profont.h">
+      <Filter>imgui\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="api.h">
+      <Filter>bass</Filter>
+    </ClInclude>
+    <ClInclude Include="bass.h">
+      <Filter>bass</Filter>
+    </ClInclude>
+    <ClInclude Include="dll.h">
+      <Filter>bass</Filter>
+    </ClInclude>
+    <ClInclude Include="dll_image.h">
+      <Filter>bass</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>cheat</Filter>
+    </ClInclude>
+    <ClInclude Include="Cousine.h">
+      <Filter>imgui\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="droid.h">
+      <Filter>imgui\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="icons.h">
+      <Filter>imgui\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="radiomanager.h">
+      <Filter>cheat\radio</Filter>
+    </ClInclude>
+    <ClInclude Include="luamanager.h">
+      <Filter>cheat\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="luabindings.h">
+      <Filter>cheat\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="DXDraw.h">
+      <Filter>cheat\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_custom.h">
+      <Filter>cheat\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="dxinc.h">
+      <Filter>cheat\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="extrasensoryperception.h">
+      <Filter>cheat\lua\features</Filter>
+    </ClInclude>
+    <ClInclude Include="icliententity.h">
+      <Filter>sdk\valve\sdk-2013</Filter>
+    </ClInclude>
+    <ClInclude Include="iclientunknown.h">
+      <Filter>sdk\valve\sdk-2013</Filter>
+    </ClInclude>
+    <ClInclude Include="iclientthinkable.h">
+      <Filter>sdk\valve\sdk-2013</Filter>
+    </ClInclude>
+    <ClInclude Include="iclientrenderable.h">
+      <Filter>sdk\valve\sdk-2013</Filter>
+    </ClInclude>
+    <ClInclude Include="clientrenderhandle.h">
+      <Filter>sdk\valve\sdk-2013</Filter>
+    </ClInclude>
+    <ClInclude Include="ihandleentity.h">
+      <Filter>sdk\valve\sdk-2013</Filter>
+    </ClInclude>
+    <ClInclude Include="iclientnetworkable.h">
+      <Filter>sdk\valve\sdk-2013</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollideable.h">
+      <Filter>sdk\valve\sdk-2013</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseHandle.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="aimbot.h">
+      <Filter>cheat\lua\features</Filter>
+    </ClInclude>
+    <ClInclude Include="obfs.h">
+      <Filter>security</Filter>
+    </ClInclude>
+    <ClInclude Include="CViewRender.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="detours.h">
+      <Filter>detours</Filter>
+    </ClInclude>
+    <ClInclude Include="C_GMOD_Player.h">
+      <Filter>sdk\fp</Filter>
+    </ClInclude>
+    <ClInclude Include="TODO.h">
+      <Filter>notes</Filter>
+    </ClInclude>
+    <ClInclude Include="CTab.h">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="CTabMain.h">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="CTabAimbot.h">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="CTabScripting.h">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="CTabSettings.h">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="CTabESP.h">
+      <Filter>cheat\menu\tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="IVModelInfo.h">
+      <Filter>sdk\valve\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C_BaseEntity.h">
+      <Filter>sdk\fp</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuPopup.h">
+      <Filter>cheat\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="CGlobalVarsBase.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+    <ClInclude Include="xmods.h">
+      <Filter>cheat\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\loader_dll_shared.h">
+      <Filter>cheat</Filter>
+    </ClInclude>
+    <ClInclude Include="CHudChat.h">
+      <Filter>sdk\valve</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

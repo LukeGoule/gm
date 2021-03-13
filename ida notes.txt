@@ -1,0 +1,15 @@
+pviewrender = 51 79 06 58
+pprediction = 51 6B 12 AC
+
+      58 06 79 51                                              58 06 79 51    
+8B 0D ?? ?? ?? ?? 50 FF 57 7C 8B 4D F8 53 8B 01 FF 50 28 8B 0D ?? ?? ?? ?? 6A 00 8B 01 FF 50 7C
+
+CBasePlayer_CalcPlayerView
+				 
+55 8B EC 83 EC 1C 56 8B F1 8B 0D ?? ?? ?? ?? 57 8B 01 8B 40 38 FF D0 84 C0 75 0B 8B 0D ?? ?? ?? ?? 8B 01 FF 50 4C
+
+// calcview
+CBasePlayer_CalcView 	= 0x5156C368
+CBasePlayer_CBasePlayer = 0x5156BF00
+methodId = 11Ah (dec: 282)
+E9D2BBA48D76EBD8704CE5B4E20EA410B92A44C0F0DEE3A806AA937C654E37A05BE08A1CEBBC2760D9BA8F9070A043F0570C6B543D260FF855DE50C8539E2480

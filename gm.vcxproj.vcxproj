@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{C0FC4160-EE30-4666-967C-DF5CF7BF56A9}</ProjectGuid>
+    <RootNamespace>lokigmod</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>gm</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)Include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>_WINDLL;_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x86;D:\```` IMPORTANT ````\xmods project\xmods\Detours-4.0.1</AdditionalLibraryDirectories>
+      <AdditionalDependencies>detours.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x86;detours</AdditionalLibraryDirectories>
+      <AdditionalDependencies>detours.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x86;D:\```` IMPORTANT ````\xmods project\xmods\Detours-4.0.1</AdditionalLibraryDirectories>
+      <AdditionalDependencies>detours.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="aimbot.cpp" />
+    <ClCompile Include="beams.cpp" />
+    <ClCompile Include="characterset.cpp" />
+    <ClCompile Include="CMenuPopup.cpp" />
+    <ClCompile Include="Convar.cpp" />
+    <ClCompile Include="CTab.cpp" />
+    <ClCompile Include="CTabAimbot.cpp" />
+    <ClCompile Include="CTabESP.cpp" />
+    <ClCompile Include="CTabMain.cpp" />
+    <ClCompile Include="CTabScripting.cpp" />
+    <ClCompile Include="CTabSettings.cpp" />
+    <ClCompile Include="C_BaseEntity.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="DXDraw.cpp" />
+    <ClCompile Include="extrasensoryperception.cpp" />
+    <ClCompile Include="GameEvents.cpp" />
+    <ClCompile Include="hooks.cpp" />
+    <ClCompile Include="imconfig.cpp" />
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_dx9.cpp" />
+    <ClCompile Include="imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="imgui\text_edit\TextEditor.cpp" />
+    <ClCompile Include="imgui_custom.cpp" />
+    <ClCompile Include="IVEngineClient.cpp" />
+    <ClCompile Include="xmod.cpp" />
+    <ClCompile Include="luabindings.cpp" />
+    <ClCompile Include="luamanager.cpp" />
+    <ClCompile Include="luaShared.cpp" />
+    <ClCompile Include="lua_source\lapi.c" />
+    <ClCompile Include="lua_source\lauxlib.c" />
+    <ClCompile Include="lua_source\lbaselib.c" />
+    <ClCompile Include="lua_source\lbitlib.c" />
+    <ClCompile Include="lua_source\lcode.c" />
+    <ClCompile Include="lua_source\lcorolib.c" />
+    <ClCompile Include="lua_source\lctype.c" />
+    <ClCompile Include="lua_source\ldblib.c" />
+    <ClCompile Include="lua_source\ldebug.c" />
+    <ClCompile Include="lua_source\ldo.c" />
+    <ClCompile Include="lua_source\ldump.c" />
+    <ClCompile Include="lua_source\lfunc.c" />
+    <ClCompile Include="lua_source\lgc.c" />
+    <ClCompile Include="lua_source\linit.c" />
+    <ClCompile Include="lua_source\liolib.c" />
+    <ClCompile Include="lua_source\llex.c" />
+    <ClCompile Include="lua_source\lmathlib.c" />
+    <ClCompile Include="lua_source\lmem.c" />
+    <ClCompile Include="lua_source\loadlib.c" />
+    <ClCompile Include="lua_source\lobject.c" />
+    <ClCompile Include="lua_source\lopcodes.c" />
+    <ClCompile Include="lua_source\loslib.c" />
+    <ClCompile Include="lua_source\lparser.c" />
+    <ClCompile Include="lua_source\lstate.c" />
+    <ClCompile Include="lua_source\lstring.c" />
+    <ClCompile Include="lua_source\lstrlib.c" />
+    <ClCompile Include="lua_source\ltable.c" />
+    <ClCompile Include="lua_source\ltablib.c" />
+    <ClCompile Include="lua_source\ltm.c" />
+    <ClCompile Include="lua_source\lua.c" />
+    <ClCompile Include="lua_source\luac.c" />
+    <ClCompile Include="lua_source\lundump.c" />
+    <ClCompile Include="lua_source\lutf8lib.c" />
+    <ClCompile Include="lua_source\lvm.c" />
+    <ClCompile Include="lua_source\lzio.c" />
+    <ClCompile Include="math.cpp" />
+    <ClCompile Include="md5.cpp" />
+    <ClCompile Include="NetVarManager.cpp" />
+    <ClCompile Include="Netvars2.cpp" />
+    <ClCompile Include="NEWCRC.cpp" />
+    <ClCompile Include="options.cpp" />
+    <ClCompile Include="radiomanager.cpp" />
+    <ClCompile Include="recoil.cpp" />
+    <ClCompile Include="sdk.cpp" />
+    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="utlbuf\UtlBuffer.cpp" />
+    <ClCompile Include="utlbuf\UtlString.cpp" />
+    <ClCompile Include="vector2d.cpp" />
+    <ClCompile Include="vfunc_hook.cpp" />
+    <ClCompile Include="vmatrix.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\shared\loader_dll_shared.h" />
+    <ClInclude Include="aimbot.h" />
+    <ClInclude Include="beams.h" />
+    <ClInclude Include="BetterInterface.h" />
+    <ClInclude Include="CBaseHandle.h" />
+    <ClInclude Include="CGlobalVarsBase.h" />
+    <ClInclude Include="characterset.h" />
+    <ClInclude Include="CHudChat.h" />
+    <ClInclude Include="CInput.h" />
+    <ClInclude Include="ClientClass.h" />
+    <ClInclude Include="clientrenderhandle.h" />
+    <ClInclude Include="CMenuPopup.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Convar.h" />
+    <ClInclude Include="Cousine.h" />
+    <ClInclude Include="CTab.h" />
+    <ClInclude Include="CTabAimbot.h" />
+    <ClInclude Include="CTabESP.h" />
+    <ClInclude Include="CTabMain.h" />
+    <ClInclude Include="CTabScripting.h" />
+    <ClInclude Include="CTabSettings.h" />
+    <ClInclude Include="CViewRender.h" />
+    <ClInclude Include="C_BaseEntity.h" />
+    <ClInclude Include="C_GMOD_Player.h" />
+    <ClInclude Include="detours.h" />
+    <ClInclude Include="droid.h" />
+    <ClInclude Include="DXDraw.h" />
+    <ClInclude Include="dxinc.h" />
+    <ClInclude Include="EngineNetworking.h" />
+    <ClInclude Include="extrasensoryperception.h" />
+    <ClInclude Include="Fonts2.h" />
+    <ClInclude Include="GameEvents.h" />
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="glua_types.h" />
+    <ClInclude Include="icliententity.h" />
+    <ClInclude Include="iclientnetworkable.h" />
+    <ClInclude Include="iclientrenderable.h" />
+    <ClInclude Include="iclientthinkable.h" />
+    <ClInclude Include="iclientunknown.h" />
+    <ClInclude Include="ICollideable.h" />
+    <ClInclude Include="icons.h" />
+    <ClInclude Include="ihandleentity.h" />
+    <ClInclude Include="imgui_custom.h" />
+    <ClInclude Include="IVModelInfo.h" />
+    <ClInclude Include="luabindings.h" />
+    <ClInclude Include="luamanager.h" />
+    <ClInclude Include="obfs.h" />
+    <ClInclude Include="IGameEventManager.h" />
+    <ClInclude Include="IInputSystem.h" />
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_impl_dx9.h" />
+    <ClInclude Include="imgui\imgui_impl_win32.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui\imstb_rectpack.h" />
+    <ClInclude Include="imgui\imstb_textedit.h" />
+    <ClInclude Include="imgui\imstb_truetype.h" />
+    <ClInclude Include="imgui\text_edit\TextEditor.h" />
+    <ClInclude Include="IViewRenderBeams.h" />
+    <ClInclude Include="menu_icons.h" />
+    <ClInclude Include="NetVarManager.h" />
+    <ClInclude Include="hooks.h" />
+    <ClInclude Include="IAppSystem.h" />
+    <ClInclude Include="IBaseClientDLL.h" />
+    <ClInclude Include="IClientMode.h" />
+    <ClInclude Include="IConVar.h" />
+    <ClInclude Include="ICvar.h" />
+    <ClInclude Include="IEntityList.h" />
+    <ClInclude Include="ISurface.h" />
+    <ClInclude Include="IVEngineClient.h" />
+    <ClInclude Include="xmods.h" />
+    <ClInclude Include="luaShared.h" />
+    <ClInclude Include="lua_source\lapi.h" />
+    <ClInclude Include="lua_source\lauxlib.h" />
+    <ClInclude Include="lua_source\lcode.h" />
+    <ClInclude Include="lua_source\lctype.h" />
+    <ClInclude Include="lua_source\ldebug.h" />
+    <ClInclude Include="lua_source\ldo.h" />
+    <ClInclude Include="lua_source\lfunc.h" />
+    <ClInclude Include="lua_source\lgc.h" />
+    <ClInclude Include="lua_source\llex.h" />
+    <ClInclude Include="lua_source\llimits.h" />
+    <ClInclude Include="lua_source\lmem.h" />
+    <ClInclude Include="lua_source\lobject.h" />
+    <ClInclude Include="lua_source\lopcodes.h" />
+    <ClInclude Include="lua_source\lparser.h" />
+    <ClInclude Include="lua_source\lprefix.h" />
+    <ClInclude Include="lua_source\lstate.h" />
+    <ClInclude Include="lua_source\lstring.h" />
+    <ClInclude Include="lua_source\ltable.h" />
+    <ClInclude Include="lua_source\ltm.h" />
+    <ClInclude Include="lua_source\lua.h" />
+    <ClInclude Include="lua_source\lua.hpp" />
+    <ClInclude Include="lua_source\luaconf.h" />
+    <ClInclude Include="lua_source\lualib.h" />
+    <ClInclude Include="lua_source\lundump.h" />
+    <ClInclude Include="lua_source\lvm.h" />
+    <ClInclude Include="lua_source\lzio.h" />
+    <ClInclude Include="math.h" />
+    <ClInclude Include="md5.h" />
+    <ClInclude Include="mem.h" />
+    <ClInclude Include="memalloc.h" />
+    <ClInclude Include="Netvars2.h" />
+    <ClInclude Include="NEWCRC.h" />
+    <ClInclude Include="options.h" />
+    <ClInclude Include="platform.h" />
+    <ClInclude Include="profont.h" />
+    <ClInclude Include="ProggyTiny.h" />
+    <ClInclude Include="qangle.h" />
+    <ClInclude Include="radiomanager.h" />
+    <ClInclude Include="random.h" />
+    <ClInclude Include="recoil.h" />
+    <ClInclude Include="Recv.h" />
+    <ClInclude Include="sdk.h" />
+    <ClInclude Include="singleton.h" />
+    <ClInclude Include="TODO.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="utlbuf\UtlBuffer.hpp" />
+    <ClInclude Include="utlbuf\UtlMemory.hpp" />
+    <ClInclude Include="utlbuf\UtlString.hpp" />
+    <ClInclude Include="utlbuf\UtlVector.hpp" />
+    <ClInclude Include="vector.h" />
+    <ClInclude Include="vector2d.h" />
+    <ClInclude Include="vfunc_hook.h" />
+    <ClInclude Include="vmatrix.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
