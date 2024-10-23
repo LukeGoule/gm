@@ -12,6 +12,7 @@
 
 #include "C_BaseEntity.h"
 #include "ICollideable.h"
+#include "ClientClass.h"
 
 #include "DXDraw.h"
 
@@ -199,7 +200,7 @@ void ESP::Render() {
 		return;
 
     // STUFF
-	for (int i = 0; i < g_pEntityList->GetHighestEntityIndex(); i++) {
+	for (size_t i = 0; i < g_pEntityList->GetHighestEntityIndex(); i++) {
 		C_BaseEntity* pEnt = reinterpret_cast<C_BaseEntity*>(g_pEntityList->GetClientEntity(i));
 
 		if (!pEnt)

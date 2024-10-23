@@ -300,27 +300,27 @@ struct Color2
 	Color2 operator / (float div)
 	{
 		Color2 color = *this;
-		color.r = color.r / div;
-		color.g = color.g / div;
-		color.b = color.b / div;
+		color.r = color.r / (int)div;
+		color.g = color.g / (int)div;
+		color.b = color.b / (int)div;
 		return color;
 	}
 
 	Color2& operator /= (float div)
 	{
 		Color2& color = *this;
-		color.r /= div;
-		color.g /= div;
-		color.b /= div;
+		color.r /= (int)div;
+		color.g /= (int)div;
+		color.b /= (int)div;
 		return color;
 	}
 
 	Color2& operator *= (float coeff)
 	{
 		Color2& color = *this;
-		color.r *= coeff;
-		color.g *= coeff;
-		color.b *= coeff;
+		color.r *= (int)coeff;
+		color.g *= (int)coeff;
+		color.b *= (int)coeff;
 		return color;
 	}
 

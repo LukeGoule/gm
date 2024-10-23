@@ -1,83 +1,44 @@
 #pragma once
-#include <string>
+
 #include <vector>
-#include <unordered_map>
-#include <memory>
 
 #include "Recv.h"
-#include "utils.h"
-#include "obfs.h"
+#include "sdk.h"
+#include "ClientClass.h"
 
-class NetvarTree
+#undef GetProp
+class NetvarManager
 {
-	struct Node;
-	using MapType = std::unordered_map<std::string, std::shared_ptr<Node>>;
-
-	struct Node
-	{
-		Node(int offset) : offset(offset) {}
-		MapType nodes;
-		int offset;
-	};
-
-	MapType nodes;
-
 public:
-	NetvarTree();
+
+    // stores all tables, and all props inside those
+    NetvarManager(void);
+
+
+    // calls GetProp wrapper to get the absolute offset of the prop
+    int GetOffset(const char* tableName, const char* propName);
+
+
+    // calls GetProp wrapper to get prop and sets the proxy of the prop
+    bool HookProp(const char* tableName, const char* propName, RecvVarProxyFn function);
+
+    bool m_bFinished = false;
 
 private:
-	void PopulateNodes(class RecvTable *recv_table, MapType *map);
 
-	/**
-	* GetOffsetRecursive - Return the offset of the final node
-	* @map:	Node map to scan
-	* @acc:	Offset accumulator
-	* @name:	Netvar name to search for
-	*
-	* Get the offset of the last netvar from map and return the sum of it and accum
-	*/
-	static int GetOffsetRecursive(MapType &map, int acc, const char *name)
-	{
-		if (!map[name]) {
-			Utils::ConsolePrint(_("[NetVars] map[%s] is nullptr\n"), name);
-			return 0;
-		}
-		else {
-			Utils::ConsolePrint(_("[NetVars] acc + map[name]->offset = 0x%x\n"), acc + map[name]->offset);
-		}
-		return acc + map[name]->offset;
-	}
+    // wrapper so we can use recursion without too much performance loss
+    int GetProp(const char* tableName, const char* propName, RecvProp** prop = 0);
 
-	/**
-	* GetOffsetRecursive - Recursively grab an offset from the tree
-	* @map:	Node map to scan
-	* @acc:	Offset accumulator
-	* @name:	Netvar name to search for
-	* @args:	Remaining netvar names
-	*
-	* Perform tail recursion with the nodes of the specified branch of the tree passed for map
-	* and the offset of that branch added to acc
-	*/
-	template<typename ...args_t>
-	int GetOffsetRecursive(MapType &map, int acc, const char *name, args_t ...args)
-	{
-		const auto &node = map[name];
-		return this->GetOffsetRecursive(node->nodes, acc + node->offset, args...);
-	}
 
-public:
-	/**
-	* GetOffset - Get the offset of a netvar given a list of branch names
-	* @name:	Top level datatable name
-	* @args:	Remaining netvar names
-	*
-	* Initiate a recursive search down the branch corresponding to the specified datable name
-	*/
-	template<typename ...args_t>
-	int GetOffset(const char *name, args_t ...args)
-	{
-		const auto &node = nodes[name];
-		return this->GetOffsetRecursive(node->nodes, node->offset, args...);
-	}
+    // uses recursion to return a the relative offset to the given prop and sets the prop param
+    int GetProp(RecvTable* recvTable, const char* propName, RecvProp** prop = 0);
+
+
+    RecvTable* GetTable(const char* tableName);
+
+
+    std::vector<RecvTable*>    m_tables;
 };
-extern std::unique_ptr<NetvarTree> g_pNetvars;
+
+
+extern NetvarManager* g_pNetvarManager;

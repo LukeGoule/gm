@@ -1,8 +1,7 @@
 #include "luabindings.h"
 
 #include "utils.h"
-#include "xmods.h"
-#include "radiomanager.h"
+#include "GMMenu.h"
 #include "obfs.h"
 #include "aimbot.h"
 #include "C_BaseEntity.h"
@@ -46,26 +45,7 @@ void LuaBindings::SetupFunctions() {
 	NewFunction(_("Loki_IsMenuOpen"), [](lua_State* L) {
 		LUA_START_FUNCTION;
 		{
-			LUA->PushBool(xmods::Get().m_bMenuOpen);
-		}
-		LUA_END_FUNCTION(1);
-	});
-
-	NewFunction(_("Loki_CreateRadio"), [](lua_State* L) {
-		LUA_START_FUNCTION;
-		{
-			auto URL = LUA->CheckString(-1);
-			auto Name = LUA->CheckString(-2);
-
-			Utils::ConsolePrint(_("[LUA] Creating new radio with name \"%s\" and URL \"%s\"\n"), Name, URL);
-
-			bool bCreated = g_pRadio->AddStation(new RadioStation(Name, URL));
-
-			if (!bCreated) {
-				Utils::ConsolePrint(_("[LUA] Failed to create new radio, does the name already exist?\n"));
-			}
-
-			CL_LUA->PushBool(bCreated);
+			LUA->PushBool(GmMenu::Get().m_bMenuOpen);
 		}
 		LUA_END_FUNCTION(1);
 	});

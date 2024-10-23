@@ -1,10 +1,11 @@
 #pragma once
 
 #include "math.h"
-#include "EngineNetworking.h"
-#include "BetterInterface.h"
 #include "vmatrix.h"
 #include "vector.h"
+
+#include "EngineNetworking.h"
+#include "Interface.h"
 
 struct player_info_t
 {
@@ -49,10 +50,10 @@ public:
 		return method<get_player_info_t>(8, this)(this, index, info);
 	}
 
-	inline int GetPlayerForUserID(int ID) {
+	inline int GetPlayerForUserID(int ID) 
+	{
 		return method<int(__thiscall*)(void*, int)>(9, this)(this, ID);
 	}
-
 	
 	inline const VMatrix& GetViewMatrix()
 	{

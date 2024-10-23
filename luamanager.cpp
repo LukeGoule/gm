@@ -127,25 +127,12 @@ ScriptManager::ScriptManager() {
 		);
 	}
 
-	if (!scriptFileExists(_("add_extra_radios"))) {
-		Utils::ConsolePrint(_("[Lua Script Loader] add_extra_radios doesn't exist, loading default & writing.\n"));
-
-		this->HandleDefaultScript(_("add_extra_radios"),
-			_(
-			"Loki_CreateRadio(\"Psyradio[Psytrance]\",          \"http://81.88.36.42:8030/listen.pls\")\n"
-			"Loki_CreateRadio(\"Dance Attack FM\",              \"http://uk4.internet-radio.com:8049/listen.pls\")\n"
-			"Loki_CreateRadio(\"100% Hardstyle\",               \"http://uk5.internet-radio.com:8270/listen.pls\")\n"
-			"Loki_CreateRadio(\"Partyvibe Radio [Trance]\",     \"http://www.partyviberadio.com:8046/listen.pls\")\n"
-			"Loki_CreateRadio(\"Trance Anthems\",               \"http://cast.streams.ovh:8008/listen.pls\")\n"
-			"Loki_CreateRadio(\"Dance UK\",                     \"http://uk2.internet-radio.com:8024/listen.pls\")\n"
-			"Loki_ConsolePrint(\"[LUA] Added extra radio stations.\")")
-		);
-	}
-
 	Utils::ConsolePrint(_("[Lua Script Loader] Reading lua folder.\n"));
 	std::vector<std::string> to_load;
 	std::vector<std::string> files;
+	
 	read_directory(LUAS_FOLDER, &files);
+
 	if (files.size() > 2) {
 		for (size_t i = 2; i < files.size(); i++) { // skip 2 since it has "." & ".."
 			auto filename = files[i];

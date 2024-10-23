@@ -9,28 +9,24 @@ class CGlobalVarsBase
 {
 public:
 	CGlobalVarsBase(bool bIsClient);
-
-	// This can be used to filter debug output or to catch the client or server in the act.
 	bool IsClient() const;
-
-	// for encoding m_flSimulationTime, m_flAnimTime
 	int GetNetworkBase(int nTick, int nEntity);
 
-	float					m_fRealtime; //0x0000 
-	__int32					m_iFramecount; //0x0004 
-	float					m_fAbsoluteFrametime; //0x0008 
-	float					m_fCurtime; //0x000C 
-	float					m_fFrametime; //0x0010 
-	__int32					m_iMaxClients; //0x0014 
-	__int32					m_iTickCount; //0x0018 
-	float					m_fIntervalPerTick; //0x001C 
-	float					m_fInterpolationAmount; //0x0020 
-	__int32					m_iSimTicksThisFrame; //0x0024 
-	__int32					m_iNetworkProtocol; //0x0028 
-	CSaveRestoreData*		pSaveData; //0x002C
-	bool					m_bClient;
-	int						nTimestampNetworkingBase;
-	int						nTimestampRandomizeWindow;
+	float m_fRealtime = 0.f; //0x0000 
+	__int32 m_iFramecount = 0x0; //0x0004 
+	float m_fAbsoluteFrametime = 0.f; //0x0008 
+	float m_fCurtime = 0.f; //0x000C 
+	float m_fFrametime = 0.f; //0x0010 
+	__int32 m_iMaxClients = 0x0; //0x0014 
+	__int32 m_iTickCount = 0x0; //0x0018 
+	float m_fIntervalPerTick = 0.f; //0x001C 
+	float m_fInterpolationAmount = 0.f; //0x0020 
+	__int32 m_iSimTicksThisFrame = 0x0; //0x0024 
+	__int32 m_iNetworkProtocol = 0x0; //0x0028 
+	CSaveRestoreData* pSaveData = nullptr; //0x002C
+	bool m_bClient = true;
+	int nTimestampNetworkingBase = 0;
+	int	nTimestampRandomizeWindow = 0;
 
 }; //Size=0x0040
 

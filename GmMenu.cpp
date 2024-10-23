@@ -1,6 +1,5 @@
-#include "xmods.h"
+#include "GMMenu.h"
 #include "globals.h"
-#include "radiomanager.h"
 
 #include "ProggyTiny.h"
 #include "Fonts2.h"
@@ -33,22 +32,16 @@ ScriptManager*		g_pLuaScripts		= nullptr;	// luamanager.h
 LuaBindings*		g_pLuaBindings		= nullptr;	// luabindings.h
 CDraw*				g_pDrawHelper		= nullptr;  // DXDraw.h
 CFont*				g_pWatermarkFont	= nullptr;	// DXDraw.h
-RadioManager*		g_pRadio			= nullptr;	// radiomanager.h
 CMenuPopupManager*	g_pMenuPopups		= nullptr;	// cmenupopup.h
 
-void MENU_CHEATNAME::Setup() {
+void GmMenu::Setup() {
 	this				->SetupStyle();
 
-	g_pRadio			= new RadioManager();
-	g_pWatermarkFont	= new CFont(g_pD3DDevice9, 17, "Verdana");
-	g_pDrawHelper		= new CDraw(g_pD3DDevice9);
-	g_pLuaScripts		= new ScriptManager();
-	g_pLuaBindings		= new LuaBindings();
-	g_pMenuPopups		= new CMenuPopupManager();
-
-	ChannelsCombo		= new Combo(0, g_pRadio->GetNames());
-	ChannelsCombo		->_n = g_pRadio->m_iRadioChannel;
-	ChannelsCombo		->current_item = ChannelsCombo->items[g_pRadio->m_iRadioChannel];
+	g_pWatermarkFont = new CFont(g_pD3DDevice9, 17, "Verdana");
+	g_pDrawHelper = new CDraw(g_pD3DDevice9);
+	g_pLuaScripts = new ScriptManager();
+	g_pLuaBindings = new LuaBindings();
+	g_pMenuPopups = new CMenuPopupManager();
 
 	LuaTypeCombo		= new Combo(1, {
 		_("Client"),
@@ -67,29 +60,28 @@ void MENU_CHEATNAME::Setup() {
 	editor->SetText(_("-- this is a lua text editor\n-- be warned, some ACs may pick up usage of this."));
 	editor->SetShowWhitespaces(false);
 
-	m_pTabs = new CTabManager();
+	m_pTabs = new GmMenuTabManager();
 }
 
-void MENU_CHEATNAME::DrawWatermark() {
-	std::string watermark = _(MENU_CHEATNAME_S);
+void GmMenu::DrawWatermark() {
+	std::string watermark = _("GM");
 
-	if (g_pRadio && g_pRadio->m_iRadioChannel != 0) {
-		watermark += _(" | Currently playing ") + g_pRadio->GetCurrentlyPlaying()->name;
-	}
-	
+	/*
+	  Add more watermark nonsense here.
+	 */
+
 	g_pWatermarkFont->Render(10, 10, 0xFFFFFFFF, CFont::CFont_Flags::F_DROPSHADOW, "%s", watermark.c_str());
 }
 
-void MENU_CHEATNAME::Render() {
+void GmMenu::Render() {
 	bool doExecute = false;
 	int  type = 0;
 	static bool ScriptWindowSizeSet = false;
 
 	ImGui::GetIO().MouseDrawCursor	= this->m_bMenuOpen;  // yes it's vsyncing no i don't care
-	ChannelsCombo->items			= g_pRadio->GetNames();
 	ScriptCombo->items				= g_pLuaScripts->GetScriptNameList();
 
-	if (this->m_bMenuOpen && MENU_CHEATNAME::Get().m_bRunning) {
+	if (this->m_bMenuOpen && GmMenu::Get().m_bRunning) {
 		g_pMenuPopups->DrawAll();
 
 		ImGui::SetNextWindowSize(ScriptMenuSize, ImGuiCond_Once);
@@ -127,7 +119,7 @@ void MENU_CHEATNAME::Render() {
 	}
 }
 
-void MENU_CHEATNAME::SetupStyle() {
+void GmMenu::SetupStyle() {
 	ImGuiStyle * style = &ImGui::GetStyle();
 
 	style->WindowPadding		= ImVec2(0, 0);

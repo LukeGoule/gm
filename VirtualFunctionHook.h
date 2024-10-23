@@ -1,46 +1,21 @@
 #pragma once
+
 #define NOMINMAX
 #include <Windows.h>
 
 #include <cstdint>
 #include <stdexcept>
 #include <cassert>
+
 #include "obfs.h"
+#include "VirtualProtectGuard.h"
 
-/*
-TODO: harware id :)
-*/
-
-namespace detail
-{
-	class protect_guard
-	{
-	public:
-		protect_guard(void* base, size_t len, std::uint32_t flags)
-		{
-			_base = base;
-			_length = len;
-			if (!VirtualProtect(base, len, flags, (PDWORD)&_old))
-				throw std::runtime_error(_("Failed to protect region."));
-		}
-		~protect_guard()
-		{
-			VirtualProtect(_base, _length, _old, (PDWORD)&_old);
-		}
-
-	private:
-		void*         _base;
-		size_t        _length;
-		std::uint32_t _old;
-	};
-}
-
-class vfunc_hook
+class VirtualFunctionHook
 {
 public:
-	vfunc_hook();
-	vfunc_hook(void* base);
-	~vfunc_hook();
+	VirtualFunctionHook();
+	VirtualFunctionHook(void* base);
+	~VirtualFunctionHook();
 
 	bool setup(void* class_base = nullptr);
 
@@ -58,7 +33,7 @@ public:
 	{
 		try {
 			if (old_vftbl != nullptr) {
-				auto guard = detail::protect_guard{ class_base, sizeof(std::uintptr_t), PAGE_READWRITE };
+				auto guard = VirtualProtectGuard{ class_base, sizeof(std::uintptr_t), PAGE_READWRITE };
 				*(std::uintptr_t**)class_base = old_vftbl;
 				old_vftbl = nullptr;
 			}

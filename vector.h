@@ -275,5 +275,5 @@ public:
 		return *this;
 	}
 
-	float w;
+	float w = 0.f;
 };

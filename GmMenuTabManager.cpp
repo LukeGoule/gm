@@ -1,13 +1,18 @@
-#include "CTab.h"
+#include "GmMenu.h"
+#include "GmMenuTabManager.h"
 
-#include "CTabMain.h"
-#include "CTabAimbot.h"
-#include "CTabScripting.h"
-#include "CTabESP.h"
-#include "CTabSettings.h"
+#include "GmTabAimbot.h"
+#include "GmTabESP.h"
+#include "GmTabMain.h"
+#include "GmTabScripting.h"
+#include "GmTabSettings.h"
 
-#include "xmods.h"
-#include "globals.h" // SilentCrash()
+#include "imgui/imgui.h"
+#include "imgui_custom.h"
+#include "imgui/imgui_internal.h"
+
+#include "Color.h"
+#include <vector>
 
 int		padding;
 ImVec2	MainMenuSize;
@@ -29,31 +34,27 @@ ImVec4	_TabColorActive;
 float	iFrameX;
 float	iFrameY;
 
-/* CTabManager for helping draw the tab list. (keeps the line count down in loki.cpp */
-
-CTabManager::CTabManager() {
-	auto pTitleFont = xmods::Get().TitleFont;
-	auto pIconFont1 = xmods::Get().IconFont;
-	auto pIconFont2 = xmods::Get().IconFont2;
+GmMenuTabManager::GmMenuTabManager() {
+	auto pTitleFont = GmMenu::Get().TitleFont;
+	auto pIconFont1 = GmMenu::Get().IconFont;
+	auto pIconFont2 = GmMenu::Get().IconFont2;
 
 	if (!pTitleFont || !pIconFont1 || !pIconFont2) {
 		MessageBoxA(0, "Menu fonts not initialised!", "", 0);
-		SilentCrash();
 	}
 
-
-	CTABMANAGER_CREATETAB(_(MENU_CHEATNAME_S),	pTitleFont, CTabMain);			// Main Menu				- Text for icon
-	CTABMANAGER_CREATETAB(_("A"),				pIconFont2, CTabAimbot);		// Aimbot					- Headshot icon
-	CTABMANAGER_CREATETAB(_("F"),				pIconFont2, CTabScripting);		// Scripting				- Notepad icon
-	CTABMANAGER_CREATETAB(_("I"),				pIconFont1, CTabESP);			// ESP						- Snapshot icon
-	CTABMANAGER_CREATETAB(_("G"),				pIconFont2, CTabSettings);		// Menu Settings / CFG		- Cogs icon
+	CTABMANAGER_CREATETAB(_("GM"), pTitleFont, GmTabMain); // Main Menu - Text for icon
+	CTABMANAGER_CREATETAB(_("A"), pIconFont2, GmTabAimbot); // Aimbot - Headshot icon
+	CTABMANAGER_CREATETAB(_("F"), pIconFont2, GmTabScripting); // Scripting - Notepad icon
+	CTABMANAGER_CREATETAB(_("I"), pIconFont1, GmTabESP);// ESP - Snapshot icon
+	CTABMANAGER_CREATETAB(_("G"), pIconFont2, GmTabSettings); // Menu Settings / CFG - Cogs icon
 }
 
-CTabManager::~CTabManager() {
+GmMenuTabManager::~GmMenuTabManager() {
 
 }
 
-void CTabManager::DrawSideBar() {
+void GmMenuTabManager::DrawSideBar() {
 	UpdateMenuVariables(); // called only once per frame
 
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, _ButtonColorHovered);
@@ -82,7 +83,7 @@ void CTabManager::DrawSideBar() {
 	ImGui::PopStyleColor();
 }
 
-void CTabManager::DrawPage() {
+void GmMenuTabManager::DrawPage() {
 	ImGui::PushStyleColor(ImGuiCol_FrameBg, COLOR2IMVEC(Color(30, 30, 30, 255)));
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 5));
 	ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(5, 5));
@@ -103,7 +104,7 @@ void CTabManager::DrawPage() {
 
 }
 
-void CTabManager::DrawTabLines() {
+void GmMenuTabManager::DrawTabLines() {
 	auto window = ImGui::GetCurrentWindow();
 	auto color = ImGui::GetColorU32(COLOR2IMVEC(50, 50, 50, 255));
 	auto dl = ImGui::GetForegroundDrawList();
@@ -205,30 +206,17 @@ void CTabManager::DrawTabLines() {
 	}
 }
 
-int	CTabManager::GetCurrentTabID() {
+int	GmMenuTabManager::GetCurrentTabID() {
 	return this->m_iCurrentTabID;
 }
 
-CTab* CTabManager::GetCurrentTab() {
+MenuTab* GmMenuTabManager::GetCurrentTab() {
 	try {
 		return this->m_vTabs[this->m_iCurrentTabID];
 	}
 	catch (std::exception e) {
 		return nullptr;
 	}
-}
-
-
-/* CTab Base Class */
-
-CTab::CTab(int ID, std::string iconstr, ImFont* font) {
-	this->m_iID = ID;
-	this->m_IconStr	= iconstr;
-	this->m_pFont	= font;
-}
-
-CTab::~CTab() {
-
 }
 
 void UpdateMenuVariables() {
