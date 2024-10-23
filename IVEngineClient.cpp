@@ -1,5 +1,5 @@
 #include "IVEngineClient.h"
-#include "luaShared.h"
+#include "gmod/luaShared.h"
 #include "globals.h"
 
 std::string IVEngineClient::GetCurrentMap() {

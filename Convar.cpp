@@ -13,7 +13,8 @@
 #include "globals.h"
 #include "sdk.h"
 #include "Convar.h"
-#include "Color.h"
+#include "helpers/Color.h"
+#include "helpers/obfs.h"
 #include "utlbuf/UtlBuffer.hpp"
 #include "characterset.h"
 

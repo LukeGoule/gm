@@ -4,7 +4,7 @@
 #include <type_traits>
 
 #include "Interface.h"
-#include "obfs.h"
+#include "helpers/obfs.h"
 
 // It's the dword police
 using ulong_t = unsigned long;

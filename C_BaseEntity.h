@@ -2,16 +2,17 @@
 
 #include "globals.h"
 #include "sdk.h"
-#include "vector.h"
-#include "luaShared.h"
+#include "helpers/vector.h"
+#include "gmod/luaShared.h"
 #include "IAppSystem.h"
 #include "IEntityList.h"
-#include "obfs.h"
-#include "math.h"
-#include "vmatrix.h"
+#include "helpers/obfs.h"
+#include "helpers/math.h"
+#include "helpers/vmatrix.h"
 #include "icliententity.h"
 #include "CBaseHandle.h"
-#include "NetvarManager.h"
+
+#include "netvars/NetvarManager.h"
 
 #include <string>
 #include <functional>

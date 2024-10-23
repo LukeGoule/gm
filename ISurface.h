@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Interface.h"
-#include "Color.h"
+#include "helpers/Color.h"
 #include "IAppSystem.h"
 
 enum FontDrawType_t

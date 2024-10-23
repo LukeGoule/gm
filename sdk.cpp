@@ -11,7 +11,7 @@
 #include "ICvar.h"
 #include "CInput.h"
 #include "IClientMode.h"
-#include "luaShared.h"
+#include "gmod/luaShared.h"
 #include "lua_source/lua.hpp"
 #include "C_BaseEntity.h"
 #include "IViewRenderBeams.h"
@@ -20,8 +20,8 @@
 #include "CViewRender.h"
 #include "IVModelInfo.h"
 
-#include "Utils.h"
-#include "obfs.h"
+#include "helpers/utils.h"
+#include "helpers/obfs.h"
 
 IDirect3DDevice9*	g_pD3DDevice9	= nullptr;
 IBaseClientDLL*		g_pClientDLL	= nullptr;

@@ -3,8 +3,8 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#include "options.h"
-#include "obfs.h"
+#include "core/options.h"
+#include "helpers/obfs.h"
 
 #include <d3d9.h>
 
@@ -44,6 +44,5 @@ extern IInputSystem*		g_pInputSystem;
 extern CViewRender*			g_pViewRender;
 extern CGlobalVarsBase*		g_pGlobalVars;
 
-extern void SilentCrash();
 
 #endif

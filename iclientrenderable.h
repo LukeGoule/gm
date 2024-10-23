@@ -11,8 +11,8 @@
 #pragma once
 #endif
 
-#include "vector.h"
-#include "qangle.h"
+#include "helpers/vector.h"
+#include "helpers/qangle.h"
 
 #include "IAppSystem.h"
 #include "iclientunknown.h"

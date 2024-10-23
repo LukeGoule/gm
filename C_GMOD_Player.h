@@ -1,7 +1,7 @@
 #pragma once
 
-#include "vector.h"
-#include "qangle.h"
+#include "helpers/vector.h"
+#include "helpers/qangle.h"
 #include "C_BaseEntity.h"
 
 class C_GMOD_Player : public C_BaseEntity
