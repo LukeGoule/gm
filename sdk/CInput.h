@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Interface.h"
-#include "helpers/math.h"
+#include "../helpers/math.h"
 
 #define IN_ATTACK		(1 << 0)
 #define IN_JUMP			(1 << 1)
@@ -41,8 +41,8 @@
 #define FL_FAKECLIENT			(1<<9)	// Fake client, simulated server side; don't send network messages to them
 #define	FL_INWATER				(1<<10)	// In water
 
-#include "helpers/crc.h"
-#include "helpers/qangle.h"
+#include "../helpers/crc.h"
+#include "../helpers/qangle.h"
 
 constexpr auto multiplayer_backup = 90;
 

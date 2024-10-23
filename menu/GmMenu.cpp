@@ -1,5 +1,7 @@
 #include "GMMenu.h"
-#include "../globals.h"
+#include "GmMenuPopup.h"
+
+#include "../core/globals.h"
 
 #include "../resources/ProggyTiny.h"
 #include "../resources/Fonts2.h"
@@ -11,19 +13,19 @@
 #include "../imgui/imgui.h"
 #include "../imgui/imgui_internal.h"
 #include "../imgui/text_edit/TextEditor.h"
-#include "../core/imgui_custom.h"
 
 #include "../sdk.h"
-#include "../IVEngineClient.h"
-#include "../ISurface.h"
+#include "../sdk/IVEngineClient.h"
+#include "../sdk/ISurface.h"
 
 #include "../gmod/luaShared.h"
 #include "../lua_source/lua.hpp"
+#include "../helpers/obfs.h"
+
+#include "../core/imgui_custom.h"
 #include "../core/luamanager.h"
 #include "../core/luabindings.h"
-#include "../helpers/obfs.h"
-#include "../DXDraw.h"
-#include "GmMenuPopup.h"
+#include "../core/dx.h"
 
 #include <vector>
 #include <unordered_map>

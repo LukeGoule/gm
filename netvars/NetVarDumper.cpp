@@ -1,9 +1,9 @@
 #include "NetVarDumper.h"
 
 #include "../sdk.h"
-#include "../ClientClass.h"
-#include "../IBaseClientDLL.h"
-#include "../globals.h"
+#include "../sdk/ClientClass.h"
+#include "../sdk/IBaseClientDLL.h"
+#include "../core/globals.h"
 
 #include <string>
 #include <fstream>

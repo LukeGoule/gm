@@ -5,9 +5,9 @@
 #include "../menu/GMMenu.h"
 #include "../helpers/obfs.h"
 #include "../hacks/aimbot.h"
-#include "../C_BaseEntity.h"
+#include "../sdk/C_BaseEntity.h"
 #include "../helpers/md5.h"
-#include "../CInput.h"
+#include "../sdk/CInput.h"
 
 #define CL_LUA g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT)
 #define LUA_START_FUNCTION auto LUA = CL_LUA;

@@ -3,10 +3,8 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#include "core/options.h"
-#include "helpers/obfs.h"
-
-#include <d3d9.h>
+#include "options.h"
+#include "../helpers/obfs.h"
 
 class IBaseClientDLL;
 class IVEngineClient;
@@ -21,13 +19,16 @@ class IGameEventManager2;
 class IInputSystem;
 class CViewRender;
 class CGlobalVarsBase;
+
+//struct IDirect3DDevice9;
 struct lua_State;
+
 namespace lua {
 	class CLuaShared;
 }
 
 // All defined within sdk.cpp
-extern IDirect3DDevice9*	g_pD3DDevice9;
+extern void* g_pD3DDevice9;
 extern IBaseClientDLL*		g_pClientDLL;
 extern IVEngineClient*		g_pEngineClient;
 extern IEntityList*			g_pEntityList;

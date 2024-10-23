@@ -7,16 +7,21 @@
 #include "../helpers/vector2d.h"
 #include "../helpers/vmatrix.h"
 
-#include "../IVEngineClient.h"
-#include "../IEntityList.h"
-#include "../globals.h"
+#include "../sdk/IVEngineClient.h"
+#include "../sdk/IEntityList.h"
+#include "../core/globals.h"
 
-#include "../C_BaseEntity.h"
-#include "../ICollideable.h"
-#include "../ClientClass.h"
-#include "../C_BaseEntity.h"
+#include "../sdk/C_BaseEntity.h"
+#include "../sdk/ICollideable.h"
+#include "../sdk/ClientClass.h"
+#include "../sdk/C_BaseEntity.h"
 
-#include "../DXDraw.h"
+#include "../core/dx.h"
+
+#pragma warning(push)
+#pragma warning(disable:26495)
+#include <d3d9.h>
+#pragma warning(pop)
 
 bool ESP::WorldToScreen(Vector in, Vector& out)
 {
@@ -143,7 +148,7 @@ void ESP::DrawNPC(BB2D drawResult, C_BaseEntity* pNPC) {
 		if (!WorldToScreen(vHeadPosition, v2dHeadPosition))
 			return;
 
-		g_pDrawHelper->Box(v2dHeadPosition.x - 1, v2dHeadPosition.y - 1, 2, 2, D3DCOLOR_ARGB(255, 255, 0, 0));
+		g_pDrawHelper->Box(v2dHeadPosition.x - 1, v2dHeadPosition.y - 1, 2, 2, (DWORD)D3DCOLOR_ARGB(255, 255, 0, 0));
 	}
 }
 

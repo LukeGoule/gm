@@ -1,8 +1,9 @@
 #pragma once
 
-#include "helpers/vector.h"
-#include "helpers/qangle.h"
 #include "C_BaseEntity.h"
+
+#include "../helpers/vector.h"
+#include "../helpers/qangle.h"
 
 class C_GMOD_Player : public C_BaseEntity
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../globals.h"
+#include "../core/globals.h"
 #include "../gmod/luaShared.h"
 #include "../lua_source/lua.hpp"
 

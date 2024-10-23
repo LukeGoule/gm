@@ -1,8 +1,8 @@
 #pragma once
 
-#include "helpers/math.h"
-#include "helpers/vmatrix.h"
-#include "helpers/vector.h"
+#include "../helpers/math.h"
+#include "../helpers/vmatrix.h"
+#include "../helpers/vector.h"
 
 #include "EngineNetworking.h"
 #include "Interface.h"

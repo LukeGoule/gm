@@ -2,9 +2,9 @@
 
 #include <vector>
 
-#include "../Recv.h"
+#include "../sdk/Recv.h"
+#include "../sdk/ClientClass.h"
 #include "../sdk.h"
-#include "../ClientClass.h"
 
 #undef GetProp
 class NetvarManager

@@ -3,9 +3,10 @@
 
 #include "../core/luamanager.h"
 #include "../core/luabindings.h"
-#include "../IVEngineClient.h"
+#include "../core/globals.h"
+
+#include "../sdk/IVEngineClient.h"
 #include "../gmod/luaShared.h"
-#include "../globals.h"
 
 GmTabScripting::GmTabScripting(std::string s, ImFont* f) : MenuTab(TABID_SCRIPTING, s, f) { }
 GmTabScripting::~GmTabScripting() { }

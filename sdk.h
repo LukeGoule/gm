@@ -1,7 +1,5 @@
 #pragma once
 
-#include "dxinc.h"
-
 #include <iostream>
 #include <iostream>
 #include <intrin.h>

@@ -5,7 +5,7 @@
 
 #include "../helpers/vector.h"
 #include "../helpers/Color.h"
-#include "../IViewRenderBeams.h"
+#include "../sdk/IViewRenderBeams.h"
 
 // fully static class to control beams with ease.
 class beams {

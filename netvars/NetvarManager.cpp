@@ -1,8 +1,9 @@
 #include "NetvarManager.h"
 
-#include "../ClientClass.h"
-#include "../IBaseClientDLL.h"
-#include "../globals.h"
+#include "../sdk/ClientClass.h"
+#include "../sdk/IBaseClientDLL.h"
+
+#include "../core/globals.h"
 #include "../helpers/obfs.h"
 
 NetvarManager* g_pNetvarManager = nullptr;

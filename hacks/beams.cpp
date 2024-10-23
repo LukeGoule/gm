@@ -5,8 +5,8 @@
 #include "../helpers/obfs.h"
 
 #include "../sdk.h"
-#include "../IVEngineClient.h"
-#include "../globals.h"
+#include "../sdk/IVEngineClient.h"
+#include "../core/globals.h"
 
 std::vector<std::string> beams::beam_sprites = {
 	"materials/sprites/physbeam.vmt",

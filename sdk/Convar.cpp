@@ -10,13 +10,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "globals.h"
-#include "sdk.h"
 #include "Convar.h"
-#include "helpers/Color.h"
-#include "helpers/obfs.h"
-#include "utlbuf/UtlBuffer.hpp"
 #include "characterset.h"
+
+#include "../core/globals.h"
+#include "../sdk.h"
+
+#include "../helpers/Color.h"
+#include "../helpers/obfs.h"
 
 #ifndef NDEBUG
 // Comment this out when we release.

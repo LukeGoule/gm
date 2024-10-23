@@ -15,9 +15,10 @@
 #pragma once
 #endif
 
-#include "vector.h"
-#include "qangle.h"
-#include "math.h"
+#include "../helpers/vector.h"
+#include "../helpers/qangle.h"
+#include "../helpers/math.h"
+
 #include "basetypes.h"
 
 #include <stdint.h>

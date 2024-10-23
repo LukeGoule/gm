@@ -11,10 +11,10 @@
 #pragma once
 #endif
 
-#include "helpers/vector.h"
-#include "helpers/qangle.h"
-#include "helpers/math.h"
-#include "helpers/vmatrix.h"
+#include "../helpers/vector.h"
+#include "../helpers/qangle.h"
+#include "../helpers/math.h"
+#include "../helpers/vmatrix.h"
 
 enum SolidType_t;
 class IHandleEntity;

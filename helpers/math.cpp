@@ -5,7 +5,10 @@ namespace Math
 	//--------------------------------------------------------------------------------
 	float VectorDistance(const Vector& v1, const Vector& v2)
 	{
-		return FASTSQRT(pow(v1.x - v2.x, 2) + pow(v1.y - v2.y, 2) + pow(v1.z - v2.z, 2));
+#pragma warning(push)
+#pragma warning(disable:4244)
+		return FASTSQRT((float)pow((double)v1.x - (double)v2.x, 2) + pow((double)v1.y - (double)v2.y, 2) + (float)pow((double)v1.z - (double)v2.z, 2));
+#pragma warning(pop)
 	}
 	//--------------------------------------------------------------------------------
 	QAngle CalcAngle(const Vector& src, const Vector& dst)
@@ -88,14 +91,17 @@ namespace Math
 		}
 		else
 		{
-			yaw = (atan2(forward[1], forward[0]) * 180) / M_PI;
+#pragma warning(push)
+#pragma warning(disable: 4244)
+			yaw = (atan2((double)forward[1], (double)forward[0]) * 180) / M_PI;
 			if (yaw < 0)
 				yaw += 360;
 
 			tmp = sqrt(forward[0] * forward[0] + forward[1] * forward[1]);
-			pitch = (atan2(-forward[2], tmp) * 180) / M_PI;
+			pitch = (atan2(-(double)forward[2], (double)tmp) * 180) / M_PI;
 			if (pitch < 0)
 				pitch += 360;
+#pragma warning(pop)
 		}
 
 		angles[0] = pitch;

@@ -15,7 +15,8 @@
 #include <string.h>
 #include <Windows.h>
 #include <new.h>
-#include "helpers/obfs.h"
+
+#include "../helpers/obfs.h"
 
 #define COMPILER_MSVC
 

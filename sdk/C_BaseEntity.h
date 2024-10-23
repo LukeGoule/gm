@@ -1,18 +1,20 @@
 #pragma once
 
-#include "globals.h"
-#include "sdk.h"
-#include "helpers/vector.h"
-#include "gmod/luaShared.h"
+#include "../core/globals.h"
+#include "../sdk.h"
+#include "../helpers/vector.h"
+#include "../gmod/luaShared.h"
+
+#include "../helpers/obfs.h"
+#include "../helpers/math.h"
+#include "../helpers/vmatrix.h"
+
 #include "IAppSystem.h"
 #include "IEntityList.h"
-#include "helpers/obfs.h"
-#include "helpers/math.h"
-#include "helpers/vmatrix.h"
 #include "icliententity.h"
 #include "CBaseHandle.h"
 
-#include "netvars/NetvarManager.h"
+#include "../netvars/NetvarManager.h"
 
 #include <string>
 #include <functional>

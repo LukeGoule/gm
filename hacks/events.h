@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../IGameEventManager.h"
+#include "../sdk/IGameEventManager.h"
 
 #include <vector>
 

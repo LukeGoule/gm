@@ -1,6 +1,5 @@
 #include "aimbot.h"
-#include "../CInput.h"
-#include "../core/options.h"
+
 
 #include "../hacks/esp.h"
 
@@ -9,14 +8,17 @@
 #include "../helpers/obfs.h"
 #include "../helpers/math.h"
 
-#include "../imgui/imgui.h"
-#include "../ClientClass.h"
+#include "../sdk/CInput.h"
+#include "../sdk/ClientClass.h"
+#include "../sdk/IVEngineClient.h"
+#include "../sdk/C_BaseEntity.h"
+#include "../sdk/CGlobalVarsBase.h"
 
-#include "../IVEngineClient.h"
-#include "../C_BaseEntity.h"
+#include "../imgui/imgui.h"
 #include "../gmod/luaShared.h"
-#include "../CGlobalVarsBase.h"
-#include "../globals.h"
+
+#include "../core/globals.h"
+#include "../core/options.h"
 
 auto vecExcludedClassNames = std::vector<const char*>{
 		"CWeaponPhysGun",

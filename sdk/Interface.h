@@ -11,7 +11,7 @@
 
 #include <assert.h>
 
-#include "helpers/obfs.h"
+#include "../helpers/obfs.h"
 
 template<typename out, class type>
 inline out method(size_t index, type* self)

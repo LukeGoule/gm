@@ -2,7 +2,7 @@
 
 #include "../helpers/singleton.h"
 #include "../sdk.h"
-#include "../IBaseClientDLL.h"
+#include "../sdk/IBaseClientDLL.h"
 
 class Recoil : public Singleton<Recoil> {
 public:

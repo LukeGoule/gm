@@ -1,9 +1,11 @@
 #include "utils.h"
+
 #include "../core/options.h"
-#include "../globals.h"
+#include "../core/globals.h"
+
 #include "../gmod/luaShared.h"
 #include "../helpers/Color.h"
-#include "../IVEngineClient.h"
+#include "../sdk/IVEngineClient.h"
 
 #define CONSOLE_BLUE    1
 #define CONSOLE_GREEN   2

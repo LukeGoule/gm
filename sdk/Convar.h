@@ -1,10 +1,14 @@
 #pragma once
 
 #include <cstdint>
+
 #include "ICvar.h"
-#include "utlbuf/UtlBuffer.hpp"
-#include "utlbuf/UtlString.hpp"
-#include "utlbuf/UtlVector.hpp"
+
+#include "../utlbuf/UtlBuffer.hpp"
+#include "../utlbuf/UtlVector.hpp"
+#include "../utlbuf/UtlString.hpp"
+#include "../utlbuf/UtlMemory.hpp"
+
 //========= Copyright Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 

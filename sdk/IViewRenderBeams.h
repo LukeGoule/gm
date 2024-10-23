@@ -1,6 +1,6 @@
 #pragma once
 
-#include "helpers/vector.h"
+#include "../helpers/vector.h"
 
 class C_BaseEntity;
 class ITraceFilter;

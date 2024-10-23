@@ -14,6 +14,8 @@ float CLAMPF(float f) {
 			return 1.f;
 		}
 	}
+
+	return f;
 }
 
 int CLAMPB(int i) {
@@ -29,6 +31,8 @@ int CLAMPB(int i) {
 			return 255;
 		}
 	}
+
+	return i;
 }
 
 ImVec4 COLOR2IMVEC(int ir, int ig, int ib, int ia) {
@@ -74,7 +78,7 @@ int Combo::Draw(std::string label, bool doLabel) {
 	ImGui::PushStyleColor(ImGuiCol_FrameBg, o.vecMenuColorScheme);
 	if (ImGui::BeginCombo(this->combo_id.c_str(), current_item.c_str(), ImGuiComboFlags_NoArrowButton))
 	{
-		for (int n = 0; n < this->items.size(); n++)
+		for (size_t n = 0; n < this->items.size(); n++)
 		{
 			bool is_selected = (current_item == items[n]);
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4, 4));

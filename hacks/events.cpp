@@ -1,17 +1,15 @@
-// game_newmap
-
 #include "events.h"
 #include "beams.h"
-
 
 #include "../helpers/math.h"
 #include "../helpers/obfs.h"
 
 #include "../sdk.h"
-#include "../globals.h"
-#include "../IGameEventManager.h"
-#include "../IVEngineClient.h"
-#include "../C_BaseEntity.h"
+#include "../sdk/IGameEventManager.h"
+#include "../sdk/C_BaseEntity.h"
+#include "../sdk/IVEngineClient.h"
+
+#include "../core/globals.h"
 
 GameEvents::GameEvents(std::vector<const char*> events) {
 	for (auto& it : events) {

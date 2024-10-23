@@ -1,6 +1,7 @@
 #include "IVEngineClient.h"
-#include "gmod/luaShared.h"
-#include "globals.h"
+
+#include "../gmod/luaShared.h"
+#include "../core/globals.h"
 
 std::string IVEngineClient::GetCurrentMap() {
 	if (!g_pLuaShared) return {};

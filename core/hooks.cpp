@@ -1,25 +1,27 @@
 #include "hooks.h"
 
 #include "../menu/GMMenu.h"
-#include "../sdk.h"
 #include "../memory/VirtualFunctionHook.h"
-#include "../CInput.h"
 #include "../netvars/NetvarDumper.h"
-#include "../IVEngineClient.h"
-#include "../IGameEventManager.h"
-#include "../ISurface.h"
-#include "../IInputSystem.h"
-#include "../globals.h"
-#include "../CInput.h"
-#include "../C_BaseEntity.h"
+
+#include "../core/globals.h"
+
 #include "../helpers/utils.h"
 #include "../helpers/md5.h"
-#include "../CViewRender.h"
-#include "../C_GMOD_Player.h"
+
+#include "../sdk.h"
+#include "../sdk/CInput.h"
+#include "../sdk/IVEngineClient.h"
+#include "../sdk/IGameEventManager.h"
+#include "../sdk/ISurface.h"
+#include "../sdk/IInputSystem.h"
+#include "../sdk/CInput.h"
+#include "../sdk/C_BaseEntity.h"
+#include "../sdk/CViewRender.h"
+#include "../sdk/C_GMOD_Player.h"
 
 #include "../detours.h"
 
-/* Features */
 #include "../hacks/aimbot.h"
 #include "../hacks/beams.h"
 #include "../hacks/esp.h"
