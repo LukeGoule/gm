@@ -2,7 +2,6 @@
 
 #include "globals.h"
 #include "sdk.h"
-#include "Netvars2.h"
 #include "vector.h"
 #include "luaShared.h"
 #include "IAppSystem.h"
@@ -12,14 +11,15 @@
 #include "vmatrix.h"
 #include "icliententity.h"
 #include "CBaseHandle.h"
+#include "NetvarManager.h"
 
 #include <string>
 #include <functional>
 #include <iostream>
 #include <optional>
 
-#define OFFSET(C, O) g_NetworkedVariableManager->GetOffset(_(C), _(O))
-#define NETVAR(C, O, T) inline T* O () { static int _##O=OFFSET(#C, #O); return GetFieldPointer<T>(_##O);}
+#define OFFSET(Class, Offset) g_pNetvarManager->GetOffset(_(Class), _(Offset))
+#define NETVAR(Class, Offset, Type) inline Type* Offset() { static int _##Offset = OFFSET(#Class, #Offset); return GetFieldPointer<Type>(_##Offset);}
 
 #define MAXSTUDIOBONES 128
 #define BONE_CALCULATE_MASK			0x1F
@@ -51,7 +51,7 @@
 #define LIFE_RESPAWNABLE		3
 #define LIFE_DISCARDBODY		4
 
-class model_t;
+struct model_t;
 class C_BaseCombatWeapon;
 
 template<class thisType, class T>
@@ -83,7 +83,7 @@ protected:
 public:
 
 	inline CBaseHandle m_hActiveWeapon() {
-		static auto offset = g_pNetvars->GetOffset(_("DT_BaseCombatCharacter"), _("m_hActiveWeapon"));
+		static auto offset = g_pNetvarManager->GetOffset(_("DT_BaseCombatCharacter"), _("m_hActiveWeapon"));
 		return CBaseHandle(GetValue<int>(offset));
 	}
 
@@ -144,31 +144,31 @@ public:
 	
 	inline const QAngle& get_angles()
 	{
-		auto offset = g_pNetvars->GetOffset(_("DT_HL2MPLocalPlayerExclusive"), _("m_angEyeAngles[0]"));
+		auto offset = g_pNetvarManager->GetOffset(_("DT_HL2MPLocalPlayerExclusive"), _("m_angEyeAngles[0]"));
 		return *reinterpret_cast<QAngle*>(reinterpret_cast<uintptr_t>(this) + offset);
 	}
 
 	inline const int32_t get_health()
 	{
-		static auto offset = g_pNetvars->GetOffset(_("DT_BaseEntity"), _("m_iHealth"));
+		static auto offset = g_pNetvarManager->GetOffset(_("DT_BaseEntity"), _("m_iHealth"));
 		return *reinterpret_cast<int32_t*>(reinterpret_cast<uintptr_t>(this) + offset);
 	}
 
 	inline const int32_t get_max_health()
 	{
-		static auto offset = g_pNetvars->GetOffset(_("DT_BaseEntity"), _("m_iMaxHealth"));
+		static auto offset = g_pNetvarManager->GetOffset(_("DT_BaseEntity"), _("m_iMaxHealth"));
 		return *reinterpret_cast<int32_t*>(reinterpret_cast<uintptr_t>(this) + offset);
 	}
 
 	inline const Vector& get_pos()
 	{
-		static auto offset = g_pNetvars->GetOffset(_("DT_BaseEntity"), _("m_vecOrigin"));
+		static auto offset = g_pNetvarManager->GetOffset(_("DT_BaseEntity"), _("m_vecOrigin"));
 		return *reinterpret_cast<Vector*>(reinterpret_cast<uintptr_t>(this) + offset);
 	}
 
 	inline const uint32_t get_team()
 	{
-		static auto offset = g_pNetvars->GetOffset(_("DT_BaseEntity"), _("m_iTeamNum"));
+		static auto offset = g_pNetvarManager->GetOffset(_("DT_BaseEntity"), _("m_iTeamNum"));
 		return *reinterpret_cast<int32_t*>(reinterpret_cast<uintptr_t>(this) + offset);
 	}
 
@@ -227,13 +227,13 @@ public:
 
 	inline const Vector& get_oob_min()
 	{
-		static auto offset = g_pNetvars->GetOffset(_("DT_BaseEntity"), _("m_vecMins"));
+		static auto offset = g_pNetvarManager->GetOffset(_("DT_BaseEntity"), _("m_vecMins"));
 		return *reinterpret_cast<Vector*>(reinterpret_cast<uintptr_t>(this) + offset);
 	}
 
 	inline const Vector& get_oob_max()
 	{
-		static auto offset = g_pNetvars->GetOffset(_("DT_BaseEntity"), _("m_vecMaxs"));
+		static auto offset = g_pNetvarManager->GetOffset(_("DT_BaseEntity"), _("m_vecMaxs"));
 		return *reinterpret_cast<Vector*>(reinterpret_cast<uintptr_t>(this) + offset);
 	}
 
@@ -298,7 +298,7 @@ public:
 	}
 
 	NETVAR(DT_BasePlayer, m_fFlags,			int);
-	NETVAR(DT_BasePlayer, m_bDrawViewmodel, bool);
+	NETVAR(DT_GMOD_Player, m_bDrawViewmodel, bool);
 	NETVAR(DT_BasePlayer, m_vecPunchAngle,	Vector);
 	NETVAR(DT_BasePlayer, m_vecPunchAngleVel, Vector);
 	NETVAR(DT_BasePlayer, m_iHealth,		int);

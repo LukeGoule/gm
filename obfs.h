@@ -2,7 +2,6 @@
 
 #include <string>
 #include <array>
-// ReSharper disable once CppUnusedIncludeDirective
 #include "random.h"
 
 template <size_t n, char k>

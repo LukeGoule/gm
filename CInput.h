@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BetterInterface.h"
+#include "Interface.h"
 #include "math.h"
 
 #define IN_ATTACK		(1 << 0)

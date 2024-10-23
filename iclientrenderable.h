@@ -19,7 +19,7 @@
 #include "clientrenderhandle.h"
 
 struct model_t;
-struct matrix3x4_t;
+class matrix3x4_t;
 
 extern void DefaultRenderBoundsWorldspace(IClientRenderable* pRenderable, Vector& absMins, Vector& absMaxs);
 

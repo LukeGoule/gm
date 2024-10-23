@@ -1,21 +1,21 @@
-#include "vfunc_hook.h"
+#include "VirtualFunctionHook.h"
 
-vfunc_hook::vfunc_hook()
+VirtualFunctionHook::VirtualFunctionHook()
 	: class_base(nullptr), vftbl_len(0), new_vftbl(nullptr), old_vftbl(nullptr)
 {
 }
-vfunc_hook::vfunc_hook(void* base)
+VirtualFunctionHook::VirtualFunctionHook(void* base)
 	: class_base(base), vftbl_len(0), new_vftbl(nullptr), old_vftbl(nullptr)
 {
 }
-vfunc_hook::~vfunc_hook()
+VirtualFunctionHook::~VirtualFunctionHook()
 {
 	unhook_all();
 
 	delete[] new_vftbl;
 }
 
-bool vfunc_hook::setup(void* base /*= nullptr*/)
+bool VirtualFunctionHook::setup(void* base /*= nullptr*/)
 {
 	if (base != nullptr)
 		class_base = base;
@@ -34,7 +34,7 @@ bool vfunc_hook::setup(void* base /*= nullptr*/)
 	std::memcpy(&new_vftbl[1], old_vftbl, vftbl_len * sizeof(std::uintptr_t));
 
 	try {
-		auto guard = detail::protect_guard{ class_base, sizeof(std::uintptr_t), PAGE_READWRITE };
+		auto guard = VirtualProtectGuard{ class_base, sizeof(std::uintptr_t), PAGE_READWRITE };
 		new_vftbl[0] = old_vftbl[-1];
 		*(std::uintptr_t**)class_base = &new_vftbl[1];
 	}
@@ -45,7 +45,7 @@ bool vfunc_hook::setup(void* base /*= nullptr*/)
 
 	return true;
 }
-std::size_t vfunc_hook::estimate_vftbl_length(std::uintptr_t* vftbl_start)
+std::size_t VirtualFunctionHook::estimate_vftbl_length(std::uintptr_t* vftbl_start)
 {
 	auto len = std::size_t{};
 

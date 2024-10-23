@@ -1,36 +1,33 @@
-#include "CTabScripting.h"
-#include "xmods.h"
+#include "GmTabScripting.h"
+#include "GmMenu.h"
+
 #include "luamanager.h"
 #include "luabindings.h"
 #include "IVEngineClient.h"
 #include "luaShared.h"
 #include "globals.h"
 
-CTabScripting::CTabScripting(std::string s, ImFont* f) : CTab(TABID_SCRIPTING, s, f) {
+GmTabScripting::GmTabScripting(std::string s, ImFont* f) : MenuTab(TABID_SCRIPTING, s, f) { }
+GmTabScripting::~GmTabScripting() { }
+void GmTabScripting::DrawSideBar() {}
 
-}
-
-CTabScripting::~CTabScripting() {
-
-}
-
-void CTabScripting::DrawPage() {
+void GmTabScripting::DrawPage() {
 	int type = 0;
 	bool doExecute = false;
 
-	ImGui::PushFont(xmods::Get().CodeFont);
+	ImGui::PushFont(GmMenu::Get().CodeFont);
 	{
-		xmods::Get().editor->Render(_("LUA Scripting"), ImVec2(iFrameX - 10, iFrameY - 100));
+		GmMenu::Get().editor->Render(_("LUA Scripting"), ImVec2(iFrameX - 10, iFrameY - 100));
 	}
 	ImGui::PopFont();
 
-	ImGui::PushFont(xmods::Get().NormalFont);
+	ImGui::PushFont(GmMenu::Get().NormalFont);
 	{
-		ImGui::BeginChildFrame(12380192323, ImVec2(iFrameX / 2, 75));
+		ImGui::BeginChildFrame(0x13371337, ImVec2(iFrameX / 2, 75));
 		{
 			ImGui::PushItemWidth(150.f);
 			{
-				type = xmods::Get().LuaTypeCombo->Draw(_("Script Type"));
+				type = GmMenu::Get().LuaTypeCombo->Draw(_("Script Type"));
 			}
 			ImGui::SameLine();
 			if (ImGui::Button(_("Run Script"))) {
@@ -41,18 +38,18 @@ void CTabScripting::DrawPage() {
 
 		ImGui::SameLine(0, 0);
 
-		ImGui::BeginChildFrame(12380123239, ImVec2(iFrameX / 2, 75));
+		ImGui::BeginChildFrame(0x13371338, ImVec2(iFrameX / 2, 75));
 		{
 			auto script_id = 0;
 			ImGui::PushItemWidth(150.f);
 			{
-				script_id = xmods::Get().ScriptCombo->Draw("");
+				script_id = GmMenu::Get().ScriptCombo->Draw("");
 			}
 			ImGui::PopItemWidth();
 			ImGui::SameLine(0, 0);
 
 			if (ImGui::Button(_("Load"))) {
-				xmods::Get().editor->SetText(g_pLuaScripts->m_vecScriptList[script_id]->m_ScriptCode);
+				GmMenu::Get().editor->SetText(g_pLuaScripts->m_vecScriptList[script_id]->m_ScriptCode);
 			}
 
 			static char script_name[128];
@@ -64,7 +61,7 @@ void CTabScripting::DrawPage() {
 			ImGui::SameLine(0, ImGui::GetStyle().ItemInnerSpacing.x);
 			if (ImGui::Button(_("Save Script As"))) {
 				if (strlen(script_name) > 0) {
-					auto code = xmods::Get().editor->GetText();
+					auto code = GmMenu::Get().editor->GetText();
 					g_pLuaScripts->SaveScript(std::string(script_name), code);
 				}
 			}
@@ -81,7 +78,7 @@ void CTabScripting::DrawPage() {
 				// FUCK
 				goto fucksake;
 			}
-			g_pLuaBindings->ExecString(LUA, xmods::Get().editor->GetText());
+			g_pLuaBindings->ExecString(LUA, GmMenu::Get().editor->GetText());
 		fucksake: {
 
 			}
@@ -91,5 +88,3 @@ void CTabScripting::DrawPage() {
 		}
 	}
 }
-
-void CTabScripting::DrawSideBar() {}

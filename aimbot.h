@@ -4,20 +4,26 @@
 #include "vector.h"
 #include "qangle.h"
 
-class CUserCmd;
+struct CUserCmd;
+
 class C_BaseCombatWeapon;
 class C_BaseEntity;
 
 class Aimbot : public Singleton<Aimbot> {
 public:
 
-	void(*RandomSeed)(int);
-	float(*RandomFloat)(float, float);
+	void (*RandomSeed)(int);
+	float (*RandomFloat)(float, float);
 
 	struct TargetData_t {
-		C_BaseEntity*	pEntity;			// Target's entity pointer.
-		QAngle			angTargetHead;		// our head -> targets head
-		Vector			vecTargetHead;		// target's head for ESP W2S.
+		// Target's entity pointer.
+		C_BaseEntity* pEntity = nullptr;
+
+		// our head -> targets head
+		QAngle angTargetHead; 
+		
+		// target's head for ESP W2S.
+		Vector vecTargetHead; 
 	};
 
 	TargetData_t* pTarget = new TargetData_t; // current target's information, used in ESP.

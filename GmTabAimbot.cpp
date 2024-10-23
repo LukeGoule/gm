@@ -1,17 +1,13 @@
-#include "CTabAimbot.h"
-#include "xmods.h"
+#include "GmTabAimbot.h"
+#include "GMMenu.h"
 #include "options.h"
 
-CTabAimbot::CTabAimbot(std::string s, ImFont* f) : CTab(TABID_AIMBOT, s, f) {
+GmTabAimbot::GmTabAimbot(std::string s, ImFont* f) : MenuTab(TABID_AIMBOT, s, f) { }
+GmTabAimbot::~GmTabAimbot() { }
+void GmTabAimbot::DrawSideBar() { }
 
-}
-
-CTabAimbot::~CTabAimbot() {
-
-}
-
-void CTabAimbot::DrawPage() {
-	ImGui::PushFont(xmods::Get().NormalFont);
+void GmTabAimbot::DrawPage() {
+	ImGui::PushFont(GmMenu::Get().NormalFont);
 	{
 		ImGui::Checkbox("Aimbot Master Switch", &o.bAimMasterEnabled);
 		ImGui::Spacing();
@@ -26,5 +22,3 @@ void CTabAimbot::DrawPage() {
 	}
 	ImGui::PopFont();
 }
-
-void CTabAimbot::DrawSideBar() {}

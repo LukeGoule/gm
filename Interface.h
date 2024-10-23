@@ -1,10 +1,14 @@
 #pragma once
+
 #include <cstdint>
 #include <array>
+
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <Windows.h>
-#undef interface // Fuck windows
+
+#undef interface
+
 #include <assert.h>
 
 #include "obfs.h"

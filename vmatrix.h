@@ -15,6 +15,8 @@ struct cplane_t
 
 };
 
+#pragma warning(push)
+#pragma warning(disable : 26495)
 class matrix3x4_t
 {
 public:
@@ -78,6 +80,8 @@ public:
 
 	float m_flMatVal[3][4];
 };
+#pragma warning(pop)
+
 class VMatrix
 {
 public:
@@ -212,7 +216,7 @@ public:
 
 	// Return inverse matrix. Be careful because the results are undefined 
 	// if the matrix doesn't have an inverse (ie: InverseGeneral returns false).
-	VMatrix  operator~() const;
+	//VMatrix  operator~() const;
 
 	// Matrix operations.
 public:

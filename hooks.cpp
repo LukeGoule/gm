@@ -1,10 +1,10 @@
-#include "xmods.h"
+#include "GMMenu.h"
 #include "hooks.h"
 #include "sdk.h"
-#include "vfunc_hook.h"
+#include "VirtualFunctionHook.h"
 #include "utils.h"
 #include "CInput.h"
-#include "Netvars2.h"
+#include "NetvarDumper.h"
 #include "IVEngineClient.h"
 #include "IGameEventManager.h"
 #include "GameEvents.h"
@@ -45,18 +45,17 @@ namespace Hooks {
 
 	using namespace std::literals::chrono_literals;
 
-	vfunc_hook direct3d_hook;
-	vfunc_hook client_hook;
-	vfunc_hook surface_hook;
-	vfunc_hook viewrender_hook;
-	vfunc_hook localplayer_hook;
-	vfunc_hook luainterface_hook; // luainterface client.
+	VirtualFunctionHook direct3d_hook;
+	VirtualFunctionHook client_hook;
+	VirtualFunctionHook surface_hook;
+	VirtualFunctionHook viewrender_hook;
+	VirtualFunctionHook localplayer_hook;
+	VirtualFunctionHook luainterface_hook; // luainterface client.
 
 	HWND GMODWindow;
 	WNDPROC OriginalWNDProc;
 
 	uintptr_t* TrueCalcView;
-	uintptr_t* TrueGetModelName;
 
 	void Init() {
 		Utils::ConsolePrint(_("[Init] Looking for window...\n"));
@@ -75,53 +74,36 @@ namespace Hooks {
 
 		while (!g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT));
 
+		// Setup ImGui
 		ImGui::CreateContext();
 		ImGui_ImplWin32_Init(GMODWindow);
 		ImGui_ImplDX9_Init(g_pD3DDevice9);
 
 		// Load singleton classes
-		ESP		::Get().Setup();
-		Aimbot	::Get().Setup();
-		xmods	::Get().Setup();
+		ESP::Get().Setup();
+		Aimbot::Get().Setup();
+		GmMenu::Get().Setup();
 		
-		// Load netvars
-		g_pNetvars = std::make_unique<NetvarTree>(); // doesn't werk
-		g_NetworkedVariableManager = new CNetworkedVariableManager();
-
-		if (direct3d_hook.setup(g_pD3DDevice9))
-			Utils::ConsolePrint(_("[Init] D3D9 hooking setup.\n"));
-		else
-			Utils::ConsolePrint(_("[Init] g_pD3DDevice9 = 0x%x", g_pD3DDevice9));
-
-		if (client_hook.setup(g_pClientDLL))
-			Utils::ConsolePrint(_("[Init] BaseClient hooking setup.\n"));
-		else
-			Utils::ConsolePrint(_("[Init] g_pClientDLL = 0x%x", g_pClientDLL));
-
-		if (surface_hook.setup(g_pSurface))
-			Utils::ConsolePrint(_("[Init] Surface hooking setup.\n"));
-		else
-			Utils::ConsolePrint(_("[Init] g_pSurface = 0x%x", g_pSurface));
-
-		if (viewrender_hook.setup(g_pViewRender))
-			Utils::ConsolePrint(_("[Init] ViewRender hooking setup.\n"));
-		else
-			Utils::ConsolePrint(_("[Init] g_pViewRender = 0x%x", g_pViewRender));
+		// Dump & Load netvar map.
+		g_pNetvars = std::make_unique<NetvarDumper>();
+		g_pNetvarManager = new NetvarManager;
 
 		auto l_cl = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
-		if (luainterface_hook.setup(l_cl))
-			Utils::ConsolePrint(_("[Init] ILuaInterface hooking setup.\n"));
-		else
-			Utils::ConsolePrint(_("[Init] interface = 0x%x", g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT)));
 
-		direct3d_hook		.hook_index(gmod_hook_indexes::EndScene,				hkEndScene);			Utils::ConsolePrint(_("[Init] Hooked D3D9->EndScene           [%d]\n"), gmod_hook_indexes::EndScene);
-		direct3d_hook		.hook_index(gmod_hook_indexes::Reset,					hkReset);				Utils::ConsolePrint(_("[Init] Hooked D3D9->Reset              [%d]\n"), gmod_hook_indexes::Reset);
-		client_hook			.hook_index(gmod_hook_indexes::CreateMove,				hkCreateMove);			Utils::ConsolePrint(_("[Init] Hooked Client->CreateMove       [%d]\n"), gmod_hook_indexes::CreateMove);
-		client_hook			.hook_index(gmod_hook_indexes::FrameStageNotify,		hkFrameStageNotify);	Utils::ConsolePrint(_("[Init] Hooked Client->FSN              [%d]\n"), gmod_hook_indexes::FrameStageNotify);
-		surface_hook		.hook_index(gmod_hook_indexes::LockCursor,				hkLockCursor);			Utils::ConsolePrint(_("[Init] Hooked VGUISurface->LockCursor  [%d]\n"), gmod_hook_indexes::LockCursor);
-		viewrender_hook		.hook_index(gmod_hook_indexes::ViewRender_Render,		hkViewRender_Render);	Utils::ConsolePrint(_("[Init] Hooked ViewRender->Render       [%d]\n"), gmod_hook_indexes::ViewRender_Render);
-		luainterface_hook	.hook_index(gmod_hook_indexes::ILuaInterface_RunString, hkRunString);			Utils::ConsolePrint(_("[Init] Hooked luainterface->RunString  [%d]\n"), gmod_hook_indexes::ILuaInterface_RunString);
-		Utils::ConsolePrint("[Init] Skipping LuaInterface->RunString!\n");
+		direct3d_hook.setup(g_pD3DDevice9);
+		client_hook.setup(g_pClientDLL);
+		surface_hook.setup(g_pSurface);
+		viewrender_hook.setup(g_pViewRender);
+		luainterface_hook.setup(l_cl);
+
+		direct3d_hook.hook_index(gmod_hook_indexes::EndScene, hkEndScene);
+		direct3d_hook.hook_index(gmod_hook_indexes::Reset, hkReset);
+		client_hook.hook_index(gmod_hook_indexes::CreateMove, hkCreateMove);
+		client_hook.hook_index(gmod_hook_indexes::FrameStageNotify, hkFrameStageNotify);
+		surface_hook.hook_index(gmod_hook_indexes::LockCursor, hkLockCursor);
+		viewrender_hook.hook_index(gmod_hook_indexes::ViewRender_Render, hkViewRender_Render);
+		luainterface_hook.hook_index(gmod_hook_indexes::ILuaInterface_RunString, hkRunString);
+
 		TrueCalcView = (uintptr_t*)Utils::PatternScan(GetModuleHandleA("client.dll"), CALCVIEW_PATTERN);
 
 		DetourRestoreAfterWith();
@@ -129,7 +111,6 @@ namespace Hooks {
 		DetourUpdateThread(GetCurrentThread());
 		
 		DetourAttach(&(PVOID&)TrueCalcView, Hooks::hkCalcView); Utils::ConsolePrint("Detours hooked CBasePlayer::CalcView\n");
-		//DetourAttach(&(PVOID&)TrueGetModelName, Hooks::hkGetFOV);		Utils::ConsolePrint("Detours hooked C_PointCamera::GetFOV\n");
 
 		DetourTransactionCommit();
 
@@ -152,7 +133,6 @@ namespace Hooks {
 		DetourTransactionBegin();
 		DetourUpdateThread(GetCurrentThread());
 		DetourDetach(&(PVOID&)TrueCalcView, Hooks::hkCalcView);
-		//DetourDetach(&(PVOID&)TrueGetModelName, Hooks::hkGetFOV);
 		DetourTransactionCommit();
 
 		events->~GameEvents();
@@ -237,6 +217,7 @@ namespace Hooks {
 		if (stage == ClientFrameStage_t::FRAME_RENDER_START) {
 			if (g_pEngineClient && 
 				g_pEngineClient->IsInGame() && 
+				g_pLocalPlayer &&
 				g_pLocalPlayer->get_health() > 0) {
 				
 				*g_pLocalPlayer->m_bDrawViewmodel() = o.bDrawViewmodel;
@@ -250,13 +231,13 @@ namespace Hooks {
 	{
 		static auto ofunc = surface_hook.get_original<decltype(&hkLockCursor)>(gmod_hook_indexes::LockCursor);
 
-		if (xmods::Get().m_bRunning)
-			g_pInputSystem->EnableInput(!xmods::Get().m_bMenuOpen);
+		if (GmMenu::Get().m_bRunning)
+			g_pInputSystem->EnableInput(!GmMenu::Get().m_bMenuOpen);
 		else
 			g_pInputSystem->EnableInput(true);
 
 		if (g_pEngineClient->IsInGame() && 
-			xmods::Get().m_bMenuOpen) {
+			GmMenu::Get().m_bMenuOpen) {
 			g_pSurface->unlock_cursor();
 			return;
 		}
@@ -315,10 +296,10 @@ namespace Hooks {
 		pDevice->SetSamplerState(NULL, D3DSAMP_ADDRESSW, D3DTADDRESS_WRAP);
 		pDevice->SetSamplerState(NULL, D3DSAMP_SRGBTEXTURE, NULL);
 
-		if (xmods::Get().m_bRunning && xmods::Get().m_bInitialised)
+		if (GmMenu::Get().m_bRunning && GmMenu::Get().m_bInitialised)
 		{
 			if (o.bDrawWaterMark) {
-				xmods::Get().DrawWatermark();
+				GmMenu::Get().DrawWatermark();
 			}
 
 			if (o.bESPMasterEnabled) {
@@ -329,7 +310,7 @@ namespace Hooks {
 			ImGui_ImplWin32_NewFrame();
 			ImGui::NewFrame();
 
-			xmods::Get().Render();
+			GmMenu::Get().Render();
 
 			ImGui::Render();
 			ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
@@ -380,11 +361,9 @@ namespace Hooks {
 			}
 		};
 
-		getButtonToggle(xmods::Get().m_bMenuOpen, VK_F6);
-		getButtonToggle(xmods::Get().m_bRunning, VK_F7);
+		getButtonToggle(GmMenu::Get().m_bMenuOpen, VK_F6);
 
-
-		if (xmods::Get().m_bMenuOpen) {
+		if (GmMenu::Get().m_bMenuOpen) {
 			ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam);
 		}
 

@@ -1,15 +1,11 @@
-#include "CTabESP.h"
+#include "GmTabESP.h"
 #include "options.h"
 
-CTabESP::CTabESP(std::string s, ImFont* f) : CTab(TABID_ESP, s, f) {
+GmTabESP::GmTabESP(std::string s, ImFont* f) : MenuTab(TABID_ESP, s, f) { }
+GmTabESP::~GmTabESP() { }
+void GmTabESP::DrawSideBar() { }
 
-}
-
-CTabESP::~CTabESP() {
-
-}
-
-void CTabESP::DrawPage() {
+void GmTabESP::DrawPage() {
 	ImGui::Checkbox("ESP Master Switch", &o.bESPMasterEnabled);
 	ImGui::SliderInt("ESP Render Distance", &o.iESPMaxDrawDist, 100, 50000);
 
@@ -24,8 +20,4 @@ void CTabESP::DrawPage() {
 	ImGui::Checkbox("ESP Boxes", &o.bESPDrawBoxes);
 	ImGui::Checkbox("ESP Class Names", &o.bESPDrawClassName);
 	ImGui::Checkbox("ESP Player Names", &o.bESPDrawPlayerNames);
-}
-
-void CTabESP::DrawSideBar() {
-
 }

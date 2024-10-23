@@ -11,7 +11,7 @@
 #include <TlHelp32.h>
 
 #include "utils.h"
-#include "NetVarManager.h"
+#include "NetvarManager.h"
 #include "lua_source/lua.hpp"
 #include "obfs.h"
 

@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -97,7 +97,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -139,17 +139,18 @@
     <ClCompile Include="characterset.cpp" />
     <ClCompile Include="CMenuPopup.cpp" />
     <ClCompile Include="Convar.cpp" />
-    <ClCompile Include="CTab.cpp" />
-    <ClCompile Include="CTabAimbot.cpp" />
-    <ClCompile Include="CTabESP.cpp" />
-    <ClCompile Include="CTabMain.cpp" />
-    <ClCompile Include="CTabScripting.cpp" />
-    <ClCompile Include="CTabSettings.cpp" />
+    <ClCompile Include="GmMenuTab.cpp" />
+    <ClCompile Include="GmTabAimbot.cpp" />
+    <ClCompile Include="GmTabESP.cpp" />
+    <ClCompile Include="GmTabMain.cpp" />
+    <ClCompile Include="GmTabScripting.cpp" />
+    <ClCompile Include="GmTabSettings.cpp" />
     <ClCompile Include="C_BaseEntity.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DXDraw.cpp" />
     <ClCompile Include="extrasensoryperception.cpp" />
     <ClCompile Include="GameEvents.cpp" />
+    <ClCompile Include="GmMenuTabManager.cpp" />
     <ClCompile Include="hooks.cpp" />
     <ClCompile Include="imconfig.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
@@ -161,10 +162,9 @@
     <ClCompile Include="imgui\text_edit\TextEditor.cpp" />
     <ClCompile Include="imgui_custom.cpp" />
     <ClCompile Include="IVEngineClient.cpp" />
-    <ClCompile Include="xmod.cpp" />
+    <ClCompile Include="GmMenu.cpp" />
     <ClCompile Include="luabindings.cpp" />
     <ClCompile Include="luamanager.cpp" />
-    <ClCompile Include="luaShared.cpp" />
     <ClCompile Include="lua_source\lapi.c" />
     <ClCompile Include="lua_source\lauxlib.c" />
     <ClCompile Include="lua_source\lbaselib.c" />
@@ -202,25 +202,23 @@
     <ClCompile Include="lua_source\lzio.c" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="md5.cpp" />
-    <ClCompile Include="NetVarManager.cpp" />
-    <ClCompile Include="Netvars2.cpp" />
+    <ClCompile Include="NetvarManager.cpp" />
+    <ClCompile Include="NetVarDumper.cpp" />
     <ClCompile Include="NEWCRC.cpp" />
     <ClCompile Include="options.cpp" />
-    <ClCompile Include="radiomanager.cpp" />
     <ClCompile Include="recoil.cpp" />
     <ClCompile Include="sdk.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="utlbuf\UtlBuffer.cpp" />
     <ClCompile Include="utlbuf\UtlString.cpp" />
     <ClCompile Include="vector2d.cpp" />
-    <ClCompile Include="vfunc_hook.cpp" />
+    <ClCompile Include="VirtualFunctionHook.cpp" />
     <ClCompile Include="vmatrix.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\shared\loader_dll_shared.h" />
     <ClInclude Include="aimbot.h" />
     <ClInclude Include="beams.h" />
-    <ClInclude Include="BetterInterface.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="CBaseHandle.h" />
     <ClInclude Include="CGlobalVarsBase.h" />
     <ClInclude Include="characterset.h" />
@@ -232,12 +230,13 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Convar.h" />
     <ClInclude Include="Cousine.h" />
-    <ClInclude Include="CTab.h" />
-    <ClInclude Include="CTabAimbot.h" />
-    <ClInclude Include="CTabESP.h" />
-    <ClInclude Include="CTabMain.h" />
-    <ClInclude Include="CTabScripting.h" />
-    <ClInclude Include="CTabSettings.h" />
+    <ClInclude Include="GmMenuTabManager.h" />
+    <ClInclude Include="GmMenuTab.h" />
+    <ClInclude Include="GmTabAimbot.h" />
+    <ClInclude Include="GmTabESP.h" />
+    <ClInclude Include="GmTabMain.h" />
+    <ClInclude Include="GmTabScripting.h" />
+    <ClInclude Include="GmTabSettings.h" />
     <ClInclude Include="CViewRender.h" />
     <ClInclude Include="C_BaseEntity.h" />
     <ClInclude Include="C_GMOD_Player.h" />
@@ -263,6 +262,7 @@
     <ClInclude Include="IVModelInfo.h" />
     <ClInclude Include="luabindings.h" />
     <ClInclude Include="luamanager.h" />
+    <ClInclude Include="NetvarManager.h" />
     <ClInclude Include="obfs.h" />
     <ClInclude Include="IGameEventManager.h" />
     <ClInclude Include="IInputSystem.h" />
@@ -277,7 +277,7 @@
     <ClInclude Include="imgui\text_edit\TextEditor.h" />
     <ClInclude Include="IViewRenderBeams.h" />
     <ClInclude Include="menu_icons.h" />
-    <ClInclude Include="NetVarManager.h" />
+    <ClInclude Include="NetVarDumper.h" />
     <ClInclude Include="hooks.h" />
     <ClInclude Include="IAppSystem.h" />
     <ClInclude Include="IBaseClientDLL.h" />
@@ -287,7 +287,7 @@
     <ClInclude Include="IEntityList.h" />
     <ClInclude Include="ISurface.h" />
     <ClInclude Include="IVEngineClient.h" />
-    <ClInclude Include="xmods.h" />
+    <ClInclude Include="GmMenu.h" />
     <ClInclude Include="luaShared.h" />
     <ClInclude Include="lua_source\lapi.h" />
     <ClInclude Include="lua_source\lauxlib.h" />
@@ -319,20 +319,19 @@
     <ClInclude Include="md5.h" />
     <ClInclude Include="mem.h" />
     <ClInclude Include="memalloc.h" />
-    <ClInclude Include="Netvars2.h" />
     <ClInclude Include="NEWCRC.h" />
     <ClInclude Include="options.h" />
     <ClInclude Include="platform.h" />
     <ClInclude Include="profont.h" />
     <ClInclude Include="ProggyTiny.h" />
     <ClInclude Include="qangle.h" />
-    <ClInclude Include="radiomanager.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="recoil.h" />
     <ClInclude Include="Recv.h" />
     <ClInclude Include="sdk.h" />
     <ClInclude Include="singleton.h" />
-    <ClInclude Include="TODO.h" />
+    <ClInclude Include="thread.h" />
+    <ClInclude Include="todo.txt" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="utlbuf\UtlBuffer.hpp" />
     <ClInclude Include="utlbuf\UtlMemory.hpp" />
@@ -340,7 +339,8 @@
     <ClInclude Include="utlbuf\UtlVector.hpp" />
     <ClInclude Include="vector.h" />
     <ClInclude Include="vector2d.h" />
-    <ClInclude Include="vfunc_hook.h" />
+    <ClInclude Include="VirtualFunctionHook.h" />
+    <ClInclude Include="VirtualProtectGuard.h" />
     <ClInclude Include="vmatrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

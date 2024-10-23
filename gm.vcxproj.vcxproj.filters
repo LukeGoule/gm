@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="hooks.cpp" />
+    <ClCompile Include="luabindings.cpp" />
+    <ClCompile Include="sdk.cpp" />
+    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="aimbot.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="beams.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="C_BaseEntity.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="characterset.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="Convar.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="GmMenuTab.cpp">
+      <Filter>Source\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="DXDraw.cpp">
+      <Filter>Source\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="extrasensoryperception.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="imconfig.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_custom.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_dx9.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_win32.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEvents.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="IVEngineClient.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lapi.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lauxlib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lbaselib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lbitlib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lcode.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lcorolib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lctype.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ldblib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ldebug.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ldo.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ldump.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lfunc.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lgc.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\linit.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\liolib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\llex.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lmathlib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lmem.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\loadlib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lobject.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lopcodes.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\loslib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lparser.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lstate.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lstring.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lstrlib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ltable.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ltablib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\ltm.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lua.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="luamanager.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\luac.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lundump.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lutf8lib.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lvm.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_source\lzio.c">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="utlbuf\UtlBuffer.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="utlbuf\UtlString.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\text_edit\TextEditor.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="recoil.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="math.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="NEWCRC.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="vector2d.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="vmatrix.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="options.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="GmMenu.cpp">
+      <Filter>Source\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="GmMenuTabManager.cpp">
+      <Filter>Source\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="GmTabAimbot.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="GmTabESP.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="GmTabMain.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="GmTabScripting.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="GmTabSettings.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenuPopup.cpp">
+      <Filter>Source\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualFunctionHook.cpp">
+      <Filter>Source\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="NetVarDumper.cpp">
+      <Filter>Source\Netvars</Filter>
+    </ClCompile>
+    <ClCompile Include="NetvarManager.cpp">
+      <Filter>Source\Netvars</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="luabindings.h" />
+    <ClInclude Include="hooks.h" />
+    <ClInclude Include="sdk.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="aimbot.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="beams.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="C_BaseEntity.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="C_GMOD_Player.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseHandle.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="CGlobalVarsBase.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="CHudChat.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientClass.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="characterset.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="clientrenderhandle.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Convar.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="CViewRender.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="GmMenuTab.h">
+      <Filter>Source\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="dxinc.h">
+      <Filter>Source\Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="detours.h">
+      <Filter>Source\Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="DXDraw.h">
+      <Filter>Source\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="extrasensoryperception.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="IAppSystem.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseClientDLL.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="icliententity.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="IClientMode.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="iclientnetworkable.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="iclientrenderable.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="iclientthinkable.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="iclientunknown.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollideable.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="icons.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="IConVar.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ICvar.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="IEntityList.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameEventManager.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ihandleentity.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="IInputSystem.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_custom.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_dx9.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_win32.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="glua_types.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEvents.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineNetworking.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="IVEngineClient.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="IViewRenderBeams.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="IVModelInfo.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ISurface.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lua.hpp">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lapi.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lauxlib.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lcode.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lctype.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\ldebug.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\ldo.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lfunc.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lgc.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\llex.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\llimits.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lmem.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lobject.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lopcodes.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lparser.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lprefix.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lstate.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lstring.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\ltable.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\ltm.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lua.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="luamanager.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\luaconf.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lualib.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lundump.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lvm.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_source\lzio.h">
+      <Filter>Source\Libraries\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlBuffer.hpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlMemory.hpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlString.hpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlVector.hpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="qangle.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="obfs.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\text_edit\TextEditor.h">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="recoil.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="mem.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="memalloc.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="NEWCRC.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="vector2d.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Recv.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="vmatrix.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="options.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Cousine.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="droid.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Fonts2.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_icons.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="profont.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="ProggyTiny.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="todo.txt">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="vector.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="platform.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="GmMenu.h">
+      <Filter>Source\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="GmMenuTabManager.h">
+      <Filter>Source\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="GmTabAimbot.h">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="GmTabESP.h">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="GmTabMain.h">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="GmTabScripting.h">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="GmTabSettings.h">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuPopup.h">
+      <Filter>Source\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualProtectGuard.h">
+      <Filter>Source\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualFunctionHook.h">
+      <Filter>Source\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="luaShared.h" />
+    <ClInclude Include="NetVarDumper.h">
+      <Filter>Source\Netvars</Filter>
+    </ClInclude>
+    <ClInclude Include="thread.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="NetvarManager.h">
+      <Filter>Source\Netvars</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{e68ea8ac-3c93-4f8b-b731-af5929df6a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Hacks">
+      <UniqueIdentifier>{c94c3338-0d52-4e19-8c5f-5958fc5ae81b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Menu">
+      <UniqueIdentifier>{1b6f0c70-1b97-4807-b32e-4ec493732819}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Helpers">
+      <UniqueIdentifier>{cc3cee0b-f693-4bcd-a9ab-428ca2ccca77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Libraries">
+      <UniqueIdentifier>{557f6cd8-c605-4593-abe8-a70df33c7d22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Libraries\Imgui">
+      <UniqueIdentifier>{c431ba7c-2c0a-4cd2-93fa-3cf8754d3f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Libraries\Lua">
+      <UniqueIdentifier>{57654dde-0079-42b3-b096-aa7037224b33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Render">
+      <UniqueIdentifier>{febcae69-df14-410a-b076-a692fc05d392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GmodSDK">
+      <UniqueIdentifier>{71bbfd46-c04e-4f5b-835a-0556c8b6cdeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{3aadeead-cdd1-4b49-9ab2-15a4009ac5d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Menu\Tabs">
+      <UniqueIdentifier>{85e6f097-ab6f-417b-ac55-c194d6d05b4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Memory">
+      <UniqueIdentifier>{3c2df8b4-4146-42d1-a53e-a0df2c8316c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Netvars">
+      <UniqueIdentifier>{f9cea3ea-44e4-489a-b52c-5b70c8e11dc7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

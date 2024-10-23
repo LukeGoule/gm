@@ -5,14 +5,13 @@
 #include "extrasensoryperception.h"
 #include "vector2d.h"
 #include "imgui/imgui.h"
+#include "ClientClass.h"
 
 #include "IVEngineClient.h"
 #include "C_BaseEntity.h"
 #include "luaShared.h"
 #include "CGlobalVarsBase.h"
 #include "globals.h"
-
-#define VEC2QANG(v) QAngle(v.x, v.y, v.z)
 
 auto vecExcludedClassNames = std::vector<const char*>{
 		"CWeaponPhysGun",
@@ -27,10 +26,13 @@ auto vecExcludedPrintNames = std::vector<const char*>{
 	"#GMOD_Camera",
 };
 
+#pragma warning(push)
+#pragma warning(disable: 6387)
 void Aimbot::Setup() {
 	*(void**)&this->RandomSeed = GetProcAddress(GetModuleHandleA(_("vstdlib.dll")), _("RandomSeed"));
 	*(void**)&this->RandomFloat = GetProcAddress(GetModuleHandleA(_("vstdlib.dll")), _("RandomFloat"));
 }
+#pragma warning(pop)
 
 void Aimbot::CreateMove(CUserCmd* pCmd) {
 

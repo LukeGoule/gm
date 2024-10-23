@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BetterInterface.h"
+#include "Interface.h"
 #include "Color.h"
 #include "IAppSystem.h"
 
