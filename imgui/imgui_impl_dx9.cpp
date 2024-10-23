@@ -26,7 +26,11 @@
 #include "imgui_impl_dx9.h"
 
 // DirectX
+#pragma warning(push)
+#pragma warning(disable:26495)
 #include <d3d9.h>
+#pragma warning(pop)
+
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
 
@@ -216,14 +220,14 @@ void ImGui_ImplDX9_RenderDrawData(ImDrawData* draw_data)
     d3d9_state_block->Release();
 }
 
-bool ImGui_ImplDX9_Init(IDirect3DDevice9* device)
+bool ImGui_ImplDX9_Init(void* device)
 {
     // Setup back-end capabilities flags
     ImGuiIO& io = ImGui::GetIO();
     io.BackendRendererName = "imgui_impl_dx9";
     io.BackendFlags |= ImGuiBackendFlags_RendererHasVtxOffset;  // We can honor the ImDrawCmd::VtxOffset field, allowing for large meshes.
 
-    g_pd3dDevice = device;
+    g_pd3dDevice = (IDirect3DDevice9 * )device;
     g_pd3dDevice->AddRef();
     return true;
 }

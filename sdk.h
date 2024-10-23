@@ -1,7 +1,5 @@
 #pragma once
 
-#include "dxinc.h"
-
 #include <iostream>
 #include <iostream>
 #include <intrin.h>
@@ -10,10 +8,11 @@
 #include <Windows.h>
 #include <TlHelp32.h>
 
-#include "utils.h"
-#include "NetvarManager.h"
+#include "netvars/NetvarManager.h"
 #include "lua_source/lua.hpp"
-#include "obfs.h"
+
+#include "helpers/utils.h"
+#include "helpers/obfs.h"
 
 #define DUMP_IFACE(classname, i)	_dump_iface(#classname, #i, (DWORD*)i)
 

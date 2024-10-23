@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 #pragma once
-#include "../obfs.h"
+#include "../helpers/obfs.h"
 
 #include <assert.h>
 #include <Windows.h>

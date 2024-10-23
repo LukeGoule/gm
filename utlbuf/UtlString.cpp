@@ -1,5 +1,5 @@
 #include "UtlString.hpp"
-#include "../obfs.h"
+#include "../helpers/obfs.h"
 
 #define NOMINMAX
 #include <Windows.h>

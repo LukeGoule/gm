@@ -1,8 +1,8 @@
 #pragma once
 
 #include <assert.h>
-#include "../platform.h"
-#include "../memalloc.h"
+#include "../sdk/platform.h"
+#include "../sdk/memalloc.h"
 
 #ifdef UTLMEMORY_TRACK
 #define UTLMEMORY_TRACK_ALLOC()		MemAlloc_RegisterAllocation( "Sum of all UtlMemory", 0, m_nAllocationCount * sizeof(T), m_nAllocationCount * sizeof(T), 0 )

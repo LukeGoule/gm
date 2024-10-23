@@ -9,10 +9,12 @@
 #pragma once
 
 #include <stdarg.h>
-#include "../Vector.h"
-#include "../vector2d.h"
+
 #include "UtlMemory.hpp"
-#include "../obfs.h"
+
+#include "../helpers/Vector.h"
+#include "../helpers/vector2d.h"
+#include "../helpers/obfs.h"
 
 #pragma warning(disable:4127) //conditional operation is constant
 #define IsX360() (0)

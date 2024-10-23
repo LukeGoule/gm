@@ -4,15 +4,16 @@
 #include <chrono>
 
 #include "sdk.h"
-#include "hooks.h"
-#include "GMMenu.h"
-#include "globals.h"
-#include "thread.h"
+#include "core/hooks.h"
+#include "core/globals.h"
+#include "menu/GMMenu.h"
+#include "helpers/thread.h"
 
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_dx9.h"
 
-#include "CHudChat.h"
+#include "sdk/CHudChat.h"
+
 template<class T>
 inline T* FindHudElement(const char* name)
 {

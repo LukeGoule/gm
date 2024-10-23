@@ -2,41 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="hooks.cpp" />
-    <ClCompile Include="luabindings.cpp" />
     <ClCompile Include="sdk.cpp" />
-    <ClCompile Include="utils.cpp" />
-    <ClCompile Include="aimbot.cpp">
-      <Filter>Source\Hacks</Filter>
-    </ClCompile>
-    <ClCompile Include="beams.cpp">
-      <Filter>Source\Hacks</Filter>
-    </ClCompile>
-    <ClCompile Include="C_BaseEntity.cpp">
-      <Filter>Source\GmodSDK</Filter>
-    </ClCompile>
-    <ClCompile Include="characterset.cpp">
-      <Filter>Source\GmodSDK</Filter>
-    </ClCompile>
-    <ClCompile Include="Convar.cpp">
-      <Filter>Source\GmodSDK</Filter>
-    </ClCompile>
-    <ClCompile Include="GmMenuTab.cpp">
-      <Filter>Source\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="DXDraw.cpp">
-      <Filter>Source\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="extrasensoryperception.cpp">
-      <Filter>Source\Hacks</Filter>
-    </ClCompile>
-    <ClCompile Include="imconfig.cpp">
-      <Filter>Source\Libraries\Imgui</Filter>
-    </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
-      <Filter>Source\Libraries\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui_custom.cpp">
       <Filter>Source\Libraries\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_demo.cpp">
@@ -53,12 +20,6 @@
     </ClCompile>
     <ClCompile Include="imgui\imgui_widgets.cpp">
       <Filter>Source\Libraries\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEvents.cpp">
-      <Filter>Source\Hacks</Filter>
-    </ClCompile>
-    <ClCompile Include="IVEngineClient.cpp">
-      <Filter>Source\GmodSDK</Filter>
     </ClCompile>
     <ClCompile Include="lua_source\lapi.c">
       <Filter>Source\Libraries\Lua</Filter>
@@ -150,9 +111,6 @@
     <ClCompile Include="lua_source\lua.c">
       <Filter>Source\Libraries\Lua</Filter>
     </ClCompile>
-    <ClCompile Include="luamanager.cpp">
-      <Filter>Source\Hacks</Filter>
-    </ClCompile>
     <ClCompile Include="lua_source\luac.c">
       <Filter>Source\Libraries\Lua</Filter>
     </ClCompile>
@@ -168,183 +126,120 @@
     <ClCompile Include="lua_source\lzio.c">
       <Filter>Source\Libraries\Lua</Filter>
     </ClCompile>
-    <ClCompile Include="utlbuf\UtlBuffer.cpp">
-      <Filter>Source\GmodSDK</Filter>
-    </ClCompile>
-    <ClCompile Include="utlbuf\UtlString.cpp">
-      <Filter>Source\GmodSDK</Filter>
-    </ClCompile>
-    <ClCompile Include="md5.cpp">
-      <Filter>Source\Helpers</Filter>
-    </ClCompile>
     <ClCompile Include="imgui\text_edit\TextEditor.cpp">
       <Filter>Source\Libraries\Imgui</Filter>
     </ClCompile>
-    <ClCompile Include="recoil.cpp">
+    <ClCompile Include="hacks\aimbot.cpp">
       <Filter>Source\Hacks</Filter>
     </ClCompile>
-    <ClCompile Include="math.cpp">
-      <Filter>Source\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="NEWCRC.cpp">
-      <Filter>Source\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="vector2d.cpp">
-      <Filter>Source\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="vmatrix.cpp">
-      <Filter>Source\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="options.cpp">
-      <Filter>Source\Hacks</Filter>
-    </ClCompile>
-    <ClCompile Include="GmMenu.cpp">
-      <Filter>Source\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="GmMenuTabManager.cpp">
-      <Filter>Source\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="GmTabAimbot.cpp">
-      <Filter>Source\Menu\Tabs</Filter>
-    </ClCompile>
-    <ClCompile Include="GmTabESP.cpp">
-      <Filter>Source\Menu\Tabs</Filter>
-    </ClCompile>
-    <ClCompile Include="GmTabMain.cpp">
-      <Filter>Source\Menu\Tabs</Filter>
-    </ClCompile>
-    <ClCompile Include="GmTabScripting.cpp">
-      <Filter>Source\Menu\Tabs</Filter>
-    </ClCompile>
-    <ClCompile Include="GmTabSettings.cpp">
-      <Filter>Source\Menu\Tabs</Filter>
-    </ClCompile>
-    <ClCompile Include="CMenuPopup.cpp">
-      <Filter>Source\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="VirtualFunctionHook.cpp">
+    <ClCompile Include="memory\VirtualFunctionHook.cpp">
       <Filter>Source\Memory</Filter>
     </ClCompile>
-    <ClCompile Include="NetVarDumper.cpp">
+    <ClCompile Include="menu\GmMenu.cpp">
+      <Filter>Source\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\GmMenuTab.cpp">
+      <Filter>Source\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\GmMenuTabManager.cpp">
+      <Filter>Source\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\GmTabAimbot.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\GmTabESP.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\GmTabMain.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\GmTabScripting.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\GmTabSettings.cpp">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\GmMenuPopup.cpp">
+      <Filter>Source\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="hacks\beams.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="helpers\math.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="helpers\md5.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="helpers\crc.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="helpers\vector2d.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="helpers\vmatrix.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="hacks\esp.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="hacks\recoil.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\options.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="hacks\events.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="netvars\NetVarDumper.cpp">
       <Filter>Source\Netvars</Filter>
     </ClCompile>
-    <ClCompile Include="NetvarManager.cpp">
+    <ClCompile Include="netvars\NetvarManager.cpp">
       <Filter>Source\Netvars</Filter>
+    </ClCompile>
+    <ClCompile Include="core\luamanager.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\luabindings.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="helpers\utils.cpp">
+      <Filter>Source\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imconfig.cpp">
+      <Filter>Source\Libraries\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="core\imgui_custom.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="utlbuf\UtlBuffer.cpp">
+      <Filter>Source\UtlBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="utlbuf\UtlString.cpp">
+      <Filter>Source\UtlBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\IVEngineClient.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\C_BaseEntity.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\characterset.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\Convar.cpp">
+      <Filter>Source\GmodSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="core\dx.cpp">
+      <Filter>Source\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="luabindings.h" />
-    <ClInclude Include="hooks.h" />
     <ClInclude Include="sdk.h" />
-    <ClInclude Include="utils.h" />
-    <ClInclude Include="aimbot.h">
-      <Filter>Source\Hacks</Filter>
-    </ClInclude>
-    <ClInclude Include="beams.h">
-      <Filter>Source\Hacks</Filter>
-    </ClInclude>
-    <ClInclude Include="Interface.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="C_BaseEntity.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="C_GMOD_Player.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="CBaseHandle.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="CGlobalVarsBase.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="CHudChat.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="CInput.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="ClientClass.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="characterset.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="clientrenderhandle.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.h">
-      <Filter>Source\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="Convar.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="CViewRender.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="GmMenuTab.h">
-      <Filter>Source\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="dxinc.h">
-      <Filter>Source\Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="detours.h">
-      <Filter>Source\Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="DXDraw.h">
-      <Filter>Source\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="extrasensoryperception.h">
-      <Filter>Source\Hacks</Filter>
-    </ClInclude>
-    <ClInclude Include="IAppSystem.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="IBaseClientDLL.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="icliententity.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="IClientMode.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="iclientnetworkable.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="iclientrenderable.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="iclientthinkable.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="iclientunknown.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="ICollideable.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="icons.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="IConVar.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="ICvar.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="IEntityList.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="IGameEventManager.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="ihandleentity.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="IInputSystem.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
     <ClInclude Include="imgui\imstb_truetype.h">
       <Filter>Source\Libraries\Imgui</Filter>
     </ClInclude>
@@ -352,9 +247,6 @@
       <Filter>Source\Libraries\Imgui</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imgui.h">
-      <Filter>Source\Libraries\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui_custom.h">
       <Filter>Source\Libraries\Imgui</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imgui_impl_dx9.h">
@@ -371,30 +263,6 @@
     </ClInclude>
     <ClInclude Include="imgui\imstb_textedit.h">
       <Filter>Source\Libraries\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="glua_types.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEvents.h">
-      <Filter>Source\Hacks</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineNetworking.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="globals.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="IVEngineClient.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="IViewRenderBeams.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="IVModelInfo.h">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="ISurface.h">
-      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
     <ClInclude Include="lua_source\lua.hpp">
       <Filter>Source\Libraries\Lua</Filter>
@@ -459,9 +327,6 @@
     <ClInclude Include="lua_source\lua.h">
       <Filter>Source\Libraries\Lua</Filter>
     </ClInclude>
-    <ClInclude Include="luamanager.h">
-      <Filter>Source\Hacks</Filter>
-    </ClInclude>
     <ClInclude Include="lua_source\luaconf.h">
       <Filter>Source\Libraries\Lua</Filter>
     </ClInclude>
@@ -477,130 +342,277 @@
     <ClInclude Include="lua_source\lzio.h">
       <Filter>Source\Libraries\Lua</Filter>
     </ClInclude>
-    <ClInclude Include="utlbuf\UtlBuffer.hpp">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="utlbuf\UtlMemory.hpp">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="utlbuf\UtlString.hpp">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="utlbuf\UtlVector.hpp">
-      <Filter>Source\GmodSDK</Filter>
-    </ClInclude>
-    <ClInclude Include="qangle.h">
-      <Filter>Source\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="obfs.h">
-      <Filter>Source\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="md5.h">
-      <Filter>Source\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="random.h">
-      <Filter>Source\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="singleton.h">
-      <Filter>Source\Helpers</Filter>
-    </ClInclude>
     <ClInclude Include="imgui\text_edit\TextEditor.h">
       <Filter>Source\Libraries\Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="recoil.h">
+    <ClInclude Include="hacks\aimbot.h">
       <Filter>Source\Hacks</Filter>
     </ClInclude>
-    <ClInclude Include="mem.h">
-      <Filter>Source\GmodSDK</Filter>
+    <ClInclude Include="memory\VirtualFunctionHook.h">
+      <Filter>Source\Memory</Filter>
     </ClInclude>
-    <ClInclude Include="memalloc.h">
-      <Filter>Source\GmodSDK</Filter>
+    <ClInclude Include="memory\VirtualProtectGuard.h">
+      <Filter>Source\Memory</Filter>
     </ClInclude>
-    <ClInclude Include="NEWCRC.h">
-      <Filter>Source\Helpers</Filter>
+    <ClInclude Include="menu\GmMenu.h">
+      <Filter>Source\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="vector2d.h">
-      <Filter>Source\Helpers</Filter>
+    <ClInclude Include="menu\GmMenuTab.h">
+      <Filter>Source\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Recv.h">
-      <Filter>Source\GmodSDK</Filter>
+    <ClInclude Include="menu\GmMenuTabManager.h">
+      <Filter>Source\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="vmatrix.h">
-      <Filter>Source\Helpers</Filter>
+    <ClInclude Include="menu\GmTabAimbot.h">
+      <Filter>Source\Menu\Tabs</Filter>
     </ClInclude>
-    <ClInclude Include="options.h">
+    <ClInclude Include="menu\GmTabESP.h">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="menu\GmTabMain.h">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="menu\GmTabScripting.h">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="menu\GmTabSettings.h">
+      <Filter>Source\Menu\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="menu\GmMenuPopup.h">
+      <Filter>Source\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="hacks\beams.h">
       <Filter>Source\Hacks</Filter>
     </ClInclude>
-    <ClInclude Include="math.h">
+    <ClInclude Include="helpers\color.h">
       <Filter>Source\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Cousine.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="droid.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Fonts2.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="menu_icons.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="profont.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="ProggyTiny.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="todo.txt">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="vector.h">
+    <ClInclude Include="helpers\math.h">
       <Filter>Source\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="platform.h">
+    <ClInclude Include="helpers\md5.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\crc.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\obfs.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\qangle.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\thread.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\singleton.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\random.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\vmatrix.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\vector.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\vector2d.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="resources\Cousine.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="resources\droid.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="resources\Fonts2.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="resources\icons.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="resources\menu_icons.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="resources\ProggyTiny.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="resources\profont.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="hacks\esp.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="hacks\recoil.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\options.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="hacks\events.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="netvars\NetVarDumper.h">
+      <Filter>Source\Netvars</Filter>
+    </ClInclude>
+    <ClInclude Include="netvars\NetvarManager.h">
+      <Filter>Source\Netvars</Filter>
+    </ClInclude>
+    <ClInclude Include="core\luamanager.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\luabindings.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers\utils.h">
+      <Filter>Source\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="core\imgui_custom.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="gmod\luaShared.h">
+      <Filter>Source\Gmod</Filter>
+    </ClInclude>
+    <ClInclude Include="gmod\glua_types.h">
+      <Filter>Source\Gmod</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlVector.hpp">
+      <Filter>Source\UtlBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlBuffer.hpp">
+      <Filter>Source\UtlBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlMemory.hpp">
+      <Filter>Source\UtlBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="utlbuf\UtlString.hpp">
+      <Filter>Source\UtlBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\icliententity.h">
       <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="GmMenu.h">
-      <Filter>Source\Menu</Filter>
+    <ClInclude Include="sdk\IClientMode.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="GmMenuTabManager.h">
-      <Filter>Source\Menu</Filter>
+    <ClInclude Include="sdk\iclientnetworkable.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="GmTabAimbot.h">
-      <Filter>Source\Menu\Tabs</Filter>
+    <ClInclude Include="sdk\iclientrenderable.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="GmTabESP.h">
-      <Filter>Source\Menu\Tabs</Filter>
+    <ClInclude Include="sdk\iclientthinkable.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="GmTabMain.h">
-      <Filter>Source\Menu\Tabs</Filter>
+    <ClInclude Include="sdk\iclientunknown.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="GmTabScripting.h">
-      <Filter>Source\Menu\Tabs</Filter>
+    <ClInclude Include="sdk\ICollideable.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="GmTabSettings.h">
-      <Filter>Source\Menu\Tabs</Filter>
+    <ClInclude Include="sdk\IConVar.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="CMenuPopup.h">
-      <Filter>Source\Menu</Filter>
+    <ClInclude Include="sdk\ICvar.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="VirtualProtectGuard.h">
-      <Filter>Source\Memory</Filter>
+    <ClInclude Include="sdk\IVModelInfo.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="VirtualFunctionHook.h">
-      <Filter>Source\Memory</Filter>
+    <ClInclude Include="sdk\IEntityList.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="luaShared.h" />
-    <ClInclude Include="NetVarDumper.h">
-      <Filter>Source\Netvars</Filter>
+    <ClInclude Include="sdk\IGameEventManager.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="thread.h">
-      <Filter>Source\Helpers</Filter>
+    <ClInclude Include="sdk\ihandleentity.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="NetvarManager.h">
-      <Filter>Source\Netvars</Filter>
+    <ClInclude Include="sdk\IInputSystem.h">
+      <Filter>Source\GmodSDK</Filter>
     </ClInclude>
+    <ClInclude Include="sdk\Interface.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\ISurface.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\IVEngineClient.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\IViewRenderBeams.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\mem.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\memalloc.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\platform.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\Recv.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\basetypes.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\bitbuf.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\C_BaseEntity.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\C_GMOD_Player.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\CBaseHandle.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\CGlobalVarsBase.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\characterset.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\CHudChat.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\CInput.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\ClientClass.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\clientrenderhandle.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\Convar.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\CViewRender.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\EngineNetworking.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\IAppSystem.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\IBaseClientDLL.h">
+      <Filter>Source\GmodSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="core\dx.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\globals.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="detours.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -624,9 +636,6 @@
     <Filter Include="Source\Libraries\Lua">
       <UniqueIdentifier>{57654dde-0079-42b3-b096-aa7037224b33}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Render">
-      <UniqueIdentifier>{febcae69-df14-410a-b076-a692fc05d392}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\GmodSDK">
       <UniqueIdentifier>{71bbfd46-c04e-4f5b-835a-0556c8b6cdeb}</UniqueIdentifier>
     </Filter>
@@ -641,6 +650,15 @@
     </Filter>
     <Filter Include="Source\Netvars">
       <UniqueIdentifier>{f9cea3ea-44e4-489a-b52c-5b70c8e11dc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core">
+      <UniqueIdentifier>{a7991d07-16ae-41a4-9f3f-3efdeabd1c89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Gmod">
+      <UniqueIdentifier>{9cfd1f79-49ad-4fec-9091-70f831b371dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\UtlBuffer">
+      <UniqueIdentifier>{f91bfa75-102c-4463-b550-faca01bbf8c3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

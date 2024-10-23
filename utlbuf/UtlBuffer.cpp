@@ -14,7 +14,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <limits.h>
-#include "../characterset.h"
+#include "../sdk/characterset.h"
 
 const char* V_strnchr(const char* pStr, char c, int n)
 {
