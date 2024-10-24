@@ -7,6 +7,11 @@
 class Vector;
 class QAngle;
 
+namespace lua
+{
+	class ILuaInterface;
+}
+
 namespace Hooks 
 {
 	namespace Indexes
@@ -54,7 +59,7 @@ namespace Hooks
 		namespace ILuaInterface 
 		{
 			constexpr auto RunString = 92;
-			constexpr auto RunStringEx = 112;
+			constexpr auto RunStringEx = 111;
 			constexpr auto CompileString = 117;
 		}
 	}
@@ -62,12 +67,41 @@ namespace Hooks
 	void Init();
 	void Destroy();
 
+	// Hook / unhook lua.
+	void CheckLua();
+
+	// Special methods to hook & unhook lua states when they become available / stop being available.
+	void InitLuaClient(lua::ILuaInterface* pInterface);
+	void InitLuaServer(lua::ILuaInterface* pInterface);
+	void InitLuaMenu(lua::ILuaInterface* pInterface);
+
+	void DestroyLuaClient();
+	void DestroyLuaServer();
+	void DestroyLuaMenu();
+
+	void DestroyLua();
+
+	// Is the client state interface ready?
+	lua::ILuaInterface* IsLuaClientReady();
+	
+	// Is the server state interface ready?
+	lua::ILuaInterface* IsLuaServerReady();
+
+	// Is the menu state interface ready?
+	lua::ILuaInterface* IsLuaMenuReady();
+
+	// Get the appropriate hook manager for the given interface.
+	VirtualFunctionHook GetLuaHookmanForInterface(lua::ILuaInterface* pInterface);
+
 	extern VirtualFunctionHook direct3d_hook;
 	extern VirtualFunctionHook client_hook;
 	extern VirtualFunctionHook surface_hook;
 	extern VirtualFunctionHook viewrender_hook;
 	extern VirtualFunctionHook localplayer_hook;
-	extern VirtualFunctionHook luainterface_hook;
+
+	extern VirtualFunctionHook lua_clientinterface_hook;
+	extern VirtualFunctionHook lua_serverinterface_hook;
+	extern VirtualFunctionHook lua_menuinterface_hook;
 
 	extern QAngle qCurrentAngle;
 	extern HWND	GMODWindow;

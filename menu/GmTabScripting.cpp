@@ -1,5 +1,6 @@
 #include "GmTabScripting.h"
 #include "GmMenu.h"
+#include "GmMenuPopup.h"
 
 #include "../core/luamanager.h"
 #include "../core/luabindings.h"
@@ -7,7 +8,7 @@
 
 #include "../sdk/IVEngineClient.h"
 #include "../gmod/luaShared.h"
-#include "../hacks/lua.h"
+#include "../hacks/lualog.h"
 
 GmTabScripting::GmTabScripting(std::string s, ImFont* f) : MenuTab(TABID_SCRIPTING, s, f) { }
 GmTabScripting::~GmTabScripting() { }
@@ -25,7 +26,7 @@ void GmTabScripting::DrawPage() {
 
 	ImGui::PushFont(GmMenu::Get().NormalFont);
 	{
-		ImGui::Text("Recent Scripts");
+		/*ImGui::Text("Recent Scripts");
 		ImGui::BeginChildFrame(0x13371337, ImVec2(iFrameX / 2, 75));
 		{
 			const auto fileNames = LuaLog::Get().listFileNames();
@@ -38,9 +39,9 @@ void GmTabScripting::DrawPage() {
 				}
 			}
 		}
-		ImGui::EndChildFrame();
+		ImGui::EndChildFrame();*/
 		
-		/*ImGui::BeginChildFrame(0x13371337, ImVec2(iFrameX / 2, 75));
+		ImGui::BeginChildFrame(0x13371337, ImVec2(iFrameX / 2, 75));
 		{
 			ImGui::PushItemWidth(150.f);
 			{
@@ -82,8 +83,36 @@ void GmTabScripting::DrawPage() {
 					g_pLuaScripts->SaveScript(std::string(script_name), code);
 				}
 			}
+
+			if (ImGui::Button(_("Show RunString Scripts")))
+			{
+				g_pMenuPopups->NewPopup("RunString Scripts", [](GmMenuPopup* pThis) {
+					const auto scripts = LuaLog::Get().listFileNames();
+				
+					if (ImGui::TreeNode("Script list"))
+					{
+						for (int i = 0; i < scripts.size(); i++)
+						{
+							if (i == 0)
+								ImGui::SetNextItemOpen(true, ImGuiCond_Once);
+
+							if (ImGui::TreeNode((void*)(intptr_t)i, LuaLog::Get().getItem(i)->m_label.c_str(), i))
+							{
+								if (ImGui::SmallButton("Show Source"))
+								{
+									static int id = 0x1332123;
+									
+									g_pMenuPopups->m_vecPopupList.push_back(new GmMenuLuaEditorPopup(id++, LuaLog::Get().getItem(i)->m_label, LuaLog::Get().getItem(i)->m_szLuaString));
+								}
+								ImGui::TreePop();
+							}
+						}
+						ImGui::TreePop();
+					}
+				});
+			}
 		}
-		ImGui::EndChildFrame();*/
+		ImGui::EndChildFrame();
 	}
 	ImGui::PopFont();
 

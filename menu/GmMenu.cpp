@@ -89,6 +89,7 @@ void GmMenu::Render() {
 
 	if (this->m_bMenuOpen && GmMenu::Get().m_bRunning) {
 		g_pMenuPopups->DrawAll();
+		ImGui::ShowDemoWindow();
 
 		ImGui::SetNextWindowSize(ScriptMenuSize, ImGuiCond_Once);
 		ImGui::SetNextWindowPos(ImVec2((screenSize.x / 2) - (ScriptMenuSize.x / 2), (screenSize.y / 2) - (ScriptMenuSize.x / 2)));

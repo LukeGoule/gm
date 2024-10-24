@@ -2,7 +2,9 @@
 
 #include "../hooks.h"
 #include "../../helpers/utils.h"
-#include "../../hacks/lua.h"
+#include "../../hacks/lualog.h"
+
+#include "../../gmod/luaShared.h"
 
 namespace Hooks 
 {
@@ -13,9 +15,8 @@ namespace Hooks
 
 	bool __fastcall hkRunString(lua::ILuaInterface* pThis, void* _edx, const char* szFileName, const char* szFilePath, const char* szLuaString, bool bRun, bool bShowErrors) 
 	{
-		static decltype(&hkRunString) oRunString = luainterface_hook.get_original<decltype(&hkRunString)>(Hooks::Indexes::ILuaInterface::RunString);
+		static decltype(&hkRunString) oRunString = GetLuaHookmanForInterface(pThis).get_original<decltype(&hkRunString)>(Hooks::Indexes::ILuaInterface::RunString);
 		onRunString(pThis, _edx, szFileName, szFilePath, szLuaString, bRun, bShowErrors);
 		return oRunString(pThis, _edx, szFileName, szFilePath, szLuaString, bRun, bShowErrors);
 	}
-
 }

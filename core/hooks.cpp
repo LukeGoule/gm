@@ -63,7 +63,10 @@ namespace Hooks {
 	VirtualFunctionHook surface_hook;
 	VirtualFunctionHook viewrender_hook;
 	VirtualFunctionHook localplayer_hook;
-	VirtualFunctionHook luainterface_hook;
+
+	VirtualFunctionHook lua_clientinterface_hook;
+	VirtualFunctionHook lua_serverinterface_hook;
+	VirtualFunctionHook lua_menuinterface_hook;
 
 	HWND GMODWindow;
 	WNDPROC OriginalWNDProc;
@@ -88,7 +91,7 @@ namespace Hooks {
 		}
 
 		// TODO: This needs to be re-written so we can run hooks in the menu / on game load, rather than on map load.
-		while (!g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT));
+		//while (!g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT));
 
 		// Setup ImGui
 		ImGui::CreateContext();
@@ -104,13 +107,10 @@ namespace Hooks {
 		g_pNetvars = std::make_unique<NetvarDumper>();
 		g_pNetvarManager = new NetvarManager;
 
-		auto l_cl = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
-
 		direct3d_hook.setup(g_pD3DDevice9);
 		client_hook.setup(g_pClientDLL);
 		surface_hook.setup(g_pSurface);
 		viewrender_hook.setup(g_pViewRender);
-		luainterface_hook.setup(l_cl);
 
 		direct3d_hook.hook_index(Hooks::Indexes::IDirect3DDevice9::EndScene, hkEndScene);
 		direct3d_hook.hook_index(Hooks::Indexes::IDirect3DDevice9::Reset, hkReset);
@@ -118,10 +118,6 @@ namespace Hooks {
 		client_hook.hook_index(Hooks::Indexes::IBaseClientDLL::FrameStageNotify, hkFrameStageNotify);
 		surface_hook.hook_index(Hooks::Indexes::ISurface::LockCursor, hkLockCursor);
 		viewrender_hook.hook_index(Hooks::Indexes::IViewRender::Render, hkViewRender_Render);
-
-		luainterface_hook.hook_index(Hooks::Indexes::ILuaInterface::RunString, hkRunString);
-		luainterface_hook.hook_index(Hooks::Indexes::ILuaInterface::RunStringEx, hkRunStringEx);
-		luainterface_hook.hook_index(Hooks::Indexes::ILuaInterface::CompileString, hkCompileString);
 
 		TrueCalcView = (uintptr_t*)Utils::PatternScan(GetModuleHandleA("client.dll"), CALCVIEW_PATTERN);
 
@@ -149,7 +145,8 @@ namespace Hooks {
 		client_hook.unhook_all();
 		surface_hook.unhook_all();
 		viewrender_hook.unhook_all();
-		luainterface_hook.unhook_all();
+
+		DestroyLua();
 
 		DetourTransactionBegin();
 		DetourUpdateThread(GetCurrentThread());
@@ -164,6 +161,158 @@ namespace Hooks {
 
 		SetWindowLongPtr(GMODWindow, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(OriginalWNDProc));
 	}
+
+	lua::ILuaInterface* pClient = nullptr;
+	lua::ILuaInterface* pServer = nullptr;
+	lua::ILuaInterface* pMenu = nullptr;
+
+	void CheckLua()
+	{
+		if (pClient != Hooks::IsLuaClientReady())
+		{
+			if (Hooks::lua_clientinterface_hook.class_base)
+			{
+				Hooks::DestroyLuaClient();
+				Utils::ConsolePrint("ILuaInterface - Old client (0x%p) unhooked.\n", pClient);
+			}
+
+			pClient = Hooks::IsLuaClientReady();
+
+			if (pClient)
+			{
+				Hooks::InitLuaClient(pClient);
+				Utils::ConsolePrint("ILuaInterface - Client hooked - 0x%p\n", pClient);
+			}
+		}
+
+		if (pServer != Hooks::IsLuaServerReady())
+		{
+			if (Hooks::lua_serverinterface_hook.class_base)
+			{
+				Hooks::DestroyLuaServer();
+				Utils::ConsolePrint("ILuaInterface - Old server (0x%p) unhooked.\n", pServer);
+			}
+
+			pServer = Hooks::IsLuaServerReady();
+
+			if (pServer)
+			{
+				Hooks::InitLuaServer(pServer);
+				Utils::ConsolePrint("ILuaInterface - Server hooked - 0x%p\n", pServer);
+			}
+
+		}
+
+		if (pMenu != Hooks::IsLuaMenuReady())
+		{
+			if (Hooks::lua_menuinterface_hook.class_base)
+			{
+				Hooks::DestroyLuaMenu();
+				Utils::ConsolePrint("ILuaInterface - Old menu (0x%p) unhooked.\n", pMenu);
+			}
+
+			pMenu = Hooks::IsLuaMenuReady();
+
+			if (pMenu)
+			{
+				Hooks::InitLuaMenu(pMenu);
+				Utils::ConsolePrint("ILuaInterface - Menu hooked - 0x%p\n", pMenu);
+			}
+		}
+	}
+
+	void InitLuaClient(lua::ILuaInterface* pInterface)
+	{
+		lua_clientinterface_hook.setup(pInterface);
+		lua_clientinterface_hook.hook_index(Hooks::Indexes::ILuaInterface::RunString, hkRunString);
+		lua_clientinterface_hook.hook_index(Hooks::Indexes::ILuaInterface::RunStringEx, hkRunStringEx);
+		//lua_clientinterface_hook.hook_index(Hooks::Indexes::ILuaInterface::CompileString, hkCompileString);
+	}
+
+	void InitLuaServer(lua::ILuaInterface* pInterface)
+	{
+		lua_serverinterface_hook.setup(pInterface);
+		lua_serverinterface_hook.hook_index(Hooks::Indexes::ILuaInterface::RunString, hkRunString);
+		lua_serverinterface_hook.hook_index(Hooks::Indexes::ILuaInterface::RunStringEx, hkRunStringEx);
+		//lua_serverinterface_hook.hook_index(Hooks::Indexes::ILuaInterface::CompileString, hkCompileString);
+	}
+
+	void InitLuaMenu(lua::ILuaInterface* pInterface)
+	{
+		lua_menuinterface_hook.setup(pInterface);
+		lua_menuinterface_hook.hook_index(Hooks::Indexes::ILuaInterface::RunString, hkRunString);
+		lua_menuinterface_hook.hook_index(Hooks::Indexes::ILuaInterface::RunStringEx, hkRunStringEx);
+		//lua_menuinterface_hook.hook_index(Hooks::Indexes::ILuaInterface::CompileString, hkCompileString);
+	}
+
+	void DestroyLuaClient()
+	{
+		lua_clientinterface_hook.unhook_all();
+	}
+
+	void DestroyLuaServer()
+	{
+		lua_serverinterface_hook.unhook_all();
+	}
+
+	void DestroyLuaMenu()
+	{
+		lua_menuinterface_hook.unhook_all();
+	}
+
+	void DestroyLua()
+	{
+		DestroyLuaClient();
+		DestroyLuaServer();
+		DestroyLuaMenu();
+	}
+
+	lua::ILuaInterface* IsLuaClientReady()
+	{
+		return g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+	}
+
+	lua::ILuaInterface* IsLuaServerReady()
+	{
+		return g_pLuaShared->GetLuaInterface(LUAINTERFACE_SERVER);
+	}
+
+	lua::ILuaInterface* IsLuaMenuReady()
+	{
+		return g_pLuaShared->GetLuaInterface(LUAINTERFACE_MENU);
+	}
+
+	VirtualFunctionHook GetLuaHookmanForInterface(lua::ILuaInterface* pInterface)
+	{
+		if (!pInterface)
+		{
+			throw new std::exception{ 
+				"pInterface is null" 
+			};
+		}
+
+		if (pInterface->IsClient())
+		{
+			return lua_clientinterface_hook;
+		}
+		else if (pInterface->IsServer())
+		{
+			return lua_serverinterface_hook;
+		}
+		else if (pInterface->IsMenu())
+		{
+			return lua_menuinterface_hook;
+		}
+
+		if (!pInterface)
+		{
+			throw new std::exception{
+				"pInterface is not client, server or menu?"
+			};
+		}
+	}
+
+
 
 	// interestingly - this actually works, but since beams::CreateBeam doesn't work it don't matter :(
 	using fnSetBeamCreationAllowed = void (__fastcall*)(bool state);
