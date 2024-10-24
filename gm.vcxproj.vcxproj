@@ -86,7 +86,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(DXSDK_DIR)Include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <PreprocessorDefinitions>_WINDLL;_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDLL;_RELEASE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -106,6 +106,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
+      <PreprocessorDefinitions>_WINDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(DXSDK_DIR)Lib\x86;detours</AdditionalLibraryDirectories>
@@ -163,7 +164,7 @@
     <ClCompile Include="hacks\beams.cpp" />
     <ClCompile Include="hacks\esp.cpp" />
     <ClCompile Include="hacks\events.cpp" />
-    <ClCompile Include="hacks\lua.cpp" />
+    <ClCompile Include="hacks\lualog.cpp" />
     <ClCompile Include="hacks\recoil.cpp" />
     <ClCompile Include="helpers\math.cpp" />
     <ClCompile Include="helpers\md5.cpp" />
@@ -259,7 +260,7 @@
     <ClInclude Include="hacks\beams.h" />
     <ClInclude Include="hacks\esp.h" />
     <ClInclude Include="hacks\events.h" />
-    <ClInclude Include="hacks\lua.h" />
+    <ClInclude Include="hacks\lualog.h" />
     <ClInclude Include="hacks\recoil.h" />
     <ClInclude Include="helpers\color.h" />
     <ClInclude Include="helpers\math.h" />

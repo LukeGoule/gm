@@ -53,7 +53,15 @@ DWORD WINAPI OnDllAttach(PVOID base) {
 
 	Hooks::Init();
 
-	while (GmMenu::Get().m_bRunning);
+	lua::ILuaInterface* pClient = nullptr;
+	lua::ILuaInterface* pServer = nullptr;
+	lua::ILuaInterface* pMenu = nullptr;
+
+	while (GmMenu::Get().m_bRunning)
+	{
+		Hooks::CheckLua();
+		Sleep(1000);
+	}
 
 	Hooks::Destroy();
 	Utils::DetachConsole();

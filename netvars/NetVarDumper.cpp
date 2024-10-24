@@ -95,7 +95,7 @@ std::string NetvarDumper::getOutputFolder()
 
 	if (documentsPath) {
 		std::string documentsPathStr(documentsPath);
-		documentsPathStr += "\\Documents\\";
+		documentsPathStr += "\\Documents\\gmod";
 		return documentsPathStr;
 	}
 

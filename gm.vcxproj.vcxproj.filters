@@ -264,7 +264,7 @@
     <ClCompile Include="core\hooks\wndproc.cpp">
       <Filter>Source\Core\Hooks</Filter>
     </ClCompile>
-    <ClCompile Include="hacks\lua.cpp">
+    <ClCompile Include="hacks\lualog.cpp">
       <Filter>Source\Hacks</Filter>
     </ClCompile>
     <ClCompile Include="core\hooks\runstringex.cpp">
@@ -676,7 +676,7 @@
     <ClInclude Include="core\hooks\wndproc.h">
       <Filter>Source\Core\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="hacks\lua.h">
+    <ClInclude Include="hacks\lualog.h">
       <Filter>Source\Hacks</Filter>
     </ClInclude>
     <ClInclude Include="core\hooks\runstringex.h">
