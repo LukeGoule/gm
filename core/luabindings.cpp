@@ -5,7 +5,7 @@
 #include "../menu/GMMenu.h"
 #include "../helpers/obfs.h"
 #include "../hacks/aimbot.h"
-#include "../sdk/C_BaseEntity.h"
+#include "../sdk/c_baseentity.h"
 #include "../helpers/md5.h"
 #include "../sdk/CInput.h"
 

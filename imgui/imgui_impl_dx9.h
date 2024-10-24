@@ -12,7 +12,7 @@
 #pragma once
 #include "imgui.h"      // IMGUI_IMPL_API
 
-IMGUI_IMPL_API bool     ImGui_ImplDX9_Init(void* device);
+IMGUI_IMPL_API bool     ImGui_ImplDX9_Init(LPDIRECT3DDEVICE9 device);
 IMGUI_IMPL_API void     ImGui_ImplDX9_Shutdown();
 IMGUI_IMPL_API void     ImGui_ImplDX9_NewFrame();
 IMGUI_IMPL_API void     ImGui_ImplDX9_RenderDrawData(ImDrawData* draw_data);

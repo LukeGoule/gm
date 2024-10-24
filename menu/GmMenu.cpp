@@ -1,3 +1,5 @@
+#include "../core/dx.h"
+
 #include "GMMenu.h"
 #include "GmMenuPopup.h"
 
@@ -25,7 +27,6 @@
 #include "../core/imgui_custom.h"
 #include "../core/luamanager.h"
 #include "../core/luabindings.h"
-#include "../core/dx.h"
 
 #include <vector>
 #include <unordered_map>
@@ -67,6 +68,8 @@ void GmMenu::Setup()
 }
 
 void GmMenu::DrawWatermark() {
+	if (!g_Options.bDrawWaterMark) return;
+
 	std::string watermark = _("GM");
 
 	/*
@@ -137,7 +140,7 @@ void GmMenu::SetupStyle() {
 	style->GrabMinSize			= 1.0f;
 	style->GrabRounding			= 0.0f;
 
-	auto clr = o.vecMenuColorScheme;
+	auto clr = g_Options.vecMenuColorScheme;
 
 	auto ttff = 10.f / 255.f; // ten two five five.
 	auto ButtonColor			= clr;

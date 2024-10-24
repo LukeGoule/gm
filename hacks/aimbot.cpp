@@ -11,7 +11,7 @@
 #include "../sdk/CInput.h"
 #include "../sdk/ClientClass.h"
 #include "../sdk/IVEngineClient.h"
-#include "../sdk/C_BaseEntity.h"
+#include "../sdk/c_baseentity.h"
 #include "../sdk/CGlobalVarsBase.h"
 
 #include "../imgui/imgui.h"
@@ -46,7 +46,7 @@ void Aimbot::CreateMove(CUserCmd* pCmd) {
 	if (!pCmd)
 		return;
 
-	if (!o.bAimMasterEnabled)
+	if (!g_Options.bAimMasterEnabled)
 		return;
 
 	if (!g_pEngineClient || !g_pEngineClient->IsInGame())
@@ -75,7 +75,7 @@ void Aimbot::CreateMove(CUserCmd* pCmd) {
 
 	this->DoAimbot(pCmd);
 	
-	if (o.bAimRemoveSpread) {
+	if (g_Options.bAimRemoveSpread) {
 		this->RemoveSpread(pCmd);
 		this->RemoveKickDeviation(pCmd);
 	}
@@ -88,7 +88,7 @@ void Aimbot::CreateMove(CUserCmd* pCmd) {
 void Aimbot::DoAimbot(CUserCmd* pCmd) {
 	TargetData_t* pTarg = nullptr;
 
-	if (!o.bAimAutofire) {
+	if (!g_Options.bAimAutofire) {
 		if (!(pCmd->buttons & IN_ATTACK)) {
 			return;
 		}
@@ -104,7 +104,7 @@ void Aimbot::DoAimbot(CUserCmd* pCmd) {
 		return;
 	}
 
-	if (o.bAimAutofire) {
+	if (g_Options.bAimAutofire) {
 		pCmd->buttons |= IN_ATTACK;
 	}
 
@@ -370,14 +370,14 @@ Aimbot::TargetData_t* Aimbot::FindBestTarget() {
 	if (pTempEntity) {
 		pTarget->pEntity = pTempEntity;
 
-		o.pCurrentTarget = (void*)pTarget->pEntity;
+		g_Options.pCurrentTarget = (void*)pTarget->pEntity;
 	}
 
 	if (pTarget && pTarget->pEntity) {
 		// We have a target
 
 		Vector vecOurEyePos = g_pLocalPlayer->GetEyePos();
-		Vector vecTheirEyePos = pTarget->pEntity->GetBonePos(o.iTargetBoneID); //pTarget->pEntity->GetEyePos();
+		Vector vecTheirEyePos = pTarget->pEntity->GetBonePos(g_Options.iTargetBoneID); //pTarget->pEntity->GetEyePos();
 
 		pTarget->angTargetHead = this->CalcAngle(vecOurEyePos, vecTheirEyePos);
 
@@ -389,7 +389,7 @@ Aimbot::TargetData_t* Aimbot::FindBestTarget() {
 	else {
 		// No target, tell the aimbot::createmove to do nothing.
 
-		o.pCurrentTarget = nullptr;
+		g_Options.pCurrentTarget = nullptr;
 
 		return nullptr;
 	}

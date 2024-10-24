@@ -1,4 +1,4 @@
-#include "C_BaseEntity.h"
+#include "c_baseentity.h"
 
 float GetWeaponSpread(C_BaseCombatWeapon* pWeapon)
 {

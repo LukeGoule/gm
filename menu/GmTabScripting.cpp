@@ -7,6 +7,7 @@
 
 #include "../sdk/IVEngineClient.h"
 #include "../gmod/luaShared.h"
+#include "../hacks/lua.h"
 
 GmTabScripting::GmTabScripting(std::string s, ImFont* f) : MenuTab(TABID_SCRIPTING, s, f) { }
 GmTabScripting::~GmTabScripting() { }
@@ -24,7 +25,22 @@ void GmTabScripting::DrawPage() {
 
 	ImGui::PushFont(GmMenu::Get().NormalFont);
 	{
+		ImGui::Text("Recent Scripts");
 		ImGui::BeginChildFrame(0x13371337, ImVec2(iFrameX / 2, 75));
+		{
+			const auto fileNames = LuaLog::Get().listFileNames();
+
+			for (size_t i = 0; i < fileNames.size(); i++)
+			{
+				if (ImGui::Button(fileNames[i]))
+				{
+					GmMenu::Get().editor->SetText(LuaLog::Get().getItem(i)->m_szLuaString.c_str());
+				}
+			}
+		}
+		ImGui::EndChildFrame();
+		
+		/*ImGui::BeginChildFrame(0x13371337, ImVec2(iFrameX / 2, 75));
 		{
 			ImGui::PushItemWidth(150.f);
 			{
@@ -67,7 +83,7 @@ void GmTabScripting::DrawPage() {
 				}
 			}
 		}
-		ImGui::EndChildFrame();
+		ImGui::EndChildFrame();*/
 	}
 	ImGui::PopFont();
 

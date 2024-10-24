@@ -1,22 +1,12 @@
 #include "dx.h"
 
-#pragma warning(push)
-#pragma warning(disable:26495)
-#include <d3d9.h>
-#include <d3dx9.h>
-#pragma warning(pop)
-
-CFont::CFont(void* pDevice, int iFontSize, const char* pszTypeface) {
+CFont::CFont(LPDIRECT3DDEVICE9 pDevice, int iFontSize, const char* pszTypeface) {
     this->m_pDevice     = pDevice;
     this->m_iFontSize   = iFontSize;
     this->m_pszTypeface = pszTypeface;
 
-    LPD3DXFONT* pFont = nullptr;
-
-    LPDIRECT3DDEVICE9 pDevice2 = (LPDIRECT3DDEVICE9)pDevice;
-
     D3DXCreateFontA(
-        pDevice2, 
+        this->m_pDevice,
         iFontSize, 0,                   // h / w
         FW_NORMAL,                      // weight
         1,                              // MIP levels
@@ -26,12 +16,11 @@ CFont::CFont(void* pDevice, int iFontSize, const char* pszTypeface) {
         ANTIALIASED_QUALITY,            // Quality
         DEFAULT_PITCH | FF_DONTCARE,    // Pitch & Family
         pszTypeface,                    // Typeface
-        pFont);
-
-    this->m_pFont = pFont;
+        &this->m_pFont);
 }
 
-void CFont::Render(int x, int y, DWORD u32Color, CFont_Flags Flags, const char* pszFormat, ...) {
+void CFont::Render(int x, int y, D3DCOLOR u32Color, CFont_Flags Flags, const char* pszFormat, ...) 
+{
     if (!this->m_pFont) return;
 
     char buf[1024] = { '\0' };
@@ -48,13 +37,11 @@ void CFont::Render(int x, int y, DWORD u32Color, CFont_Flags Flags, const char* 
         x = x - (tw / 2);
     }
 
-    const auto font = (LPD3DXFONT)this->m_pFont;
-
     if (Flags & F_DROPSHADOW) {
-        font->DrawTextA(NULL, buf, -1, new RECT{ x+1, y+1, x + tw+1, y + this->m_iFontSize+1 }, DT_NOCLIP, 0xFF000000);
+        this->m_pFont->DrawTextA(NULL, buf, -1, new RECT{ x+1, y+1, x + tw+1, y + this->m_iFontSize+1 }, DT_NOCLIP, 0xFF000000);
     }
 
-    font->DrawTextA(NULL, buf, -1, FontPos, DT_NOCLIP, u32Color);
+    this->m_pFont->DrawTextA(NULL, buf, -1, FontPos, DT_NOCLIP, u32Color);
 }
 
 int CFont::MeasureStringWidth(const char* szText, void* pFont) {
@@ -72,15 +59,16 @@ int CFont::MeasureStringWidth(const char* szText, void* pFont) {
 
 CDraw::CDraw() {}
 
-CDraw::CDraw(void* Device) {
-    this->m_pDevice = Device;
+CDraw::CDraw(LPDIRECT3DDEVICE9 pDevice)
+{
+    this->m_pDevice = pDevice;
 }
 
 CDraw::~CDraw() {
 
 }
 
-void CDraw::Box(int x, int y, int w, int h, DWORD Color)
+void CDraw::Box(int x, int y, int w, int h, D3DCOLOR Color)
 {
     struct Vertex
     {
@@ -89,16 +77,14 @@ void CDraw::Box(int x, int y, int w, int h, DWORD Color)
     }
     V[4] = { {(float)x, (float)y + (float)h, 0.0f, 0.0f, Color}, { (float)x, (float)y, 0.0f, 0.0f, Color }, { (float)x + (float)w, (float)y + (float)h, 0.0f, 0.0f, Color }, { (float)x + (float)w, (float)y, 0.0f, 0.0f, Color } };
 
-    LPDIRECT3DDEVICE9 pDevice = (LPDIRECT3DDEVICE9)this->m_pDevice;
-
-    pDevice->SetTexture(0, NULL);
-    pDevice->SetPixelShader(0);
-    pDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
-    pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
-    pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
-    pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
-    pDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, V, sizeof(Vertex));
+    this->m_pDevice->SetTexture(0, NULL);
+    this->m_pDevice->SetPixelShader(0);
+    this->m_pDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
+    this->m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
+    this->m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+    this->m_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
+    this->m_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+    this->m_pDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, V, sizeof(Vertex));
 }
 
 void CDraw::Triangle(int x0, int y0, int x1, int y1, int x2, int y2, DWORD Color) {

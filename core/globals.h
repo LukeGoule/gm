@@ -20,7 +20,7 @@ class IInputSystem;
 class CViewRender;
 class CGlobalVarsBase;
 
-//struct IDirect3DDevice9;
+struct IDirect3DDevice9;
 struct lua_State;
 
 namespace lua {
@@ -28,7 +28,7 @@ namespace lua {
 }
 
 // All defined within sdk.cpp
-extern void* g_pD3DDevice9;
+extern IDirect3DDevice9*	g_pD3DDevice9;
 extern IBaseClientDLL*		g_pClientDLL;
 extern IVEngineClient*		g_pEngineClient;
 extern IEntityList*			g_pEntityList;
