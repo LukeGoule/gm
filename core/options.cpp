@@ -1,2 +1,2 @@
 #include "options.h"
-options o;
+options g_Options;

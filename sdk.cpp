@@ -1,3 +1,5 @@
+#include "core/dx.h"
+
 #include "sdk.h"
 
 #include "core/globals.h"
@@ -11,7 +13,7 @@
 #include "sdk/CInput.h"
 #include "sdk/IClientMode.h"
 
-#include "sdk/C_BaseEntity.h"
+#include "sdk/c_baseentity.h"
 #include "sdk/IViewRenderBeams.h"
 #include "sdk/IGameEventManager.h"
 #include "sdk/IInputSystem.h"
@@ -24,7 +26,7 @@
 #include "gmod/luaShared.h"
 #include "lua_source/lua.hpp"
 
-void*	g_pD3DDevice9	= nullptr;
+LPDIRECT3DDEVICE9	g_pD3DDevice9	= nullptr;
 IBaseClientDLL*		g_pClientDLL	= nullptr;
 IVEngineClient*		g_pEngineClient = nullptr;
 IEntityList*		g_pEntityList	= nullptr;
@@ -97,7 +99,7 @@ void SDK::InitInterfaces()
 	g_pModelInfo = interface_get<IVModelInfo>(engine, MODEL_INFO_VERSION);
 
 	g_pInput = **reinterpret_cast<CInput***>(Utils::PatternScan(client, CINPUT_PATTERN) + 0x2);
-	g_pD3DDevice9 = **reinterpret_cast<void***>(Utils::PatternScan(dx9api, D3DDEVICE_PATTERN) + 0x1);
+	g_pD3DDevice9 = **reinterpret_cast<LPDIRECT3DDEVICE9**>(Utils::PatternScan(dx9api, D3DDEVICE_PATTERN) + 0x1);
 	g_pClientMode = *reinterpret_cast<IClientMode**>(Utils::PatternScan(client, CLIENTMODE_PATTERN) + 0x2);
 	g_pBeams = **reinterpret_cast<IViewRenderBeams***>(Utils::PatternScan(client, BEAMS_PATTERN) + 0x8);
 	g_pViewRender = **reinterpret_cast<CViewRender***>(Utils::PatternScan(client, VIEWRENDER_PATTERN) + 0x2);
@@ -105,7 +107,6 @@ void SDK::InitInterfaces()
 }
 
 void SDK::DumpInterfaces() {
-	//DUMP_IFACE(IDirect3DDevice9, g_pD3DDevice9);
 	DUMP_IFACE(IBaseClientDLL, g_pClientDLL);
 	DUMP_IFACE(IVEngineClient, g_pEngineClient);
 	DUMP_IFACE(IEntityList, g_pEntityList);

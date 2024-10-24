@@ -9,6 +9,13 @@
 #include "menu/GMMenu.h"
 #include "helpers/thread.h"
 
+// Note: always include these lines prior to including any headers that use DX functionality.
+#pragma warning(push)
+#pragma warning(disable:26495)
+#include <d3d9.h>
+#include <d3dx9.h>
+#pragma warning(pop)
+
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_dx9.h"
 

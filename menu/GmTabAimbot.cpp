@@ -9,16 +9,16 @@ void GmTabAimbot::DrawSideBar() { }
 void GmTabAimbot::DrawPage() {
 	ImGui::PushFont(GmMenu::Get().NormalFont);
 	{
-		ImGui::Checkbox("Aimbot Master Switch", &o.bAimMasterEnabled);
+		ImGui::Checkbox("Aimbot Master Switch", &g_Options.bAimMasterEnabled);
 		ImGui::Spacing();
-		ImGui::Checkbox("Silent Aim", &o.bAimSilent);
-		ImGui::Checkbox("Nospread", &o.bAimRemoveSpread);
-		ImGui::Checkbox("Autoshoot", &o.bAimAutofire);
+		ImGui::Checkbox("Silent Aim", &g_Options.bAimSilent);
+		ImGui::Checkbox("Nospread", &g_Options.bAimRemoveSpread);
+		ImGui::Checkbox("Autoshoot", &g_Options.bAimAutofire);
 		ImGui::Spacing();
-		ImGui::Checkbox("Target Players", &o.bAimTargetPlayers);
-		ImGui::Checkbox("Target NPCs", &o.bAimTargetNPCs);
+		ImGui::Checkbox("Target Players", &g_Options.bAimTargetPlayers);
+		ImGui::Checkbox("Target NPCs", &g_Options.bAimTargetNPCs);
 		ImGui::Spacing();
-		ImGui::SliderInt("Target Bone ID", &o.iTargetBoneID, 0, 128);
+		ImGui::SliderInt("Target Bone ID", &g_Options.iTargetBoneID, 0, 128);
 	}
 	ImGui::PopFont();
 }

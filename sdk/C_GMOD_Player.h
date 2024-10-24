@@ -1,6 +1,6 @@
 #pragma once
 
-#include "C_BaseEntity.h"
+#include "c_baseentity.h"
 
 #include "../helpers/vector.h"
 #include "../helpers/qangle.h"

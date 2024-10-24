@@ -75,7 +75,7 @@ int Combo::Draw(std::string label, bool doLabel) {
 	spacing = style.ItemInnerSpacing.x;
 	button_sz = ImGui::GetFrameHeight();
 
-	ImGui::PushStyleColor(ImGuiCol_FrameBg, o.vecMenuColorScheme);
+	ImGui::PushStyleColor(ImGuiCol_FrameBg, g_Options.vecMenuColorScheme);
 	if (ImGui::BeginCombo(this->combo_id.c_str(), current_item.c_str(), ImGuiComboFlags_NoArrowButton))
 	{
 		for (size_t n = 0; n < this->items.size(); n++)
@@ -104,7 +104,7 @@ int Combo::Draw(std::string label, bool doLabel) {
 }
 
 void CustomSliderInt(std::string s, int* mod, int min, int max, const char* format) {
-	ImGui::PushStyleColor(ImGuiCol_FrameBg, o.vecMenuColorScheme);
+	ImGui::PushStyleColor(ImGuiCol_FrameBg, g_Options.vecMenuColorScheme);
 	{
 		ImGui::SliderInt(s.c_str(), mod, min, max, format);
 	}
@@ -112,7 +112,7 @@ void CustomSliderInt(std::string s, int* mod, int min, int max, const char* form
 }
 
 void CustomTextEntry(std::string s, char* buf, size_t buf_size) {
-	ImGui::PushStyleColor(ImGuiCol_FrameBg, o.vecMenuColorScheme);
+	ImGui::PushStyleColor(ImGuiCol_FrameBg, g_Options.vecMenuColorScheme);
 	{
 		ImGui::InputText(s.c_str(), buf, buf_size);
 	}

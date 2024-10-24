@@ -225,7 +225,7 @@
     <ClCompile Include="sdk\IVEngineClient.cpp">
       <Filter>Source\GmodSDK</Filter>
     </ClCompile>
-    <ClCompile Include="sdk\C_BaseEntity.cpp">
+    <ClCompile Include="sdk\c_baseentity.cpp">
       <Filter>Source\GmodSDK</Filter>
     </ClCompile>
     <ClCompile Include="sdk\characterset.cpp">
@@ -236,6 +236,42 @@
     </ClCompile>
     <ClCompile Include="core\dx.cpp">
       <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\calcview.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\createmove.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\endscene.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\framestagenotify.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\lockcursor.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\reset.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\runstring.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\viewrender.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\wndproc.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="hacks\lua.cpp">
+      <Filter>Source\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\runstringex.cpp">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="core\hooks\compilestring.cpp">
+      <Filter>Source\Core\Hooks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -564,7 +600,7 @@
     <ClInclude Include="sdk\bitbuf.h">
       <Filter>Source\GmodSDK</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\C_BaseEntity.h">
+    <ClInclude Include="sdk\c_baseentity.h">
       <Filter>Source\GmodSDK</Filter>
     </ClInclude>
     <ClInclude Include="sdk\C_GMOD_Player.h">
@@ -613,6 +649,42 @@
       <Filter>Source\Core</Filter>
     </ClInclude>
     <ClInclude Include="detours.h" />
+    <ClInclude Include="core\hooks\calcview.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\createmove.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\endscene.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\framestagenotify.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\lockcursor.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\reset.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\runstring.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\viewrender.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\wndproc.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="hacks\lua.h">
+      <Filter>Source\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\runstringex.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hooks\compilestring.h">
+      <Filter>Source\Core\Hooks</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -659,6 +731,9 @@
     </Filter>
     <Filter Include="Source\UtlBuffer">
       <UniqueIdentifier>{f91bfa75-102c-4463-b550-faca01bbf8c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Hooks">
+      <UniqueIdentifier>{60443c53-d619-405e-9a9d-5ac1257d7c9f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

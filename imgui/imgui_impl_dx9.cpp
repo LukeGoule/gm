@@ -22,9 +22,6 @@
 //  2018-02-16: Misc: Obsoleted the io.RenderDrawListsFn callback and exposed ImGui_ImplDX9_RenderDrawData() in the .h file so you can call it yourself.
 //  2018-02-06: Misc: Removed call to ImGui::Shutdown() which is not available from 1.60 WIP, user needs to call CreateContext/DestroyContext themselves.
 
-#include "imgui.h"
-#include "imgui_impl_dx9.h"
-
 // DirectX
 #pragma warning(push)
 #pragma warning(disable:26495)
@@ -33,6 +30,11 @@
 
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
+
+#include "imgui.h"
+#include "imgui_impl_dx9.h"
+
+
 
 // DirectX data
 static LPDIRECT3DDEVICE9        g_pd3dDevice = NULL;
@@ -220,14 +222,14 @@ void ImGui_ImplDX9_RenderDrawData(ImDrawData* draw_data)
     d3d9_state_block->Release();
 }
 
-bool ImGui_ImplDX9_Init(void* device)
+bool ImGui_ImplDX9_Init(LPDIRECT3DDEVICE9 device)
 {
     // Setup back-end capabilities flags
     ImGuiIO& io = ImGui::GetIO();
     io.BackendRendererName = "imgui_impl_dx9";
     io.BackendFlags |= ImGuiBackendFlags_RendererHasVtxOffset;  // We can honor the ImDrawCmd::VtxOffset field, allowing for large meshes.
 
-    g_pd3dDevice = (IDirect3DDevice9 * )device;
+    g_pd3dDevice = device;
     g_pd3dDevice->AddRef();
     return true;
 }

@@ -24,9 +24,9 @@ void GmTabMain::DrawPage() {
 		}
 		ImGui::PopFont();
 
-		ImGui::Checkbox(_("Bunnyhop"), &o.bBhop);
-		ImGui::Checkbox(_("No Visual Kick"), &o.bNoKick);
-		ImGui::Checkbox(_("Draw Viewmodel"), &o.bDrawViewmodel);
+		ImGui::Checkbox(_("Bunnyhop"), &g_Options.bBhop);
+		ImGui::Checkbox(_("No Visual Kick"), &g_Options.bNoKick);
+		ImGui::Checkbox(_("Draw Viewmodel"), &g_Options.bDrawViewmodel);
 	}
 	ImGui::EndChildFrame();
 

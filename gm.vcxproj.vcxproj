@@ -143,6 +143,17 @@
   <ItemGroup>
     <ClCompile Include="core\dx.cpp" />
     <ClCompile Include="core\hooks.cpp" />
+    <ClCompile Include="core\hooks\calcview.cpp" />
+    <ClCompile Include="core\hooks\compilestring.cpp" />
+    <ClCompile Include="core\hooks\createmove.cpp" />
+    <ClCompile Include="core\hooks\endscene.cpp" />
+    <ClCompile Include="core\hooks\framestagenotify.cpp" />
+    <ClCompile Include="core\hooks\lockcursor.cpp" />
+    <ClCompile Include="core\hooks\reset.cpp" />
+    <ClCompile Include="core\hooks\runstring.cpp" />
+    <ClCompile Include="core\hooks\runstringex.cpp" />
+    <ClCompile Include="core\hooks\viewrender.cpp" />
+    <ClCompile Include="core\hooks\wndproc.cpp" />
     <ClCompile Include="core\imgui_custom.cpp" />
     <ClCompile Include="core\luabindings.cpp" />
     <ClCompile Include="core\luamanager.cpp" />
@@ -152,6 +163,7 @@
     <ClCompile Include="hacks\beams.cpp" />
     <ClCompile Include="hacks\esp.cpp" />
     <ClCompile Include="hacks\events.cpp" />
+    <ClCompile Include="hacks\lua.cpp" />
     <ClCompile Include="hacks\recoil.cpp" />
     <ClCompile Include="helpers\math.cpp" />
     <ClCompile Include="helpers\md5.cpp" />
@@ -217,7 +229,7 @@
     <ClCompile Include="sdk.cpp" />
     <ClCompile Include="sdk\characterset.cpp" />
     <ClCompile Include="sdk\Convar.cpp" />
-    <ClCompile Include="sdk\C_BaseEntity.cpp" />
+    <ClCompile Include="sdk\c_baseentity.cpp" />
     <ClCompile Include="sdk\IVEngineClient.cpp" />
     <ClCompile Include="utlbuf\UtlBuffer.cpp" />
     <ClCompile Include="utlbuf\UtlString.cpp" />
@@ -226,6 +238,17 @@
     <ClInclude Include="core\dx.h" />
     <ClInclude Include="core\globals.h" />
     <ClInclude Include="core\hooks.h" />
+    <ClInclude Include="core\hooks\calcview.h" />
+    <ClInclude Include="core\hooks\compilestring.h" />
+    <ClInclude Include="core\hooks\createmove.h" />
+    <ClInclude Include="core\hooks\endscene.h" />
+    <ClInclude Include="core\hooks\framestagenotify.h" />
+    <ClInclude Include="core\hooks\lockcursor.h" />
+    <ClInclude Include="core\hooks\reset.h" />
+    <ClInclude Include="core\hooks\runstring.h" />
+    <ClInclude Include="core\hooks\runstringex.h" />
+    <ClInclude Include="core\hooks\viewrender.h" />
+    <ClInclude Include="core\hooks\wndproc.h" />
     <ClInclude Include="core\imgui_custom.h" />
     <ClInclude Include="core\luabindings.h" />
     <ClInclude Include="core\luamanager.h" />
@@ -236,6 +259,7 @@
     <ClInclude Include="hacks\beams.h" />
     <ClInclude Include="hacks\esp.h" />
     <ClInclude Include="hacks\events.h" />
+    <ClInclude Include="hacks\lua.h" />
     <ClInclude Include="hacks\recoil.h" />
     <ClInclude Include="helpers\color.h" />
     <ClInclude Include="helpers\math.h" />
@@ -318,7 +342,7 @@
     <ClInclude Include="sdk\clientrenderhandle.h" />
     <ClInclude Include="sdk\Convar.h" />
     <ClInclude Include="sdk\CViewRender.h" />
-    <ClInclude Include="sdk\C_BaseEntity.h" />
+    <ClInclude Include="sdk\c_baseentity.h" />
     <ClInclude Include="sdk\C_GMOD_Player.h" />
     <ClInclude Include="sdk\EngineNetworking.h" />
     <ClInclude Include="sdk\IAppSystem.h" />

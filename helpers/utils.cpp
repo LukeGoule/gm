@@ -16,7 +16,8 @@
 #define CONSOLE_GREY    8
 #define CONSOLE_WHITE   15
 
-std::uint8_t* Utils::PatternScan(void* module, const char* signature) {
+std::uint8_t* Utils::PatternScan(void* module, const char* signature) 
+{
 	static auto pattern_to_byte = [](const char* pattern) {
 		auto bytes = std::vector<int>{};
 		auto start = const_cast<char*>(pattern);
@@ -116,18 +117,25 @@ void Utils::AttachConsole(std::string title)
 
 void Utils::DetachConsole()
 {
-#ifdef _DEBUG
-	if (_out && _err && _in) {
+	if (_out && _err && _in) 
+	{
 		FreeConsole();
 
 		if (_old_out)
+		{
 			SetStdHandle(STD_OUTPUT_HANDLE, _old_out);
+		}
+
 		if (_old_err)
+		{
 			SetStdHandle(STD_ERROR_HANDLE, _old_err);
+		}
+
 		if (_old_in)
+		{
 			SetStdHandle(STD_INPUT_HANDLE, _old_in);
+		}
 	}
-#endif
 }
 
 bool Utils::_DirectConsolePrint(const char* buf) {
@@ -149,36 +157,32 @@ bool Utils::ConsolePrint(const char* fmt, ...)
 	_vsnprintf_s(buf, 1024, fmt, va);
 	va_end(va);
 
-#if _DEBUG
-
 	SetConsoleTextAttribute(_out, CONSOLE_GREY);
 	if (!Utils::_DirectConsolePrint(_("["))) return false;
 
 	SetConsoleTextAttribute(_out, CONSOLE_AQUA);
-	if (!Utils::_DirectConsolePrint(_("LOKI"))) return false;
+	if (!Utils::_DirectConsolePrint(_("GM"))) return false;
 
 	SetConsoleTextAttribute(_out, CONSOLE_GREY);
 	if (!Utils::_DirectConsolePrint(_("] "))) return false;
 
 	SetConsoleTextAttribute(_out, CONSOLE_WHITE);
 	if (!Utils::_DirectConsolePrint(buf)) return false;
-#endif
-
 	
-	if (o.bOutputLogToConsole && o.bFullyLoaded) {
+	if (g_Options.bOutputLogToConsole && g_Options.bFullyLoaded) 
+	{
 		_InGameConsolePrint(Color(66, 134, 244, 200), _("%s"), buf);
 	}
 	
 	return true;
 }
 
-bool __msg(Color clr, const char* txt) {
-	if (!g_pEngineClient || !g_pLuaShared)
-		return false;
+static bool __msg(Color clr, const char* txt) 
+{
+	if (!g_pEngineClient || !g_pLuaShared) return false;
 
 	auto interface_type = LUAINTERFACE_CLIENT;
 	if (!g_pEngineClient->IsInGame()) interface_type = LUAINTERFACE_MENU;
-
 
 	g_pLuaShared->GetLuaInterface(interface_type)->MsgColour(clr, _("[LOKI] "));
 	g_pLuaShared->GetLuaInterface(interface_type)->MsgColour(Color(255, 255, 255), _("%s"), txt);
@@ -186,7 +190,8 @@ bool __msg(Color clr, const char* txt) {
 	return true;
 }
 
-bool Utils::_InGameConsolePrint(Color clr, const char* fmt, ...) {
+bool Utils::_InGameConsolePrint(Color clr, const char* fmt, ...) 
+{
 	if (!g_pEngineClient || !g_pLuaShared)
 		return false;
 
@@ -200,7 +205,7 @@ bool Utils::_InGameConsolePrint(Color clr, const char* fmt, ...) {
 	_vsnprintf_s(buf, 1024, fmt, va);
 	va_end(va);
 
-	g_pLuaShared->GetLuaInterface(interface_type)->MsgColour(clr, _("[LOKI] "));
+	g_pLuaShared->GetLuaInterface(interface_type)->MsgColour(clr, _("[GM] "));
 	g_pLuaShared->GetLuaInterface(interface_type)->MsgColour(Color(255, 255, 255), _("%s"), buf);
 
 	return true;

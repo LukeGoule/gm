@@ -1,3 +1,5 @@
+#include "../core/dx.h"
+
 #include "esp.h"
 
 #include "../hacks/aimbot.h"
@@ -11,12 +13,10 @@
 #include "../sdk/IEntityList.h"
 #include "../core/globals.h"
 
-#include "../sdk/C_BaseEntity.h"
+#include "../sdk/c_baseentity.h"
 #include "../sdk/ICollideable.h"
 #include "../sdk/ClientClass.h"
-#include "../sdk/C_BaseEntity.h"
-
-#include "../core/dx.h"
+#include "../sdk/c_baseentity.h"
 
 #pragma warning(push)
 #pragma warning(disable:26495)
@@ -118,28 +118,28 @@ BB2D ESP::DrawBounds(C_BaseEntity* pEnt) {
 }
 
 void ESP::DrawPlayer(BB2D drawResult, C_BaseEntity* pPlayer) {
-	if (o.bESPDrawClassName)
+	if (g_Options.bESPDrawClassName)
 		pESPFont->Render(drawResult.left, drawResult.bottom - 14, 0xFFFFFFFF, CFont::CFont_Flags::F_DROPSHADOW, "%s", pPlayer->GetClientClass()->pNetworkName);
 
-	if (o.bESPDrawPlayerNames) {
-		player_info_t info;
+	if (g_Options.bESPDrawPlayerNames) {
+		/*player_info_t info;
 		g_pEngineClient->GetPlayerInfo(pPlayer->entindex(), &info);
 
-		pESPFont->Render(drawResult.left, drawResult.bottom - (14*2), 0xFFFFFFFF, CFont::CFont_Flags::F_DROPSHADOW, "%s", info.name);
+		pESPFont->Render(drawResult.left, drawResult.bottom - (14*2), 0xFFFFFFFF, CFont::CFont_Flags::F_DROPSHADOW, "%s", info.name);*/
 	}
 
 	// Aimbot Target Indicator
-	if (o.bAimMasterEnabled && o.pCurrentTarget && (C_BaseEntity*)o.pCurrentTarget == pPlayer) {
+	if (g_Options.bAimMasterEnabled && g_Options.pCurrentTarget && (C_BaseEntity*)g_Options.pCurrentTarget == pPlayer) {
 		pESPFont->Render(drawResult.left, drawResult.bottom - (14 * 2), 0xFFFF0000, CFont::CFont_Flags::F_DROPSHADOW, "TARGET");
 	}
 }
 
 void ESP::DrawNPC(BB2D drawResult, C_BaseEntity* pNPC) {
-	if (o.bESPDrawClassName)
+	if (g_Options.bESPDrawClassName)
 		pESPFont->Render(drawResult.left, drawResult.bottom - 14, 0xFFFFFFFF, CFont::CFont_Flags::F_DROPSHADOW, "%s", pNPC->GetClientClass()->pNetworkName);
 
 	// Aimbot Target Indicator
-	if (o.bAimMasterEnabled && o.pCurrentTarget && (C_BaseEntity*)o.pCurrentTarget == pNPC) {
+	if (g_Options.bAimMasterEnabled && g_Options.pCurrentTarget && (C_BaseEntity*)g_Options.pCurrentTarget == pNPC) {
 		pESPFont->Render(drawResult.left, drawResult.bottom - (14 * 2), 0xFFFF0000, CFont::CFont_Flags::F_DROPSHADOW, "TARGET");
 
 		Vector vHeadPosition = Aimbot::Get().pTarget->vecTargetHead;
@@ -153,7 +153,7 @@ void ESP::DrawNPC(BB2D drawResult, C_BaseEntity* pNPC) {
 }
 
 void ESP::DrawWeapon(BB2D drawResult, C_BaseCombatWeapon* pWeapon) {
-	if (o.bESPDrawClassName)
+	if (g_Options.bESPDrawClassName)
 		pESPFont->Render(drawResult.left, drawResult.bottom - 14, 0xFFFFFFFF, CFont::CFont_Flags::F_DROPSHADOW, "%s", pWeapon->GetPrintName());
 }
 
@@ -163,7 +163,7 @@ void ESP::DoDraw(int ClassType, C_BaseEntity* pEnt) {
 	switch (ClassType) {
 	case 0: // Player
 
-		if (!o.bESPShowPlayers) return;
+		if (!g_Options.bESPShowPlayers) return;
 
 		Bounds = this->DrawBounds(pEnt);
 		this->DrawPlayer(Bounds, pEnt);
@@ -172,7 +172,7 @@ void ESP::DoDraw(int ClassType, C_BaseEntity* pEnt) {
 
 	case 1: // NPC
 
-		if (!o.bESPShowNPCs) return;
+		if (!g_Options.bESPShowNPCs) return;
 
 		Bounds = this->DrawBounds(pEnt);
 		this->DrawNPC(Bounds, pEnt);
@@ -181,7 +181,7 @@ void ESP::DoDraw(int ClassType, C_BaseEntity* pEnt) {
 
 	case 2: // Weapon
 
-		if (!o.bESPShowPlayers) return;
+		if (!g_Options.bESPShowPlayers) return;
 
 		// weapons which are not being held, i.e dropped weapons, have no owner
 		// we want to avoid drawing these otherwise the screen will be full of random lines from our own weapons
@@ -197,14 +197,10 @@ void ESP::DoDraw(int ClassType, C_BaseEntity* pEnt) {
 }
 
 void ESP::Render() {
-    if (!g_pEngineClient || !g_pEngineClient->IsInGame())
-        return;
-
-    if (!g_pEntityList)
-        return;
-
-	if (!g_pLocalPlayer)
-		return;
+	if (!g_Options.bESPMasterEnabled) return;
+    if (!g_pEngineClient || !g_pEngineClient->IsInGame()) return;
+    if (!g_pEntityList) return;
+	if (!g_pLocalPlayer) return;
 
     // STUFF
 	for (size_t i = 0; i < g_pEntityList->GetHighestEntityIndex(); i++) {

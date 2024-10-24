@@ -1,7 +1,7 @@
 #include "recoil.h"
 
 #include "../core/options.h"
-#include "../sdk/C_BaseEntity.h"
+#include "../sdk/c_baseentity.h"
 #include "../sdk/IVEngineClient.h"
 #include "../core/globals.h"
 

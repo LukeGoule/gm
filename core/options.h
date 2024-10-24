@@ -12,7 +12,7 @@ public:
 	bool bDrawWaterMark			= false;				// Menu: Implemented
 	ImVec4 vecMenuColorScheme = ImVec4(34.f/255, 87.f/255.f, 140.f/255.f, 1.f);	// Menu: Implemented
 
-	bool bESPMasterEnabled		= true;					// Menu: Implemented
+	bool bESPMasterEnabled		= false;					// Menu: Implemented
 	bool bESPDrawBoxes			= true;					// Menu: Implemented
 	bool bESPDrawClassName		= true;					// Menu: Implemented
 	bool bESPDrawPlayerNames	= true;					// Menu: Implemented
@@ -21,7 +21,7 @@ public:
 	bool bESPShowPlayers		= true;					// Menu: Implemented
 	int iESPMaxDrawDist = 10000;						// Menu: Implemented
 
-	bool bAimMasterEnabled		= true;					// Menu: Implemented
+	bool bAimMasterEnabled		= false;					// Menu: Implemented
 	bool bAimSilent				= true;					// Menu: Implemented
 	bool bAimAutofire			= false;				// Menu: Implemented
 	bool bAimTargetPlayers		= true;					// Menu: Implemented
@@ -31,4 +31,4 @@ public:
 	void* pCurrentTarget		= 0;					// Menu: N/A
 };
 
-extern options o;
+extern options g_Options;
