@@ -60,19 +60,19 @@ BeamInfo_t beams::GenerateBeamInfo(Color c, Vector pos1, Vector pos2) {
 }
 
 bool beams::CreateBeam(BeamInfo_t beamInfo) {
-	if (!g_pBeams) {
+	if (!gm::SDK::Get().Beams()) {
 		Utils::ConsolePrint(_("[beams] SDK::Beams() == nullptr\n"));
 		return false;
 	}
 
-	if (!g_pEngineClient->IsInGame()) {
+	if (!gm::SDK::Get().EngineClient()->IsInGame()) {
 		Utils::ConsolePrint(_("[beams] SDK::Engine()->IsInGame() == false\n"));
 		return false;
 	}
 
-	auto newBeam = g_pBeams->CreateBeamPoints(beamInfo);
+	auto newBeam = gm::SDK::Get().Beams()->CreateBeamPoints(beamInfo);
 	if (newBeam) {
-		g_pBeams->DrawBeam(newBeam);
+		gm::SDK::Get().Beams()->DrawBeam(newBeam);
 		return true;
 	}
 	else {

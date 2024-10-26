@@ -12,13 +12,19 @@ namespace Hooks
 	{
 		auto oCalcView = (decltype(&hkCalcView))Hooks::TrueCalcView;
 
-		Vector ovPunchAngle = *g_pLocalPlayer->m_vecPunchAngle();
+		Vector ovPunchAngle = *gm::SDK::Get().LocalPlayer()->m_vecPunchAngle();
 
-		if (!Aimbot::Get().bUseFASNoSpread) *g_pLocalPlayer->m_vecPunchAngle() = Vector(0, 0, 0);
+		if (!Aimbot::Get().bUseFASNoSpread)
+		{
+			*gm::SDK::Get().LocalPlayer()->m_vecPunchAngle() = Vector(0, 0, 0);
+		}
 
 		auto ret = oCalcView(pThis, _edx, vecEyeOrigin, qEyeAngles, fzNear, fzFar, fFov);
 
-		if (!Aimbot::Get().bUseFASNoSpread) *g_pLocalPlayer->m_vecPunchAngle() = ovPunchAngle;
+		if (!Aimbot::Get().bUseFASNoSpread) 
+		{
+			*gm::SDK::Get().LocalPlayer()->m_vecPunchAngle() = ovPunchAngle;
+		}
 
 		return ret;
 	}

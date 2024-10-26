@@ -41,8 +41,8 @@ void GmMenu::Setup()
 {
 	this->SetupStyle();
 
-	g_pWatermarkFont = new CFont(g_pD3DDevice9, 17, "Verdana");
-	g_pDrawHelper = new CDraw(g_pD3DDevice9);
+	g_pWatermarkFont = new CFont(gm::SDK::Get().D3DDevice(), 17, "Verdana");
+	g_pDrawHelper = new CDraw(gm::SDK::Get().D3DDevice());
 	g_pLuaScripts = new ScriptManager();
 	g_pLuaBindings = new LuaBindings();
 	g_pMenuPopups = new GmMenuPopupManager();

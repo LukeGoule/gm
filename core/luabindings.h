@@ -6,7 +6,7 @@
 
 #include <vector>
 
-#define CL_LUA g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT)
+#define CL_LUA gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT)
 
 class LuaBinding_Func {
 public:

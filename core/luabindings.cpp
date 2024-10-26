@@ -9,7 +9,7 @@
 #include "../helpers/md5.h"
 #include "../sdk/CInput.h"
 
-#define CL_LUA g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT)
+#define CL_LUA gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT)
 #define LUA_START_FUNCTION auto LUA = CL_LUA;
 #define LUA_END_FUNCTION(argc) return (argc);
 
@@ -64,14 +64,14 @@ void LuaBindings::SetupFunctions() {
 	NewFunction(_("Loki_GetEngineSpread"), [](lua_State* L) {
 		LUA_START_FUNCTION;
 		{
-			if (!g_pLocalPlayer || !g_pLocalPlayer->m_hActiveWeapon().Get()) {
+			if (!gm::SDK::Get().LocalPlayer() || !gm::SDK::Get().LocalPlayer()->m_hActiveWeapon().Get()) {
 				auto nullvec = Vector(0, 0, 0);
 				CL_LUA->PushVector(nullvec);
 
 				LUA_END_FUNCTION(1);
 			}
 
-			auto pWeapon = reinterpret_cast<C_BaseCombatWeapon*>(g_pLocalPlayer->m_hActiveWeapon().Get());
+			auto pWeapon = reinterpret_cast<C_BaseCombatWeapon*>(gm::SDK::Get().LocalPlayer()->m_hActiveWeapon().Get());
 			auto vWeaponSpread = Aimbot::GetBulletSpread(pWeapon);
 			CL_LUA->PushVector(vWeaponSpread);
 		}

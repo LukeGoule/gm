@@ -14,14 +14,14 @@
 GameEvents::GameEvents(std::vector<const char*> events) 
 {
 	for (auto& it : events) {
-		g_pGameEvents->AddListener(this, it, false);
+		gm::SDK::Get().GameEvents()->AddListener(this, it, false);
 		Utils::ConsolePrint(_("[GameEvents] Registered: %s\n"), it);
 	}
 }
 
 GameEvents::~GameEvents() 
 {
-	g_pGameEvents->RemoveListener(this);
+	gm::SDK::Get().GameEvents()->RemoveListener(this);
 }
 
 void GameEvents::FireGameEvent(IGameEvent* event) 

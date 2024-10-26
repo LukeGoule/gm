@@ -1,5 +1,6 @@
 #include "wndproc.h"
 #include "../hooks.h"
+#include "../../sdk.h"
 
 #include "../../menu/GmMenu.h"
 
@@ -34,6 +35,6 @@ namespace Hooks
 			ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam);
 		}
 
-		return CallWindowProcA(OriginalWNDProc, hWnd, uMsg, wParam, lParam);
+		return CallWindowProcA(gm::SDK::Get().OriginalWndProc(), hWnd, uMsg, wParam, lParam);
 	}
 }

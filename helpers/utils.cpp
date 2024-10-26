@@ -1,5 +1,7 @@
 #include "utils.h"
 
+#include "../../sdk.h"
+
 #include "../core/options.h"
 #include "../core/globals.h"
 
@@ -179,24 +181,24 @@ bool Utils::ConsolePrint(const char* fmt, ...)
 
 static bool __msg(Color clr, const char* txt) 
 {
-	if (!g_pEngineClient || !g_pLuaShared) return false;
+	if (!gm::SDK::Get().EngineClient() || !gm::SDK::Get().LuaShared()) return false;
 
 	auto interface_type = LUAINTERFACE_CLIENT;
-	if (!g_pEngineClient->IsInGame()) interface_type = LUAINTERFACE_MENU;
+	if (!gm::SDK::Get().EngineClient()->IsInGame()) interface_type = LUAINTERFACE_MENU;
 
-	g_pLuaShared->GetLuaInterface(interface_type)->MsgColour(clr, _("[LOKI] "));
-	g_pLuaShared->GetLuaInterface(interface_type)->MsgColour(Color(255, 255, 255), _("%s"), txt);
+	gm::SDK::Get().LuaShared()->GetLuaInterface(interface_type)->MsgColour(clr, _("[LOKI] "));
+	gm::SDK::Get().LuaShared()->GetLuaInterface(interface_type)->MsgColour(Color(255, 255, 255), _("%s"), txt);
 
 	return true;
 }
 
 bool Utils::_InGameConsolePrint(Color clr, const char* fmt, ...) 
 {
-	if (!g_pEngineClient || !g_pLuaShared)
+	if (!gm::SDK::Get().EngineClient() || !gm::SDK::Get().LuaShared())
 		return false;
 
 	auto interface_type = LUAINTERFACE_CLIENT;
-	if (!g_pEngineClient->IsInGame()) interface_type = LUAINTERFACE_MENU;
+	if (!gm::SDK::Get().EngineClient()->IsInGame()) interface_type = LUAINTERFACE_MENU;
 
 	char buf[1024];
 	va_list va;
@@ -205,8 +207,8 @@ bool Utils::_InGameConsolePrint(Color clr, const char* fmt, ...)
 	_vsnprintf_s(buf, 1024, fmt, va);
 	va_end(va);
 
-	g_pLuaShared->GetLuaInterface(interface_type)->MsgColour(clr, _("[GM] "));
-	g_pLuaShared->GetLuaInterface(interface_type)->MsgColour(Color(255, 255, 255), _("%s"), buf);
+	gm::SDK::Get().LuaShared()->GetLuaInterface(interface_type)->MsgColour(clr, _("[GM] "));
+	gm::SDK::Get().LuaShared()->GetLuaInterface(interface_type)->MsgColour(Color(255, 255, 255), _("%s"), buf);
 
 	return true;
 }

@@ -49,16 +49,16 @@ void Aimbot::CreateMove(CUserCmd* pCmd) {
 	if (!g_Options.bAimMasterEnabled)
 		return;
 
-	if (!g_pEngineClient || !g_pEngineClient->IsInGame())
+	if (!gm::SDK::Get().EngineClient() || !gm::SDK::Get().EngineClient()->IsInGame())
 		return;
 
-	if (!g_pLocalPlayer || !g_pLocalPlayer->is_alive())
+	if (!gm::SDK::Get().LocalPlayer() || !gm::SDK::Get().LocalPlayer()->is_alive())
 		return;
 
-	if (!g_pLocalPlayer->m_hActiveWeapon().Get())
+	if (!gm::SDK::Get().LocalPlayer()->m_hActiveWeapon().Get())
 		return;
 
-	auto pWeapon = reinterpret_cast<C_BaseCombatWeapon*>(g_pLocalPlayer->m_hActiveWeapon().Get());
+	auto pWeapon = reinterpret_cast<C_BaseCombatWeapon*>(gm::SDK::Get().LocalPlayer()->m_hActiveWeapon().Get());
 
 	// don't use any excluded weapons.
 	for (auto Excluded : vecExcludedClassNames) {
@@ -150,7 +150,7 @@ void Aimbot::ForceSpread(Vector vForceSpread) {
 
 void RandomSeed(float seed)
 {
-	auto glua = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+	auto glua = gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT);
 
 	if (!glua)
 		return;
@@ -166,7 +166,7 @@ void RandomSeed(float seed)
 
 float Rand(float min, float max)
 {
-	auto glua = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+	auto glua = gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT);
 
 	if (!glua)
 		return 0.f;
@@ -186,7 +186,7 @@ float Rand(float min, float max)
 
 float get_fas2_cone()
 {
-	auto glua = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+	auto glua = gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT);
 
 	if (!glua)
 		return 0.f;
@@ -210,7 +210,7 @@ float get_fas2_cone()
 
 void DoSpreadFAS(CUserCmd* cmd)
 {
-	if (!(cmd->buttons & IN_ATTACK) || !g_pLocalPlayer->m_hActiveWeapon().Get())
+	if (!(cmd->buttons & IN_ATTACK) || !gm::SDK::Get().LocalPlayer()->m_hActiveWeapon().Get())
 		return;
 
 	float cone = get_fas2_cone();
@@ -218,13 +218,12 @@ void DoSpreadFAS(CUserCmd* cmd)
 	if (cone == 0.f)
 		return;
 
-	Utils::ConsolePrint("%f\n", g_pGlobalVars->m_fIntervalPerTick);
-	RandomSeed(*g_pLocalPlayer->m_nTickBase() * g_pGlobalVars->m_fIntervalPerTick);
+	RandomSeed(*gm::SDK::Get().LocalPlayer()->m_nTickBase() * gm::SDK::Get().GlobalVars()->m_fIntervalPerTick);
 
 	float x = Rand(-cone, cone);
 	float y = Rand(-cone, cone);
 	
-	auto pPunch = g_pLocalPlayer->m_vecPunchAngle();
+	auto pPunch = gm::SDK::Get().LocalPlayer()->m_vecPunchAngle();
 	cmd->view_angles -= VEC2QANG((*pPunch)) * 0.5;
 
 	QAngle nospread = cmd->view_angles + QAngle(-x, -y, 0);// *30;
@@ -249,7 +248,7 @@ void Aimbot::RemoveSpread(CUserCmd* pCmd) {
 	RandomSeed((((MD5_PseudoRandom(pCmd->command_nr) & 0x7ffffff)) & 255));
 
 	if (!bForceSpread) {
-		vecSpread = this->GetBulletSpread((C_BaseCombatWeapon*)(g_pLocalPlayer->m_hActiveWeapon().Get()));
+		vecSpread = this->GetBulletSpread((C_BaseCombatWeapon*)(gm::SDK::Get().LocalPlayer()->m_hActiveWeapon().Get()));
 	}
 	else {
 		vecSpread = forceSpreadVec;
@@ -273,7 +272,7 @@ void Aimbot::RemoveSpread(CUserCmd* pCmd) {
 
 void Aimbot::RemoveKickDeviation(CUserCmd* pCmd) {
 	if (!bUseFASNoSpread) {
-		auto pPunch = g_pLocalPlayer->m_vecPunchAngle();
+		auto pPunch = gm::SDK::Get().LocalPlayer()->m_vecPunchAngle();
 		pCmd->view_angles -= VEC2QANG((*pPunch)) * 1.2;
 	}
 }
@@ -310,12 +309,12 @@ Aimbot::TargetData_t* Aimbot::FindBestTarget() {
 	C_BaseEntity* pTempEntity = 0;
 	float fCurrentMinDist = 99999999.f;
 
-	// strangely, g_pEngineClient->getscreensize(x,y) is always 0? i check in IDA to see if the function was missing and it isn't. oh well.
+	// strangely, gm::SDK::Get().EngineClient()->getscreensize(x,y) is always 0? i check in IDA to see if the function was missing and it isn't. oh well.
 	static ImGuiIO& IO = ImGui::GetIO();
 	Vector2D vecScreenMiddle(IO.DisplaySize.x / 2.f, IO.DisplaySize.y / 2.f); // another point, the values given here when the game is minimized are totally wrong, i'll need to look into fixing that.
 
-	for (size_t i = 0; i < g_pEntityList->GetHighestEntityIndex(); i++) {
-		C_BaseEntity* pEnt = reinterpret_cast<C_BaseEntity*>(g_pEntityList->GetClientEntity(i));
+	for (size_t i = 0; i < gm::SDK::Get().EntityList()->GetHighestEntityIndex(); i++) {
+		C_BaseEntity* pEnt = reinterpret_cast<C_BaseEntity*>(gm::SDK::Get().EntityList()->GetClientEntity(i));
 
 		if (!pEnt)
 			continue;
@@ -323,7 +322,7 @@ Aimbot::TargetData_t* Aimbot::FindBestTarget() {
 		if (pEnt->IsDormant())
 			continue;
 
-		if (pEnt == g_pLocalPlayer)
+		if (pEnt == gm::SDK::Get().LocalPlayer())
 			continue;
 
 		bool bIsPlayer	= false;
@@ -376,7 +375,7 @@ Aimbot::TargetData_t* Aimbot::FindBestTarget() {
 	if (pTarget && pTarget->pEntity) {
 		// We have a target
 
-		Vector vecOurEyePos = g_pLocalPlayer->GetEyePos();
+		Vector vecOurEyePos = gm::SDK::Get().LocalPlayer()->GetEyePos();
 		Vector vecTheirEyePos = pTarget->pEntity->GetBonePos(g_Options.iTargetBoneID); //pTarget->pEntity->GetEyePos();
 
 		pTarget->angTargetHead = this->CalcAngle(vecOurEyePos, vecTheirEyePos);

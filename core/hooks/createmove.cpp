@@ -21,7 +21,7 @@ namespace Hooks
 
 		if (g_Options.bBhop)
 		{
-			if (pCmd->buttons & IN_JUMP && !(*g_pLocalPlayer->m_fFlags() & FL_ONGROUND))
+			if (pCmd->buttons & IN_JUMP && !(*gm::SDK::Get().LocalPlayer()->m_fFlags() & FL_ONGROUND))
 			{
 				pCmd->buttons &= ~IN_JUMP;
 			}
@@ -32,22 +32,25 @@ namespace Hooks
 
 	static void runCreateMove(IBaseClientDLL* pThis, void* _edx, int iSequenceNumber, float fInputSampleFrametime, bool bActive)
 	{
-		if (!g_pInput) return;
+		if (!gm::SDK::Get().Input()) return;
 
 		const bool bPlayerReady = (
-			g_pEngineClient && 
-			g_pEntityList && 
-			g_pEngineClient->IsInGame()
+			gm::SDK::Get().EngineClient() &&
+			gm::SDK::Get().EntityList() &&
+			gm::SDK::Get().EngineClient()->IsInGame()
 		);
 
-		g_pLocalPlayer = bPlayerReady 
-			? reinterpret_cast<C_BaseEntity*>(g_pEntityList->GetClientEntity(g_pEngineClient->LocalPlayerID())) 
-			: nullptr;
+		gm::SDK::Get().UpdateLocalPlayer(bPlayerReady 
+			? reinterpret_cast<C_BaseEntity*>(gm::SDK::Get().EntityList()->GetClientEntity(
+				gm::SDK::Get().EngineClient()->LocalPlayerID()
+			))
+			: nullptr
+		);
 
-		const bool bInGame = g_pEngineClient->IsInGame() && g_pLocalPlayer;
+		const bool bInGame = gm::SDK::Get().EngineClient()->IsInGame() && gm::SDK::Get().LocalPlayer();
 
-		CUserCmd* pCmd = g_pInput->GetUserCmd(iSequenceNumber);
-		CVerifiedUserCmd* pVerified = g_pInput->GetVerifiedCmd(iSequenceNumber);
+		CUserCmd* pCmd = gm::SDK::Get().Input()->GetUserCmd(iSequenceNumber);
+		CVerifiedUserCmd* pVerified = gm::SDK::Get().Input()->GetVerifiedCmd(iSequenceNumber);
 
 		runCheats(bPlayerReady, bInGame, pCmd);
 

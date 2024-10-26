@@ -149,6 +149,7 @@ inline const CBaseHandle& CBaseHandle::Set(const IHandleEntity* pEntity)
     return *this;
 }
 
-inline IHandleEntity* CBaseHandle::Get() const {
-    return (IHandleEntity*)g_pEntityList->GetClientEntityFromHandle(this->m_Index);
+inline IHandleEntity* CBaseHandle::Get() const 
+{
+    return (IHandleEntity*)gm::SDK::Get().EntityList()->GetClientEntityFromHandle(this->m_Index);
 }

@@ -3,15 +3,15 @@
 #include "../gmod/luaShared.h"
 #include "../core/globals.h"
 
+#include "../../sdk.h"
+
 std::string IVEngineClient::GetCurrentMap() {
-	if (!g_pLuaShared) return {};
+	if (!gm::SDK::Get().LuaShared()) return {};
 	if (!this->IsInGame()) return {};
 
-	auto LUA = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+	auto LUA = gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT);
 	if (!LUA) return {};
 
-	// i was on the verge of killing someone trying to get this to work
-	// fuck the stack bruh
 	LUA->PushSpecial((int)lua::special::glob);	// 1
 	LUA->GetField(-1, _("game"));				// 2
 	LUA->GetField(-1, _("GetMap"));				// 3
