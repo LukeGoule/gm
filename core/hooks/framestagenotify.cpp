@@ -22,12 +22,12 @@ namespace Hooks
 
 	static void frameRenderStart() 
 	{
-		if (g_pEngineClient &&
-			g_pEngineClient->IsInGame() &&
-			g_pLocalPlayer &&
-			g_pLocalPlayer->get_health() > 0) {
+		if (gm::SDK::Get().EngineClient() &&
+			gm::SDK::Get().EngineClient()->IsInGame() &&
+			gm::SDK::Get().LocalPlayer() &&
+			gm::SDK::Get().LocalPlayer()->get_health() > 0) {
 
-			*g_pLocalPlayer->m_bDrawViewmodel() = g_Options.bDrawViewmodel;
+			*gm::SDK::Get().LocalPlayer()->m_bDrawViewmodel() = g_Options.bDrawViewmodel;
 		}
 	}
 
@@ -76,6 +76,6 @@ namespace Hooks
 			break;
 		}
 
-		ofunc(g_pClientDLL, _edx, stage);
+		ofunc(gm::SDK::Get().ClientDLL(), _edx, stage);
 	}
 }

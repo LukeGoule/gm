@@ -12,7 +12,7 @@ namespace Hooks
 	{
 		static auto ofunc = viewrender_hook.get_original<decltype(&hkViewRender_Render)>(Hooks::Indexes::IViewRender::Render);
 
-		if (!(g_pEngineClient && g_pEngineClient->IsInGame() && g_pLocalPlayer && g_pLocalPlayer->is_alive())) 
+		if (!(gm::SDK::Get().EngineClient() && gm::SDK::Get().EngineClient()->IsInGame() && gm::SDK::Get().LocalPlayer() && gm::SDK::Get().LocalPlayer()->is_alive()))
 		{
 			ofunc(_this, _edx, rect);
 			return;

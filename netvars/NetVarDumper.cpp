@@ -20,7 +20,7 @@ NetvarTree
 */
 NetvarDumper::NetvarDumper()
 {
-	const ClientClass* clientClass = g_pClientDLL->GetAllClasses();
+	const ClientClass* clientClass = gm::SDK::Get().ClientDLL()->GetAllClasses();
 
 	while (clientClass != nullptr)
 	{

@@ -44,7 +44,7 @@ public:
 	virtual bool RegisterConCommandBase(ConCommandBase* pVar)
 	{
 		// Link to engine's list instead
-		g_pCVar->RegisterConCommand(pVar);
+		gm::SDK::Get().CVar()->RegisterConCommand(pVar);
 		return true;
 	}
 };
@@ -56,13 +56,13 @@ static CDefaultAccessor s_DefaultAccessor;
 //-----------------------------------------------------------------------------
 void ConVar_Register(int nCVarFlag, IConCommandBaseAccessor* pAccessor)
 {
-	if (!g_pCVar || s_bRegistered)
+	if (!gm::SDK::Get().CVar() || s_bRegistered)
 		return;
 
 	Assert(s_nDLLIdentifier < 0);
 	s_bRegistered = true;
 	s_nCVarFlag = nCVarFlag;
-	s_nDLLIdentifier = g_pCVar->AllocateDLLIdentifier();
+	s_nDLLIdentifier = gm::SDK::Get().CVar()->AllocateDLLIdentifier();
 
 	ConCommandBase* pCur, * pNext;
 
@@ -76,17 +76,17 @@ void ConVar_Register(int nCVarFlag, IConCommandBaseAccessor* pAccessor)
 		pCur = pNext;
 	}
 
-	g_pCVar->ProcessQueuedMaterialThreadConVarSets();
+	gm::SDK::Get().CVar()->ProcessQueuedMaterialThreadConVarSets();
 	ConCommandBase::s_pConCommandBases = NULL;
 }
 
 void ConVar_Unregister()
 {
-	if (!g_pCVar || !s_bRegistered)
+	if (!gm::SDK::Get().CVar() || !s_bRegistered)
 		return;
 
 	Assert(s_nDLLIdentifier >= 0);
-	g_pCVar->UnregisterConCommands(s_nDLLIdentifier);
+	gm::SDK::Get().CVar()->UnregisterConCommands(s_nDLLIdentifier);
 	s_nDLLIdentifier = -1;
 	s_bRegistered = false;
 }
@@ -200,9 +200,9 @@ void ConCommandBase::Init()
 
 void ConCommandBase::Shutdown()
 {
-	if (g_pCVar)
+	if (gm::SDK::Get().CVar())
 	{
-		g_pCVar->UnregisterConCommand(this);
+		gm::SDK::Get().CVar()->UnregisterConCommand(this);
 	}
 }
 
@@ -750,9 +750,9 @@ void ConVar::InternalSetValue(const char* value)
 {
 	if (IsFlagSet(FCVAR_MATERIAL_THREAD_MASK))
 	{
-		if (g_pCVar && !g_pCVar->IsMaterialThreadSetAllowed())
+		if (gm::SDK::Get().CVar() && !gm::SDK::Get().CVar()->IsMaterialThreadSetAllowed())
 		{
-			g_pCVar->QueueMaterialThreadSetValue(this, value);
+			gm::SDK::Get().CVar()->QueueMaterialThreadSetValue(this, value);
 			return;
 		}
 	}
@@ -826,7 +826,7 @@ void ConVar::ChangeStringValue(const char* tempVal, float flOldValue)
 		m_fnChangeCallback(this, pszOldValue, flOldValue);
 	}
 
-	g_pCVar->CallGlobalChangeCallbacks(this, pszOldValue, flOldValue);
+	gm::SDK::Get().CVar()->CallGlobalChangeCallbacks(this, pszOldValue, flOldValue);
 
 	stackfree(pszOldValue);
 }
@@ -864,9 +864,9 @@ void ConVar::InternalSetFloatValue(float fNewValue)
 
 	if (IsFlagSet(FCVAR_MATERIAL_THREAD_MASK))
 	{
-		if (g_pCVar && !g_pCVar->IsMaterialThreadSetAllowed())
+		if (gm::SDK::Get().CVar() && !gm::SDK::Get().CVar()->IsMaterialThreadSetAllowed())
 		{
-			g_pCVar->QueueMaterialThreadSetValue(this, fNewValue);
+			gm::SDK::Get().CVar()->QueueMaterialThreadSetValue(this, fNewValue);
 			return;
 		}
 	}
@@ -904,9 +904,9 @@ void ConVar::InternalSetIntValue(int nValue)
 
 	if (IsFlagSet(FCVAR_MATERIAL_THREAD_MASK))
 	{
-		if (g_pCVar && !g_pCVar->IsMaterialThreadSetAllowed())
+		if (gm::SDK::Get().CVar() && !gm::SDK::Get().CVar()->IsMaterialThreadSetAllowed())
 		{
-			g_pCVar->QueueMaterialThreadSetValue(this, nValue);
+			gm::SDK::Get().CVar()->QueueMaterialThreadSetValue(this, nValue);
 			return;
 		}
 	}
@@ -1084,7 +1084,7 @@ ConVarRef::ConVarRef(const char* pName, bool bIgnoreMissing)
 
 void ConVarRef::Init(const char* pName, bool bIgnoreMissing)
 {
-	m_pConVar = g_pCVar ? g_pCVar->FindVar(pName) : &s_EmptyConVar;
+	m_pConVar = gm::SDK::Get().CVar() ? gm::SDK::Get().CVar()->FindVar(pName) : &s_EmptyConVar;
 	if (!m_pConVar)
 	{
 		m_pConVar = &s_EmptyConVar;
@@ -1093,7 +1093,7 @@ void ConVarRef::Init(const char* pName, bool bIgnoreMissing)
 	if (!IsValid())
 	{
 		static bool bFirst = true;
-		if (g_pCVar || bFirst)
+		if (gm::SDK::Get().CVar() || bFirst)
 		{
 			if (!bIgnoreMissing)
 			{
@@ -1124,67 +1124,67 @@ void ConVar_PrintFlags(const ConCommandBase* var)
 	bool any = false;
 	if (var->IsFlagSet(FCVAR_GAMEDLL))
 	{
-		ConMsg(" game");
+		ConMsg(_(" game"));
 		any = true;
 	}
 
 	if (var->IsFlagSet(FCVAR_CLIENTDLL))
 	{
-		ConMsg(" client");
+		ConMsg(_(" client"));
 		any = true;
 	}
 
 	if (var->IsFlagSet(FCVAR_ARCHIVE))
 	{
-		ConMsg(" archive");
+		ConMsg(_(" archive"));
 		any = true;
 	}
 
 	if (var->IsFlagSet(FCVAR_NOTIFY))
 	{
-		ConMsg(" notify");
+		ConMsg(_(" notify"));
 		any = true;
 	}
 
 	if (var->IsFlagSet(FCVAR_SPONLY))
 	{
-		ConMsg(" singleplayer");
+		ConMsg(_(" singleplayer"));
 		any = true;
 	}
 
 	if (var->IsFlagSet(FCVAR_NOT_CONNECTED))
 	{
-		ConMsg(" notconnected");
+		ConMsg(_(" notconnected"));
 		any = true;
 	}
 
 	if (var->IsFlagSet(FCVAR_CHEAT))
 	{
-		ConMsg(" cheat");
+		ConMsg(_(" cheat"));
 		any = true;
 	}
 
 	if (var->IsFlagSet(FCVAR_REPLICATED))
 	{
-		ConMsg(" replicated");
+		ConMsg(_(" replicated"));
 		any = true;
 	}
 
 	if (var->IsFlagSet(FCVAR_SERVER_CAN_EXECUTE))
 	{
-		ConMsg(" server_can_execute");
+		ConMsg(_(" server_can_execute"));
 		any = true;
 	}
 
 	if (var->IsFlagSet(FCVAR_CLIENTCMD_CAN_EXECUTE))
 	{
-		ConMsg(" clientcmd_can_execute");
+		ConMsg(_(" clientcmd_can_execute"));
 		any = true;
 	}
 
 	if (any)
 	{
-		ConMsg("\n");
+		ConMsg(_("\n"));
 	}
 }
 

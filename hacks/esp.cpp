@@ -25,12 +25,12 @@
 
 bool ESP::WorldToScreen(Vector in, Vector& out)
 {
-    const VMatrix w2sm = g_pEngineClient->GetViewMatrix();
+    const VMatrix w2sm = gm::SDK::Get().EngineClient()->GetViewMatrix();
     float w = w2sm[3][0] * in.x + w2sm[3][1] * in.y + w2sm[3][2] * in.z + w2sm[3][3];
 
     if (w > 0.001f)
     {
-        int width, height; g_pEngineClient->GetScreenSize(width, height);
+        int width, height; gm::SDK::Get().EngineClient()->GetScreenSize(width, height);
 
         float fl1DBw = 1 / w;
         out.x = (width / 2) + (0.5f * ((w2sm[0][0] * in.x + w2sm[0][1] * in.y + w2sm[0][2] * in.z + w2sm[0][3]) * fl1DBw) * width + 0.5f);
@@ -43,7 +43,7 @@ bool ESP::WorldToScreen(Vector in, Vector& out)
 CFont* pESPFont;
 
 void ESP::Setup() {
-	pESPFont = new CFont(g_pD3DDevice9, 13, "Verdana");
+	pESPFont = new CFont(gm::SDK::Get().D3DDevice(), 13, "Verdana");
 }
 
 BB2D ESP::DrawBounds(C_BaseEntity* pEnt) {
@@ -123,7 +123,7 @@ void ESP::DrawPlayer(BB2D drawResult, C_BaseEntity* pPlayer) {
 
 	if (g_Options.bESPDrawPlayerNames) {
 		/*player_info_t info;
-		g_pEngineClient->GetPlayerInfo(pPlayer->entindex(), &info);
+		gm::SDK::Get().EngineClient()->GetPlayerInfo(pPlayer->entindex(), &info);
 
 		pESPFont->Render(drawResult.left, drawResult.bottom - (14*2), 0xFFFFFFFF, CFont::CFont_Flags::F_DROPSHADOW, "%s", info.name);*/
 	}
@@ -198,23 +198,23 @@ void ESP::DoDraw(int ClassType, C_BaseEntity* pEnt) {
 
 void ESP::Render() {
 	if (!g_Options.bESPMasterEnabled) return;
-    if (!g_pEngineClient || !g_pEngineClient->IsInGame()) return;
-    if (!g_pEntityList) return;
-	if (!g_pLocalPlayer) return;
+    if (!gm::SDK::Get().EngineClient() || !gm::SDK::Get().EngineClient()->IsInGame()) return;
+    if (!gm::SDK::Get().EntityList()) return;
+	if (!gm::SDK::Get().LocalPlayer()) return;
 
     // STUFF
-	for (size_t i = 0; i < g_pEntityList->GetHighestEntityIndex(); i++) {
-		C_BaseEntity* pEnt = reinterpret_cast<C_BaseEntity*>(g_pEntityList->GetClientEntity(i));
+	for (size_t i = 0; i < gm::SDK::Get().EntityList()->GetHighestEntityIndex(); i++) {
+		C_BaseEntity* pEnt = reinterpret_cast<C_BaseEntity*>(gm::SDK::Get().EntityList()->GetClientEntity(i));
 
 		if (!pEnt)
 			continue;
 
-		if (pEnt == g_pLocalPlayer) {
-			g_pLocalPlayer = pEnt;
+		if (pEnt == gm::SDK::Get().LocalPlayer()) {
+			gm::SDK::Get().UpdateLocalPlayer(pEnt);
 			continue;
 		}
 
-		if ((*pEnt->m_hOwnerEntity()).Get() == g_pLocalPlayer)
+		if ((*pEnt->m_hOwnerEntity()).Get() == gm::SDK::Get().LocalPlayer())
 			continue;
 
 		auto ClassName = std::string(pEnt->GetClientClass()->pNetworkName);

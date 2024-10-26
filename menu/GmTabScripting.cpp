@@ -2,6 +2,8 @@
 #include "GmMenu.h"
 #include "GmMenuPopup.h"
 
+#include "../../sdk.h"
+
 #include "../core/luamanager.h"
 #include "../core/luabindings.h"
 #include "../core/globals.h"
@@ -117,9 +119,9 @@ void GmTabScripting::DrawPage() {
 	ImGui::PopFont();
 
 	if (doExecute) {
-		if ((g_pEngineClient->IsInGame())) {
+		if ((gm::SDK::Get().EngineClient()->IsInGame())) {
 
-			lua::ILuaInterface* LUA = g_pLuaShared->GetLuaInterface(type);
+			lua::ILuaInterface* LUA = gm::SDK::Get().LuaShared()->GetLuaInterface(type);
 			if (!LUA) {
 				// FUCK
 				goto fucksake;

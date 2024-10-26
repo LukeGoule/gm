@@ -43,19 +43,11 @@ inline T* FindHudElement(const char* name)
 
 
 DWORD WINAPI OnDllAttach(PVOID base) {
-	Utils::AttachConsole("");
+	Utils::AttachConsole("gm");
 
-	SDK::InitInterfaces();
-
-#if _DEBUG
-	SDK::DumpInterfaces();
-#endif
+	gm::SDK::Get().Initialise();
 
 	Hooks::Init();
-
-	lua::ILuaInterface* pClient = nullptr;
-	lua::ILuaInterface* pServer = nullptr;
-	lua::ILuaInterface* pMenu = nullptr;
 
 	while (GmMenu::Get().m_bRunning)
 	{

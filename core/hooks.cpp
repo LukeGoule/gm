@@ -68,35 +68,15 @@ namespace Hooks {
 	VirtualFunctionHook lua_serverinterface_hook;
 	VirtualFunctionHook lua_menuinterface_hook;
 
-	HWND GMODWindow;
-	WNDPROC OriginalWNDProc;
-
 	uintptr_t* TrueCalcView;
 
 	void Init() 
 	{
-		Utils::ConsolePrint(_("[Init] Looking for window...\n"));
-		
-		while (!(GMODWindow = FindWindowA(_("Valve001"), nullptr)))
-		{
-			std::this_thread::sleep_for(250ms);
-			Utils::ConsolePrint(_("[Init] Looking for window...\n"));
-		}
-
-		Utils::ConsolePrint(_("[Init] Found window.\n"));
-
-		if (GMODWindow) {
-			OriginalWNDProc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(GMODWindow, GWLP_WNDPROC,
-				reinterpret_cast<LONG_PTR>(WndProc)));
-		}
-
-		// TODO: This needs to be re-written so we can run hooks in the menu / on game load, rather than on map load.
-		//while (!g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT));
 
 		// Setup ImGui
 		ImGui::CreateContext();
-		ImGui_ImplWin32_Init(GMODWindow);
-		ImGui_ImplDX9_Init(g_pD3DDevice9);
+		ImGui_ImplWin32_Init(gm::SDK::Get().Window());
+		ImGui_ImplDX9_Init(gm::SDK::Get().D3DDevice());
 
 		// Load singleton classes
 		ESP::Get().Setup();
@@ -107,10 +87,10 @@ namespace Hooks {
 		g_pNetvars = std::make_unique<NetvarDumper>();
 		g_pNetvarManager = new NetvarManager;
 
-		direct3d_hook.setup(g_pD3DDevice9);
-		client_hook.setup(g_pClientDLL);
-		surface_hook.setup(g_pSurface);
-		viewrender_hook.setup(g_pViewRender);
+		direct3d_hook.setup(gm::SDK::Get().D3DDevice());
+		client_hook.setup(gm::SDK::Get().ClientDLL());
+		surface_hook.setup(gm::SDK::Get().Surface());
+		viewrender_hook.setup(gm::SDK::Get().ViewRender());
 
 		direct3d_hook.hook_index(Hooks::Indexes::IDirect3DDevice9::EndScene, hkEndScene);
 		direct3d_hook.hook_index(Hooks::Indexes::IDirect3DDevice9::Reset, hkReset);
@@ -159,7 +139,11 @@ namespace Hooks {
 		ImGui_ImplWin32_Shutdown();
 		ImGui::DestroyContext();
 
-		SetWindowLongPtr(GMODWindow, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(OriginalWNDProc));
+		SetWindowLongPtr(
+			gm::SDK::Get().Window(), 
+			GWLP_WNDPROC, 
+			reinterpret_cast<LONG_PTR>(gm::SDK::Get().OriginalWndProc())
+		);
 	}
 
 	lua::ILuaInterface* pClient = nullptr;
@@ -269,17 +253,17 @@ namespace Hooks {
 
 	lua::ILuaInterface* IsLuaClientReady()
 	{
-		return g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+		return gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT);
 	}
 
 	lua::ILuaInterface* IsLuaServerReady()
 	{
-		return g_pLuaShared->GetLuaInterface(LUAINTERFACE_SERVER);
+		return gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_SERVER);
 	}
 
 	lua::ILuaInterface* IsLuaMenuReady()
 	{
-		return g_pLuaShared->GetLuaInterface(LUAINTERFACE_MENU);
+		return gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_MENU);
 	}
 
 	VirtualFunctionHook GetLuaHookmanForInterface(lua::ILuaInterface* pInterface)

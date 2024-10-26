@@ -13,7 +13,7 @@ NetvarManager::NetvarManager(void)
     m_tables.clear();
 
 
-    ClientClass* clientClass = g_pClientDLL->GetAllClasses();
+    ClientClass* clientClass = gm::SDK::Get().ClientDLL()->GetAllClasses();
 
     if (!clientClass)
     {

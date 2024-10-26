@@ -177,7 +177,7 @@ public:
 
 	inline uint32_t get_team_color()
 	{
-		auto glua = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+		auto glua = gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT);
 
 		if (!glua)
 			return {};
@@ -208,7 +208,7 @@ public:
 
 	inline std::optional<bool> is_admin()
 	{
-		auto glua = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+		auto glua = gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT);
 
 		if (!glua)
 			return {};
@@ -242,7 +242,7 @@ public:
 
 	inline std::string get_team_name()
 	{
-		auto glua = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+		auto glua = gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT);
 
 		if (!glua)
 			return {};
@@ -261,7 +261,7 @@ public:
 
 	inline std::string get_name()
 	{
-		auto glua = g_pLuaShared->GetLuaInterface(LUAINTERFACE_CLIENT);
+		auto glua = gm::SDK::Get().LuaShared()->GetLuaInterface(LUAINTERFACE_CLIENT);
 
 		if (!glua)
 			return {};
